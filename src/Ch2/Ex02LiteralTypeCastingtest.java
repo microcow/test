@@ -6,9 +6,9 @@ public class Ex02LiteralTypeCastingtest {
 		
 		System.out.printf("f 값은 %1.2f입니다.\n", f);
 		
-		double t = 3.14 + 2.5f;
+		double tt = 3.14 + 2.5f;
 		
-		System.out.printf("t 값은 %1.2f입니다.", t);
+		System.out.printf("t 값은 %1.2f입니다.", tt);
 	}
 	
 }
