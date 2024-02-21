@@ -28,7 +28,7 @@ public class Ex05Switchtest {
 				break;
 			default:
 				name = "잘 못 입력하였습니다.";
-//case (mon < 1 || mon > 2): ☞오류 switch 타입은 elseif타입과 달리 boolean타입 사용 불가(참 거짓)
+//case (mon < 1 || mon > 2): ☞ 오류 switch 타입은 elseif타입과 달리 boolean타입 사용 불가(참 거짓)
 			
 
 		}

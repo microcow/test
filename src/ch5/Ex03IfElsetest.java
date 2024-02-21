@@ -16,7 +16,7 @@ public class Ex03IfElsetest {
 				else if (num == 2) name = "겨울";
 				else if (num > 12) name = "잘 못 입력하였습니다.";
 				else if (num < 1) name = "잘 못 입력하였습니다.";
-		// 범위를 묶는 방법 (6~8일 경우 여름) == &을 사용하면 된다
+		// 범위를 묶는 방법 (6~8일 경우 여름) &&을 사용하면 된다
 		
 		if (num < 1) System.out.printf(name);
 		 else if (num > 12) System.out.printf(name);
