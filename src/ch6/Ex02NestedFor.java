@@ -5,8 +5,8 @@ public class Ex02NestedFor {
 		for (int i=1; i<=6; i++) {
 			for (int j=1; j<=3; j++) {
 				System.out.printf("%d학년 %d반,", i, j);
-		//중첩 for문 반복실행 완료 시 최초 for문 반복실행
-		//최초 for문 반복실행 시 중첩 for문은 초기화되어서 재실행
+		//중첩 for문 (아래 for문) 반복실행 완료 시 최초 for문 반복실행
+		//최초 for문 (위쪽 for문) 반복실행 시 중첩 for문은 초기화되어서 재실행
 			}
 			System.out.println();
 		}

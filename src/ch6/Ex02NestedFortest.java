@@ -28,16 +28,16 @@ public class Ex02NestedFortest {
 				{300, 500},
 				{400, 600},
 				{200, 800}
-			};
-			
+			};			
 			for (int i=0; i<arg.length; i++) {
 				for (int j=0; j<arg[0].length; j++) {
 					sum = sum+=arg[i][j];
 				}				 
 			}
 			System.out.printf("세 명의 총 구매 금액 = %d%n", sum);
+			// {}해당 괄호의 어디에 위치해있냐에 따라 출력 횟수가 다름
 	}
-	/// {}줄바꿈이 해당 괄호의 어디에 위치해있냐에 따라 출력 횟수가 다름
+	
 }
 /*
 문제 1.
