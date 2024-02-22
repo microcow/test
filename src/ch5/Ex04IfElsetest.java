@@ -4,7 +4,7 @@ public class Ex04IfElsetest {
 	public static void main(String[] args) {
 		
 		
-		int mon = 8;
+		int mon = 111;
 		String name = "계절";
 		
 		if (mon == 3) name = "봄";

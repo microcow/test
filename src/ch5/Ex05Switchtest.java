@@ -2,7 +2,7 @@ package ch5;
 
 public class Ex05Switchtest {
 	public static void main(String[] args) {
-		int mon = 111;
+		int mon = 32;
 		String name = "계절";
 		
 		switch (mon) {
@@ -29,14 +29,13 @@ public class Ex05Switchtest {
 			default:
 				name = "잘 못 입력하였습니다.";
 //case (mon < 1 || mon > 2): ☞ 오류 switch 타입은 elseif타입과 달리 boolean타입 사용 불가(참 거짓)
-			
-
-		}
+				
+		}	
+		
 		if (mon < 1 || mon > 12)
-			System.out.printf("잘 못 입력하였습니다.%n");			
-		else System.out.printf("현재 %d월이며, 계절은 %s입니다.", mon, name);
+			System.out.printf("잘 못 입력하였습니다.%n");
+		else System.out.printf("현재 %d월이며, 계절은 %s입니다.", mon, name);		
 	}
-
 }
 /*
 문제 1.
