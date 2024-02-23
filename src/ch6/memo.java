@@ -1,14 +1,23 @@
 package ch6;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class memo {
+
 	public static void main(String[] args) {
-		int[][] arg = {
-				{10, 40, 90},
-				{30, 50, 70},
-				{13, 47, 25}
-			};
-			for (int j=0; j < arg.length; j++) {
-				System.out.printf("%d반%n", arg[1][0]);	
-			}
+        int i = 2;
+
+        while (i <= 9) {
+            int n = 1;
+
+            while (n <= 9) {
+                System.out.printf("%d\t",i * n);
+                n++;
+            }
+
+            System.out.println();
+            i++;
+        }
 	}
 }

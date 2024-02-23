@@ -1,7 +1,7 @@
 package Ch1;
 
 import java.util.Scanner;
-
+// 빠트리면 안되는 입력문
 public class Ex07Scanner {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
