@@ -18,6 +18,7 @@ public class Ex03IfElse {
 		} else {
 			name = "방문자";
 		}
+		// else if 중 부합하는 식이 있다면 elseif문 실행을 빠져나오게된다.
 		// 하나도 일치하지 않는다면, 마지막 else가 실행되게 된다.
 		
 		System.out.printf("회원님의 레벨은 %d이며 %s 입니다.%n", level, name);

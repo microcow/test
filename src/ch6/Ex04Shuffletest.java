@@ -14,22 +14,37 @@ public class Ex04Shuffletest {
 		}
 		System.out.printf("로또 번호는 %d", Arrays.toString(arr));
 		*/
-		int[] lotto = new int[45];
+		int[] lotto = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30};
 		for (int i=0; i<lotto.length; i++) {
-			lotto[i] = i+1;
+			
+			//lotto[i] = i+1; // 이거 하나때매 중복이 나오고 안나오고.. 뭐지
+			int n = (int)(Math.random()*lotto.length);
 			int tmp = lotto[i];
-			int n = (int)(Math.random()*45);
+			
+			//if (lotto[i]+1 != lotto[n])
 			lotto[i] = lotto[n];
 			lotto[n] = tmp;
+			
+		
+		/*int[] lotto = new int[45];
+		for (int i=0; i<lotto.length; i++) {
+			lotto[i] = i+1;
+			
+			int n = (int)(Math.random()*lotto.length);
+			int tmp = lotto[i];
+			lotto[i] = lotto[n];
+			lotto[n] = tmp;*/
+			
 			//0이 안나오도록
 			//중복이 안나오도록
 			//6개만 출력되도록
-			}
+		}
 		System.out.println(Arrays.toString(lotto));
 	}
 		
 }
-
+// 첫 번째 코드는 int[] arr = {10}으로 배열을 선언하고 동시에 첫 번째 인덱스에 10이라는 값을 할당합니다. 즉, 배열은 1개의 요소만 가지고 있으며 첫 번째 요소의 값은 10입니다.
+// 두 번째 코드는 int[] arr = new int[10]으로 배열을 선언합니다. 이 경우 배열은 10개의 요소를 가지지만 모든 요소는 기본값인 0으로 초기화됩니다.
 	
 
 /*

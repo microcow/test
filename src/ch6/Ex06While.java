@@ -3,7 +3,8 @@ import java.util.Scanner;
 public class Ex06While {
 	public static void main(String[] args) {
 		//while문의 기능을 for문으로 대체 가능하다
-		//하지만 while문이 더 편한 경우도 있다
+		//하지만 변수++; 혹은 변수--; 등과 같은 반복적인 경우, while문이 더 편리하기도 하다
+		
 		
 		Scanner scanner = new Scanner(System.in);
 		

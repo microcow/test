@@ -2,16 +2,16 @@ package ch6;
 import java.util.Scanner;
 public class Ex06Whiletest {
 	public static void main(String[] args) {
-	int i = 2;
-	while (i < 10) {
-		int n = 1;
-			while (n < 10) {
-				System.out.printf("%d%n", i*n);
-				n++;
-			}
-	}
-	i++;
-//다시해보기
+	
+		int i = 2;
+		while (i < 10) {
+			int n = 1;
+				while (n < 10) {
+					System.out.printf("%d%n", i*n);
+					n++;
+				}
+				i++;
+		}//for 문과 마찬가지로, 하위 while문 한바퀴 돌고 상위 while 반복 시 int n은 새로 선언됨
 	}
 }
 
