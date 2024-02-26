@@ -12,7 +12,7 @@ public class Ex06Whiletest {
 				}
 				i++;
 		}//for 문과 마찬가지로, 하위 while문 한바퀴 돌고 상위 while 반복 시 int n은 새로 선언됨
-	}
+	} // 반복문이 루프를 돌며 반복될때 선언은 다시된다.
 }
 
 /*
