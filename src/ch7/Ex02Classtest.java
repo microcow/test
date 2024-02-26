@@ -33,7 +33,7 @@ public class Ex02Classtest {
 					books[count].price = scanner.nextInt();
 					count++;
 					break;
-					
+					// 책 제목과 저자가 같이 출력되는 이유
 					
 				}
 				case 2: {
