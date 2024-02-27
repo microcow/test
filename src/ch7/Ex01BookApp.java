@@ -2,7 +2,7 @@ package ch7;
 import java.util.Arrays;
 import java.util.Scanner;
 public class Ex01BookApp {
-	public static void main(String[] args) { // 이번 강의에서는 객체지향적이지 않은 방법으로 프로그래밍하면 어떤점이 불편한지 알아보는 강의
+	public static void main(String[] args) { // 이번 강의에서는 객체지향적이지 않은 방법(인스턴스 미사용)으로 프로그래밍하면 어떤점이 불편한지 알아보는 강의
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("도서관리 프로그램");
 		String[] arrTitle = new String[10];
@@ -52,14 +52,13 @@ public class Ex01BookApp {
 						System.out.printf("저자 :" +  arrAuthor[a]);
 						}
 						if (arrPrice[a] != 0) { 
-						System.out.printf("가격 :" +  arrPrice[a]);
+						System.out.printf("가격 : %d%n",  arrPrice[a]);
 						}
 					}
 						// 비어있는 문자열(nextLine)은 null 숫자열(nextInt)는 0 으로 표기된다
 						// a<=10이 아닌 배열변수.length를 입력
 					
-					run = false;
-					break;
+					continue;
 				case 0:
 					run = false;
 					break;

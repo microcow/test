@@ -24,17 +24,17 @@ public class Ex02Classtest {
 					books[count] = new test();
 					// Book에 books[count]라는 객체 메모리,주소 생성
 					// 배열 인스턴스에 메모리,주소 생성
-					System.out.printf("책 제목%n");
+					System.out.print("책 제목");
 					books[count].name = scanner.nextLine();
 					// 인스턴스 메모리에 scanner로 저장하는법
-					System.out.printf("저자%n");
+					System.out.print("저자");
 					books[count].author = scanner.nextLine();
-					System.out.printf("가격%n");
+					System.out.print("가격");
 					books[count].price = scanner.nextInt();
 					count++;
 					break;
-					// 책 제목과 저자가 같이 출력되는 이유
-					
+					// 책 제목과 저자가 같이 출력되는 이유?
+					// 책 목록 실행 시 오류나는 이유?
 				}
 				case 2: {
 					for ( int a=0; a<books.length; a++)

@@ -27,6 +27,7 @@ public class Ex08Branching {
 				else if (arr <1 || arr>2);{
 					System.out.println("잘못 입력하였습니다.");
 					continue;
+					
 				}
 			
 		}
