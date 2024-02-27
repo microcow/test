@@ -53,6 +53,7 @@ class Book2 {
 	void printInfo() {
 	// 메소드 앞에 적는 것(void)은 return 타입이다
 	// void는 해당 메소드가 return을 하지 않는다는 뜻의 타입이다.
+	// void를 사용하였을 땐, 메소드 내에서 System.out.print와 같이 출력 까지 처리하는 편
 		// 메소드는 class 안에 존재해야한다
 		// 메소드를 만드는 방법은 class의 {안에서 printInfo() {를 입력
 		System.out.println("---------------");
@@ -80,6 +81,7 @@ class Book2 {
 	// float부분(타입)은 return되는 값의 타입을 적어주면 된다.
 	// 여기선 36.0이 return되었기 때문에 float 타입을 입력
 	// return타입을 사용했을 경우, 반드시 return해주어야 한다. (void타입 제외)
+	// float과 같이 void 타입을 사용하지 않았을 땐 메소드 내에서 System.out.print와 같이 출력하지 않고 위에서 return값을 가지고 출력하는 편
 		float dollarPrice = price / 1000f;
 		// dollarPrice는 메소드() 이후 {}에서 변수 선언이 되었기 때문에 파라미터는 아니지만 지역 변수이다.
 		// 파라미터와 동일하게 메소드가 종료됨과 동시에 dollarPrice는 사라진다

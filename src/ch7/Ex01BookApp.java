@@ -40,8 +40,8 @@ public class Ex01BookApp {
 					arrAuthor[bookCount] = author;
 					arrPrice[bookCount] = price;
 					bookCount++;
-					break;  // switch에 사용된 break는 switch 문만 빠져나가는건가?
-							// switch도 반복문이니까
+					break;  // switch에 사용된 break는 switch 문만 빠져나감
+							// switch도 반복문이니까 (break;는 가장 가까운 반복문을 빠져나간다)
 				case 2:
 					System.out.println("책의 목록을 확인합니다.");			 
 					for (int a = 0; a < arrTitle.length && a < arrAuthor.length && a < arrPrice.length; a++) {

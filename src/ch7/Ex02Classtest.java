@@ -8,7 +8,11 @@ public class Ex02Classtest {
 		
 		System.out.println("도서관리 프로그램");
 		test[] books = new test[10];
+		// books[?] 라는 인스턴스를 10개 생성한 것이며, 인스턴스들은 생성만 되었을 뿐 객체 메모리, 주소는 생성되지 않았다
+		// 생성하고자 하는 인스턴스를 books[?] = new test();로 메모리를 생성해주어야 내용 저장 가능
 		int count = 0;
+		books[count] = new test();
+		// Book에 books[count]라는 객체 메모리,주소 생성
 		
 		boolean run = true;
 		while (true) {
@@ -21,9 +25,6 @@ public class Ex02Classtest {
 			case 2에서도 case1에서 선언된 books[count]변수를 사용할 수 있음 */
 			
 				case 1: {
-					books[count] = new test();
-					// Book에 books[count]라는 객체 메모리,주소 생성
-					// 배열 인스턴스에 메모리,주소 생성
 					System.out.print("책 제목");
 					books[count].name = scanner.nextLine();
 					// 인스턴스 메모리에 scanner로 저장하는법
