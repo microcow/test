@@ -12,17 +12,23 @@ public class Ex09Constructor {
 		b2.printInfo();
 		
 		Book10 b3 = new Book10("파이썬문법");
+		// b3는 생성됨과 동시에 Book10 생성자 중 String타입 하나를 받아주는 생성자를 호출한다. 
+		// 즉, b3라는 인스턴스 생성과 동시에 Book10(String title) 생성자 호출
 		b3.printInfo();
 		
 		Book10 b4 = new Book10("C문법", 50000);
+		// b4는 생성됨과 동시에 Book10 생성자 중 String타입 하나와 Int타입 하나를 받아주는 생성자를 호출한다. 
 		b4.printInfo();
 		
 		Book10 b5 = new Book10("자바8문법", 40000, "엘컴퓨터학원");
+		// b5는 생성됨과 동시에 Book10 생성자 중 String타입 하나와 Int타입 하나와 String타입 하나를 받아주는 생성자를 호출한다.
+		// ※ String 타입이 둘이지만, 순서가 바뀌면 안된다. 즉, String타입, Int타입, String타입으로 호출 했으면 받는 생성자도 String타입, Int타입, String타입으로 받아야함
 		b5.printInfo();
 		
+		
 		// Book10 b6 = new Book10();
-		// ㄴ Book10(); 생성자는 없기에 에러 발생
-		// 생성된 Book10 생성자가 있기 때문에 컴파일러에서 빈 생성자를 새로 만들어주지 않음
+		// ㄴ Book10(); 생성자가 없기에 에러 발생
+		// 아래에 생성된 Book10 생성자가 이미 있기 때문에 컴파일러에서 빈 생성자를 새로 만들어주지 않음
 		
 	}
 }
@@ -71,6 +77,7 @@ class Book10 {
 	int price;
 	String author;
 	// 메소드에서도 오버로딩이 있듯 생성자에서도 오버로딩이 가능하다
+	// 단 class 이름은 동일해야한다. (Book10)
 	Book10(String title) {
 		this.title = title;
 		this.price = 30000;

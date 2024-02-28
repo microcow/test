@@ -1,29 +1,38 @@
 package ch7;
 
 public class Ex10ThisConstructortest {
-	public class Ex10ThisConstructor {
+	public static void main(String[] args) {
+		
+		System.out.println(good.title);
 		good a = new good();
+		a.tell();
+		
 		
 	}
 
 }
 
-class good { /// 제발
-	String title;
+class good { 
+	static String title = "gooo";
 	int price;
 	String author;
 	
+	
 
 	good (){
-		this("", 0, "null");
+		this("", 14, "sd");
 	}
 	
 	good (String title, int price, String author){
-		System.out.println(title + price + author);
+		System.out.println(title + "\n" + price + "\n" +author);
+		this.title = title;
+		this.price = price;
+		this.author = author;
 	}
 	
 	void tell() {
-		System.out.println(title + price + author);
+		System.out.printf("%s %n%d %n%s %n", title, price, author); 
+		
 	}
 }
 /*

@@ -11,7 +11,7 @@ public class Ex01Array {
 		// a에 정수를 저장하는게 아닌 메모리 주소를 저장하는 구조 (개수만큼)
 		
 		a[0] = 10;
-		// a 메모리 주소 + 0인 메모리 주소에 저장 (즉, 배열은 0부터 시
+		// a 메모리 주소 + 0인 메모리 주소에 저장 (즉, 배열은 0부터 시작)
 		// []안의 숫자를 index라 부름
 		a[1] = 11;
 		// a 메모리 주소 + 1인 메모리 주소에 저장
@@ -40,10 +40,15 @@ public class Ex01Array {
 		int[] arr2 = new int[] {30, 31, 32};
 		// {}를 사용하여, 생성할 배열 수를 적지 않고 바로 배열에 값을 저장
 		// 좌측부터 arr2[0] / arr2[1] / arr2[2]로 자동 저장
-		// 가장 많이 사용하는 방법
  		System.out.println(arr2[0]);
 		System.out.println(arr2[1]);
 		System.out.println(arr2[2]);
+		
+		
+		arr2 = new int[2];
+		System.out.println(arr2[0] + "dkfmfmfm");
+		// arr2가 위에서 선언된 후 메모리를 생성하였으나 해당 코드에서 메모리를 재생성 하였다
+		// 재생성 시 기존 arr2에 저장되어있던 값은 초기화된다.
 		
 		System.out.println();
 		
@@ -53,6 +58,20 @@ public class Ex01Array {
 		System.out.println(arr3[1]);
 		System.out.println(arr3[2]);
 		System.out.println(arr3[3]);
+		
+		int[] arr4;
+		// 굳이 선언과 동시에 메모리를 생성하지 않아도 된다.
+		//arr4[1] = 2; → 선언은 하였지만 메모리를 생성하지 않았기에 오류 발생
+		//arr4 = arr3; → 선언은 하였지만 메모리를 생성하지 않았기에 오류 발생
+		//arr4[1] = arr2[2]; → 선언은 하였지만 메모리를 생성하지 않았기에 오류 발생
+		//즉, 선언과 동시에 메모리를 생성하지 않아도 되지만, 메모리 생성이 되지 않은 배열을 사용하려할 때 오류가 발생한다
+	
+		arr4 = new int [arr.length];
+		// 선언을 먼저 해놓고 나중에 메모리 생성을 저장해도 된다.
+		
+		int[] arr5 = new int [arr3.length];
+		// 다른 배열의 길이만큼 배열을 생성할 수 있다
+		// 길이만 같을 뿐, arr3과 메모리 내 정보는 공유하지 않는다
 	}
 
 
