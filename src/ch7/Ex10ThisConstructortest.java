@@ -8,7 +8,7 @@ public class Ex10ThisConstructortest {
 
 }
 
-class good {
+class good { /// 제발
 	String title;
 	int price;
 	String author;
