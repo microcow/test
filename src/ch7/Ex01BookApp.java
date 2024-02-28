@@ -13,7 +13,7 @@ public class Ex01BookApp {
 		
 		boolean run = true;
 		while (true) {
-			String title = "";
+			String title = ""; // 빈 쌍따옴표는 String타입의 0;이라고 생각하면된다
 			String author = "";
 			int price = 0;
 			
