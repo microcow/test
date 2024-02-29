@@ -13,7 +13,7 @@ public class Ex01BookApp {
 		
 		boolean run = true;
 		while (true) {
-			String title = ""; // 빈 쌍따옴표는 String타입의 0;이라고 생각하면된다
+			String title = ""; // 빈 쌍따옴표는 String타입의 0;이다
 			String author = "";
 			int price = 0;
 			
@@ -43,28 +43,31 @@ public class Ex01BookApp {
 					break;  // switch에 사용된 break는 switch 문만 빠져나감
 							// switch도 반복문이니까 (break;는 가장 가까운 반복문을 빠져나간다)
 				case 2:
-					System.out.println("책의 목록을 확인합니다.");			 
+					System.out.println("책의 목록을 확인합니다.");	
+					
+					/* (1) */
 					for (int a = 0; a < arrTitle.length && a < arrAuthor.length && a < arrPrice.length; a++) {
 						if (arrTitle[a] != null) {
-						System.out.printf("제목 :" +  arrTitle[a]);
+						System.out.printf("제목 : " +  arrTitle[a]);
 						}
 						if (arrAuthor[a] != null) {	
-						System.out.printf("저자 :" +  arrAuthor[a]);
+						System.out.printf("저자 : " +  arrAuthor[a]);
 						}
 						if (arrPrice[a] != 0) { 
-						System.out.printf("가격 : %d%n",  arrPrice[a]);
-						}
-					}
+						System.out.printf("가격 : %d%n ",  arrPrice[a]);
 						// 비어있는 문자열(nextLine)은 null 숫자열(nextInt)는 0 으로 표기된다
 						// a<=10이 아닌 배열변수.length를 입력
+						}
+						// continue; 가 해당 부분에 있을 경우 switch문이 아닌 for문의 처음으로 올라가나, 결국 a값이 11이 되어버리기에 if(!run) 코드로 넘어간다.
+					}
+					continue; // 따라서, 목록 출력 후 while문의 처음으로 이동하려면 해당 부분에 continue;를 작성
 					
-					continue;
 				case 0:
-					run = false;
+					run = !run;// swhitch 문은 입력받은 값으로 부터 break;를 만날 때 까지 아래의 코드를 모두 실행시킨다.
 					break;
 			}
-			
 			if (!run)
+				
 				break;
 		}
 		System.out.println("프로그램이 종료됩니다.");

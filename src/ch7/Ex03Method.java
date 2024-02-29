@@ -69,6 +69,7 @@ class Book2 {
 		// parameterPrice는 메소드() 내에 선언되었기에 파라미터(매개변수)라고 부르며 입력된 아규먼트(인수)를 받는 변수이다.
 		// (타입 + 파라미터) 입력으로 아규먼트를 받을 수 있다. ex)book2.setPrice(20000)
 		// 파라미터는 메소드 내에서만 사용 가능한 지역변수이며, 메소드가 종료됨과 동시에 사라진다.
+		// parameterPrice는 파라미터이자 지역변수이다.
 	}
 	
 	void setPrice(int parameterPrice, float taxRate) {

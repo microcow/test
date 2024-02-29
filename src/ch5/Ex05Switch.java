@@ -26,6 +26,7 @@ public class Ex05Switch {
 				default:
 					name = "방문자";
 				// case에 해당하는 값이 없으면 default값 출력
+				// 주의! swhitch 문은 입력받은 값에서 부터 break;를 만나기 전까지의 모든 코드를 실행한다 (case와 관계없이)
 			}
 			System.out.printf("회원님의 레벨은 %d이며 %s 입니다.%n", level, name);
 		}

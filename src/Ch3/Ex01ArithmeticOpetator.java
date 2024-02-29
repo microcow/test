@@ -8,7 +8,7 @@ public class Ex01ArithmeticOpetator {
 		System.out.printf("5 / 2 = %d%n", 5/2);
 		//정수 리터럴끼리 곱해서 결과값이 정수
 		System.out.printf("5 %% 2 = %d%n%n", 5%2);
-		//%는 5를 2로 나눈 나머지를 구할 때 사용
+		//%는 5를 2로 나눈 나머지를 구할 때 사용 (5/2와 다름)
 		//printf에 %문자를 출력하려면 %%라고 입력
 		
 		int a = 5;
