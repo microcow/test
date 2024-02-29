@@ -19,6 +19,7 @@ public class Ex02Classtest {
 			System.out.println("메뉴를 선택하세요. 1:책등록, 2:책목록, 0:종료");
 			System.out.print(">>");
 			int menu = scanner.nextInt();
+			scanner.nextLine();
 			switch (menu) {
 			/* if 문을 사용했으면 if {(menu == 1),,,}을 쓰고 else if {(menu ==2),,,}로 진행되어서 앞서 if에서 선언된
 			books[count]를 사용하지 못했겠지만, switch문은 case1에서 부터 훑으며 아래로 사용하기 때문에

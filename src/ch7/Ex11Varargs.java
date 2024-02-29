@@ -37,8 +37,8 @@ class Book12 {
 	}
 	
 	static void printInfo(Book12 book) {
-		// 클래식 메소드(스태틱 메소드)에서 인스턴스를 통째로 파라미터로 받고있다
-		// 주의해야 할 점은 받는 인스턴스와 클래스(Book12)가 동일해야한다.
+		// 클래식 메소드(스태틱 메소드)에서 인스턴스를 통째로 파라미터로 받고있다 //예를 들어 book1을 받았다면 Book12 book = book1과 동일한 말이다
+		// 이 때 주의해야 할 점은 받는 인스턴스와 클래스(Book12)가 동일해야한다.
 		// 인스턴스를 통째로 파라미터로 받을 경우 클래식 메소드(스태틱 메소드)에서도 받은 인스턴스의 개별 변수 사용이 가능하다.
 		System.out.printf("제목: %s%n저자: %s%n", book.title, book.author);
 		System.out.printf("카테고리: %s%n%n", Arrays.toString(book.tag));
