@@ -19,6 +19,8 @@ class Book111 {
 		System.out.print((int)(price*TAX));
 		// int가 없으면 12000.0으로 출력됨
 		// TAX에 int를 붙이면 1.2에서 1이 되어버림
+		// (int)(A*B);는 A*B의 결과 값을 int값으로 바꿔주는 식이고
+		// (int)A*B;는 A값을 int로 바꾼 후 B와 곱하는 식이다
 	}
 
 	

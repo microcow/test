@@ -14,8 +14,9 @@ public class Ex02HasARelationship {
 		
 		Cart cart = new Cart();
 		
-		cart.putBook(b1); 
-		// cart.book이라는 인스턴스변수에는 b1의 '모든' 인스턴스 변수 정보가 저장되었다
+		cart.putBook(b1);
+		/* cart.book이라는 인스턴스변수에는 b1의 '모든' 인스턴스 변수구조와 정보가 저장되어있다. 왜냐하면,
+		book이라는 인스턴스 변수는 Book2 클래스의 모든 인스턴스 변수 구조를 가지고 있으며, b1은 Book2 클래스에서 생성된 인스턴스 변수이기 때문이다.*/
 		// book은 Cart 클래스의 인스턴스 변수이지만 Book2의 모든 인스턴스 변수를 가지고 있기 때문에 출력 시 (인스턴스.인스턴스변수.인스턴스변수 속 인스턴스변수) 이렇게 입력해야한다.
 		//(cart.book.title); 혹은 (cart.book.author); 혹은 /(cart.book.price);을 출력해서 b1과 값이 동일한지 확인해보자
 		
@@ -47,8 +48,9 @@ class Cart {
 	
 	void putBook(Book2 book) {
 		this.book = book;
+		// Book2의 형태를 가진 아규먼트를 book 파라미터가 받음
 		// Book2클래스에 동일한 이름과 파라미터의 형태를 가진 메소드가 있더라도 호출자의 클래스가 Cart라면 Book2클래스가 아닌 Cart 클래스가 받게된다.
-		// 파라미터 book은 Book2의 인스턴스 변수 타입들을가지고 있다 (Book2클래스의 형태를 가진 book파라미터)
+		// 파라미터 book은 Book2 클래스의 인스턴스 변수 타입들을 모두 가지고 있다 (Book2클래스의 형태를 가진 book파라미터)
 	}
 	
 	void putBooks(Book2... books) {

@@ -22,7 +22,6 @@ public class Ex04Method {
 		book.setTitle("자바문법");
 		System.out.println("책이름: " + book.title);
 	}
-
 }
 
 class Book3 {

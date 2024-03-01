@@ -7,7 +7,7 @@ public class Ex11Varargs {
 		book1.author = "엘컴퓨터학원";
 		book1.setTag("컴퓨터", "IT", "프로그램 언어", "자바");
 		Book12.printInfo(book1);
-		// 인스턴스 자체를 파라미터로 하여 메소드 호출
+		// 인스턴스 자체를 파라미터로 하여 메소드 호출 (호출 메소드가 클래스 메소드이기 때문에)
 		
 		Book12 book2 = new Book12();
 		book2.title = "C 문법";
