@@ -89,6 +89,7 @@ class Book2 {
 		return dollarPrice;				
 		// return은 메소드를 호출한 곳으로 값을 돌려준다는 뜻
 		// 예를들어 book2.dollarPrice로 해당 메소드를 호출했을 경우 return으로 값을 돌려준다
+		// book2.getDollarPrice() 해당 부분이 return값으로 교체되는 것임
 		// 즉, System.out.print(book2.getDollarPrice()); 입력 시 return된 값을 출력한다
 	}
 	

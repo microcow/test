@@ -15,7 +15,7 @@ public class Ex01Inheritance {
 		EBook eBook = new EBook();
 		eBook.price = 30000;
 		System.out.println("e북의 가격은(세금포함): " + eBook.getPrice());
-		// eBook이라는 클래스에는 getPrice라는 메소드가 없으나, 상속받았기 때문 사용 가능하다.
+		// eBook이라는 클래스에는 getPrice라는 메소드가 없으나, Book클래스를 상속받았기 때문 사용 가능하다.
 		String[] devices = {"아이패드", "킨들", "갤탭"};
 		eBook.supportDevices = devices;
 		eBook.printDevices();
@@ -55,8 +55,9 @@ class EBook extends Book {
 	// 상속받은 클래스(자식클래스)는 상속해준 클래스(부모클래스)의 인스턴스변수 및 메소드를 모두 가지게된다
 	// 실제로 코드로는 안적혀있지만 가지고 있는거나 다름없다
 	// 많은 클래스에 공통된 부분을 부모 클래스에 저장해둔 후 상속시키면 유지보수에 용이하다
-	// 동일 클래스 내에서만 상속 가능
+	// 자식끼리는 변수나 메소드를 공유하지 않는다
 	String[] supportDevices;
+	
 	
 	void printDevices() {
 		System.out.println("호환기기 목록");
@@ -66,6 +67,7 @@ class EBook extends Book {
 		}
 	}
 }
+	
 
 class PaperBook extends EBook {
 	int width;

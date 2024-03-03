@@ -20,6 +20,7 @@ class Book112 {
 	void bookname(String... para) {
 		// System.out.println(para[7]); → 7개 받았으므로 [6]까지만 메모리 생성. 실행 시 오류발생
 		tag = new String[para.length];
+		// 배열 생성
 				for (int i=0; i<para.length; i++)
 					tag[i] = para[i];
 					
