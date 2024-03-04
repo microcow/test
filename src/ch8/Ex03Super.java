@@ -6,7 +6,10 @@ public class Ex03Super {
 		// 자식 클래스에서 인스턴스 생성 시 부모클래스에서도 동일하게 인스턴스가 생성된다.
 		// 따라서, 위와 같이 자식 클래스에서 인스턴스 생성 후 생성자를 호출할 경우(EBook2();) 부모 클래스에서도 생성자를 호출해야한다.
 		// 부모 클래스에서 생성된 인스턴스는 super라는 키워드에 저장된다
+		
 		System.out.println("책의 제목은 [" + eb.title + "]이고 글자의 색은 [" + eb.fontColor + "]입니다.");
+		// EBook2 클래스에는 title이란 인스턴스 변수가 없으므로 부모클래스의 title 인스턴스 변수에 저장된 값을 불러왔다
+		// 만약, EBook2 클래스에도 title이란 변수가 있었고, 값이 "야호"라고 저장되어있었다면, 위 코드 출력 시 "야호"가 출력될 것이다.
 	}
 
 }
@@ -19,6 +22,8 @@ class Book3 {
 	Book3(String title, String author) { // 아래의 super에 의해 호출된 부모 클래스 생성자
 		this.title = title;
 		this.author = author;
+		// 위 생성자가 super에 의해 호출되었다면 this는 super에 의해 호출되었기에, eb의 인스턴스 변수가 아닌 super의 인스턴스 변수이다.
+		// 메소드를 호출할 때 사용한 인스턴스를 this라 칭함
 	}
 	
 	
@@ -47,6 +52,7 @@ class EBook2 extends Book3 {
 		
 		this.fontColor = "블랙";
 		// 해당 코드가 super보다 위쪽에 위치할 수 없다. (super코드는 자식클래스의 생성자에서 처음에 위치해야함)
+
 	}
 
 		

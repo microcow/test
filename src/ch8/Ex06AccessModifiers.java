@@ -4,9 +4,9 @@ import ch08.Ex06.Book;
 public class Ex06AccessModifiers {
 	public static void main(String[] args) {
 		
-		// private 접근 제한자는 같은페이지(jira class) 내에서만 접근 가능하다 (같은 패키지도 안됨)
-		// 기본 접근 제한자(디폴트 접근 제한자)는 같은 패키지 내에서만 접근 가능하다 (따로 접근제한자를 안적을 경우 디폴트 접근제한자로 적용)
-		// public 접근 제한자는 동일하지 않은 패키지에서도 접근할 수 있게 해주는 접근제한자이다.
+		// private 접근 제한자는 같은 패키지의 같은 클래스의 같은 필드(페이지) 내에서만 접근 가능하다 (상속받은 클래스도 위 조건대로 접근 불가)
+		// 기본 접근 제한자(디폴트 접근 제한자)는 같은 패키지 내에서 같은 클래스 내에서만 접근 가능하다 (따로 접근제한자를 안적을 경우 디폴트 접근제한자로 적용)
+		// public 접근 제한자는 같은 클래스에서 동일하지 않은 패키지에서도 접근할 수 있게 해주는 접근제한자이다. (상속받은 클래스도 위 조건대로 접근 가능)
 		// protected 접근 제한자는 디폴트 접근 제한자처럼 같은 패키지 내에서만 접근 가능하지만(같은 이름의 클래스더라도 패키지가 다르면 접근 불가), 다른 패키지에서 해당 클래스는 상속받고 있을 경우엔 패키지가 달라도 접근 가능하다.
 		// 접근 제한자는 클래스나 메소드, 변수 등 앞에 붙을 수 있다. (클래스는 class 앞에 / 메소드는 리턴타입 앞에 / 변수는 변수타입 앞에)
 		
@@ -15,9 +15,14 @@ public class Ex06AccessModifiers {
 		
 		//b1.setTitle("자바기본문법");
 		// 클래스 명이 같더라도, 다른 패키지에 있는 디폴트 접근제한자 메소드에는 접근 불가 (public이 없는 타입의 메소드를 디폴트 접근제한자라 부른다)
-		b1.title = "자바기본문법";
-		// title 또한, 타입 앞에 public이 있기에 패키지가 다르더라도 사용 가능 
-		System.out.println(b1.getTitle());
+		// b1.title = "자바기본문법";
+		// title 또한, 타입 앞에 public이 있기에 패키지가 다르더라도 사용 가능 (문제2로 의해 title 접근 제한자를 private로 수정했음)
+
+		b1.settitle("자바기본문법"); /*문제 2
+			public title을 private로 변경하자 b1.title을 사용할 수 없게되었으므로
+		 	public 메소드를 생성하여 title값을 변경하였다. */
+		
+		System.out.println(b1.gettitle());
 		
 		// b1.author = "엘컴퓨터학원";
 		// author는 private 접근 제한자 인스턴스 변수기에 불러올 수 없다
@@ -38,15 +43,19 @@ public class Ex06AccessModifiers {
 		
 		//b1.edition = 3; → edition이 디폴트 접근제한자이기에 패키지가 달라서 접근 불가
 		
-		//b1.tax = 1.1f; → tax 인스턴스 변수는 protected 변수이기에 접근 불가 \
-		//여기까지 8-6 11분 45초부터 
+		//b1.tax = 1.1f; → tax 인스턴스 변수는 protected 변수이기에 접근 불가
 		//b1.setTax(1.1f);
 		
 		EBook5 eb1 = new EBook5();
+		
 		eb1.setPrice(30000);
 		//eb1.tax = 1.1f;
 		eb1.setTax(1.1f);
 		System.out.println("세금 적용된 가격: " + eb1.getPrice() * eb1.getTax());
+		
+		
+		eb1.setPrice(200000);
+		System.out.println(eb1.getDollarPrice());
 	}
 
 }
@@ -63,12 +72,42 @@ class EBook5 extends Book {
 	@Override
 	protected void setTax(float tax) {
 		this.tax = tax+0.1f;
+		//tax 인스턴스변수는 protected 접근 제한자이지만 Ebook5가 상속을 받았기 때문에 사용 가능
 	}
 	
 	@Override
 	protected float getTax() {
 		return tax;
 	}
+	
+	@Override // 문제3 
+	public void setPrice(int price) {
+		super.setPrice(price);
+		this.dollarPrice = super.dollarPrice*1000;
+		this.dollarPrice = super.dollarPrice-5000;
+		// setDollarPrice에 접근하기 위해선 부모클래스의 setPrice메소드에 접근이 필요하기에 super사용
+		
+		
+	}
 			
 		
 }
+
+/*
+문제1.
+setEdition 메소드의 오류를 수정하세요.
+→ setEdition 메소드의 인스턴스 변수 edition이 default 접근 제한자이므로
+ 	패키지가 달라서 접근이 불가하다. 따라서, edition 인스턴스 변수를 protected나 public접근 제한자로 변경해주어야 한다.
+ 
+
+
+문제2.
+Book클래스의 title 변수를 private로 수정 후 발생되는 main메소드의 오류를 수정하세요. 
+
+문제3.
+EBook5 클래스에 Book클래스의 setPrice 메소드를 오버라이딩 하세요.
+e북은 입력된 가격보다 5000원 낮은 금액으로 price가 설정되어야 합니다.
+setPrice 메소드 내에서 setDollarPrice 메소드를 호출하여 dollarPrice를 설정하세요.
+setDollarPrice 메소드는 상속관계가 아닌 클래스에서 접근할 수 없어야 합니다.
+힌트) setDollarPrice메소드와 dollarPrice 변수의 접근 제한자를 수정하세요.
+*/

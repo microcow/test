@@ -1,10 +1,10 @@
 package ch08.Ex06;
 
 public class Book {
-	public String title;
+	private String title;
 	private String author;
 	private int price;
-	private int dollarPrice; 
+	protected int dollarPrice; 
 	int edition;
 	protected float tax;
 	
@@ -12,7 +12,12 @@ public class Book {
 		this.title = title;
 	}
 	
-	public String getTitle() {
+	public String settitle(String setTitle) {
+		return this.title = setTitle;
+		
+	}
+	
+	public String gettitle() {
 		return title;
 	}
 	
@@ -55,4 +60,7 @@ public class Book {
 	protected float getTax() {
 		return tax;
 	}
+}
+class Book2{
+	String d;
 }

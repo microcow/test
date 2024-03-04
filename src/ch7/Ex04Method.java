@@ -33,7 +33,8 @@ class Book3 {
 			return 0;
 		// 메소드에서는 return을 만남과 동시에 메소드를 빠져나가게 된다.
 		// 인스턴스에서 price 값이 정의되지 않았다면, 0과 null로 표시된다.
-		// return + 리턴할 값 입력
+		// return + 리턴할 값 +; 입력
+		// 리턴할 값이 없다면 return; 입력
 		
 		float tax = 1.1f;
 		price = (int)(price * tax);

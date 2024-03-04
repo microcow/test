@@ -10,9 +10,11 @@ public class Ex14CallByReference {
 			
 			
 			
-			Ex12Book.generateBookNo(book);
+			Ex12Book.generateBookNo(book); // 아규먼트에 인스턴스(참조변수) 값을넣어 불러오는 걸 콜바이레퍼런스라 한다 
 			System.out.println("책 번호: " + book.bookNo);
 			// generateBookNo 메소드에서 bookNo의 값을 돌려주었다. (콜바이레퍼런스)
+			
+			
 		} 
 
 }

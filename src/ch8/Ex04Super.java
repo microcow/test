@@ -41,11 +41,11 @@ class EBook3 extends Book4 {
 	
 	String getTitle() {
 		return title;
-		// EBook3에는 title변수가 없으므로, 부모클래스에 있는 title 변수를 반환한다.(만약, EBook3에도 동일한 변수가 있었다면 부모 클래스가 아닌 EBook3의 인스턴스 변수를 반환했을 것)
+		// EBook3에는 title변수가 없으므로, 부모클래스에 있는 title 변수를 반환한다.(만약, EBook3에도 동일한 변수가 있었다면 부모 클래스가 아닌 EBook3의 인스턴스 변수에 저장된 값을 반환했을 것)
 	}
 	
 	String getAuthor() {
 		return this.author;
-		// 마찬가지로 EBook3에는 author변수가 없으므로, this.author더라도 부모클래스에 있는 author 변수를 반환한다.(만약, EBook3에도 동일한 변수가 있었다면 부모 클래스가 아닌 EBook3의 인스턴스 변수를 반환했을 것)
+		// 마찬가지로 EBook3에는 author변수가 없으므로, this.author더라도 부모클래스에 있는 author 변수를 반환한다.(만약, EBook3에도 동일한 변수가 있었다면 부모 클래스가 아닌 EBook3의 인스턴스 변수에 저장된 값을 반환했을 것)
 	}
 }
