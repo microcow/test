@@ -36,13 +36,14 @@ public class Ex02HasARelationship {
 		
 		
 	}
-
+						
 }
 
 class Cart {
 	Book2 book;		// book이라는 인스턴스 변수는 Book2가 가지고 있는 모든 인스턴스 변수들을 가지고 있음 (String title;, String author;, int price;) // HAS-A Relationship
 					// 그냥 Cart클래스의 인스턴스 변수인 book은 Book2 클래스에서 생성된 인스턴스 변수라고 생각.
 					// 즉, Book2 클래스에서 생성되었으므로 Book2의 메소드 또한 사용 가능
+					// book과 같이 주소를 가지고 있는 변수를 참조변수라 한다.
 	Book2[] books;	// books라는 인스턴스 변수는 Book2가 가지는 인스턴스들을 모두 '배열'로 가지고 있음 // HAS-A Relationship
 	User owner;		// owner라는 인스턴스 변수는 User이 가지고 있는 인스턴스 변수들을 모두 가지고 있음 // HAS-A Relationship
 	int count;

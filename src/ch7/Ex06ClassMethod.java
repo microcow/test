@@ -5,7 +5,7 @@ public class Ex06ClassMethod {
 		
 		System.out.println(Book5.generateBookNo());
 		// 클래스 메서드는 클래스 변수와 동일하게 인스턴스 생성 전 사용 가능하다.
-		// 클래스 메서드는 클래스이름.메서드로 호출
+		// 클래스 메서드는 클래스이름.메서드로 호출 (인스턴수 변수.메서드로 호출X)
 		
 		System.out.println();
 		

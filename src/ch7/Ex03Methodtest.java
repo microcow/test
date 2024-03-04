@@ -1,5 +1,4 @@
 package ch7;
-import java.util.Arrays;
 import java.util.Scanner;
 public class Ex03Methodtest {
 	public static void main(String[] args) {

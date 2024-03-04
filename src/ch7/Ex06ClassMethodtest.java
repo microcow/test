@@ -3,7 +3,7 @@ package ch7;
 public class Ex06ClassMethodtest {
 	public static void main(String[] args) {
 		Bookprice book = new Bookprice();
-		System.out.print("1000원은 " + book.price(1000) + " 달러입니다.");
+		System.out.print("1000원은 " + Bookprice.price(1000) + " 달러입니다.");
 		
 		
 	}

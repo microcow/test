@@ -3,6 +3,9 @@ package ch8;
 public class Ex03Super {
 	public static void main(String[] args) {
 		EBook2 eb = new EBook2();
+		// 자식 클래스에서 인스턴스 생성 시 부모클래스에서도 동일하게 인스턴스가 생성된다.
+		// 따라서, 위와 같이 자식 클래스에서 인스턴스 생성 후 생성자를 호출할 경우(EBook2();) 부모 클래스에서도 생성자를 호출해야한다.
+		// 부모 클래스에서 생성된 인스턴스는 super라는 키워드에 저장된다
 		System.out.println("책의 제목은 [" + eb.title + "]이고 글자의 색은 [" + eb.fontColor + "]입니다.");
 	}
 

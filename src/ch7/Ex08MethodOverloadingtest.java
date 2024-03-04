@@ -24,10 +24,10 @@ class car {
 		System.out.printf("이름:%s 속도:%d 회사:%s%n", this.name, this.speed, this.com);
 	}
 		
-		void asd(String name, int speed) {
-			this.name = name;
-			this.speed = speed;
-			System.out.printf("이름:%s 속도:%d 회사:%s%n", this.name, this.speed, this.com);
+	void asd(String name, int speed) {
+		this.name = name;
+		this.speed = speed;
+		System.out.printf("이름:%s 속도:%d 회사:%s%n", this.name, this.speed, this.com);
 	}
 	
 }
