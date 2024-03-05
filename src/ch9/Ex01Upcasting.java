@@ -37,7 +37,7 @@ public class Ex01Upcasting {
 		son2.initTitle(new AudioBook());
 		System.out.println(son2.getTitle());
 		System.out.println(son2.title);
-		// AudioBook 클래스에는 title값이 다르게 저장되어 있으나, getTitle은 부모 클래스의 메소드 이기에 자식클래스인 AudioBook의 title 값을 가져올 수 없다 따라서, son2의 super에 저장된 title 값을 가져온다
+		// AudioBook 클래스에는 title값이 다르게 저장되어 있으나, getTitle은 부모 클래스의 메소드 이기에 자식클래스인 AudioBook의 title 값을 가져올 수 없다(*ch8 Ex01) 따라서, son2의 super에 저장된 title 값을 가져온다
 		// 따라서, System.out.println(son2.title); 입력 시에는 AudioBook의 title 값이 출력된다
 		
 		// 아규먼트에 new 생성자();(메모리 생성)을 입력하게 되면 파라미터가 해당 클래스의 메모리를 가지게 된다 (즉, 클래스명 파라미터 = new 클래스명();과 동일)

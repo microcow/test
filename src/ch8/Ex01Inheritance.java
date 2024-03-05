@@ -8,7 +8,7 @@ public class Ex01Inheritance {
 		//book.printDevices(); → Book클래스에 없으므로 호출 불가
 		//book.printSize(); → Book클래스에 없으므로 호출 불가
 		// 즉, 자식클래스는 부모클래스의 변수나 메소드를 불러올 수 있지만(상속받았기 때문)
-		// 부모클래스는 자식클래스의 변수나 메소드를 불러올 수 없다
+		// 부모클래스는 자식클래스의 변수나 메소드를 불러올 수 없다 (부모클래스에 있는 메소드에서도 마찬가지)
 		
 		System.out.println();
 		
