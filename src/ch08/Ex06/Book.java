@@ -1,7 +1,7 @@
 package ch08.Ex06;
 
 public class Book {
-	private String title;
+	public String title;
 	private String author;
 	private int price;
 	protected int dollarPrice; 

@@ -15,8 +15,8 @@ public class Ex06AccessModifiers {
 		
 		//b1.setTitle("자바기본문법");
 		// 클래스 명이 같더라도, 다른 패키지에 있는 디폴트 접근제한자 메소드에는 접근 불가 (public이 없는 타입의 메소드를 디폴트 접근제한자라 부른다)
-		// b1.title = "자바기본문법";
-		// title 또한, 타입 앞에 public이 있기에 패키지가 다르더라도 사용 가능 (문제2로 의해 title 접근 제한자를 private로 수정했음)
+		b1.title = "자바기본문법";
+		// title 또한, 타입 앞에 public이 있기에 패키지가 다르더라도 사용 가능
 
 		b1.settitle("자바기본문법"); /*문제 2
 			public title을 private로 변경하자 b1.title을 사용할 수 없게되었으므로
@@ -102,7 +102,8 @@ setEdition 메소드의 오류를 수정하세요.
 
 
 문제2.
-Book클래스의 title 변수를 private로 수정 후 발생되는 main메소드의 오류를 수정하세요. 
+Book클래스의 title 변수를 private로 수정 후 발생되는 main메소드의 오류를 수정하세요.
+→ title 변수 private로 변경시 b1.setTitle("자바기본문법"); 부분을 사용 할 수 없게되며 접근하려면 public 메소드를 통해 접근해야한다.
 
 문제3.
 EBook5 클래스에 Book클래스의 setPrice 메소드를 오버라이딩 하세요.

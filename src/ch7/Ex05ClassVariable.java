@@ -4,6 +4,7 @@ public class Ex05ClassVariable {
 	public static void main(String[] args) {
 		Book4.tax = 1.2f;
 		// 클래스 변수는 인스턴스 생성 전 선언 가능하며, 동일 클래스 내에 모든 인스턴스가 공통으로 가지는 값이다
+		// 클래스명 + 스태틱 변수명으로 호출 가능
 		
 		
 		Book4 b1 = new Book4(); // 클래스 변수 이후 인스턴스 선언

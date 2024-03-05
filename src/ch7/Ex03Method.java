@@ -53,7 +53,8 @@ class Book2 {
 	void printInfo() {
 	// 메소드 앞에 적는 것(void)은 return 타입이다
 	// void는 해당 메소드가 return을 하지 않는다는 뜻의 타입이다.
-	// void를 사용하였을 땐, 메소드 내에서 System.out.print와 같이 출력 까지 처리하는 편
+	// void를 사용하였을 땐, 메소드 내에서 System.out.print과 같이 출력 까지 처리하는 편
+	// 즉, void로 된 메소드를 호출하였을 때는 결과값을 리턴하지 않는다 
 		// 메소드는 class 안에 존재해야한다
 		// 메소드를 만드는 방법은 class의 {안에서 printInfo() {를 입력
 		System.out.println("---------------");
@@ -90,7 +91,7 @@ class Book2 {
 		// return은 메소드를 호출한 곳으로 값을 돌려준다는 뜻
 		// 예를들어 book2.dollarPrice로 해당 메소드를 호출했을 경우 return으로 값을 돌려준다
 		// book2.getDollarPrice() 해당 부분이 return값으로 교체되는 것임
-		// 즉, System.out.print(book2.getDollarPrice()); 입력 시 return된 값을 출력한다
+		// 즉, System.out.print(book2.getDollarPrice()); 입력 시 return된 값을 출력한다 (void는 안됨)
 	}
 	
 	void printInfoEng() {
