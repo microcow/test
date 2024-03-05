@@ -4,6 +4,7 @@ public class Ex05Overriding {
 	public static void main(String[] args) {
 		EBook4 eb = new EBook4();
 		eb.setPrice(30000);
+		
 		eb.printPrice();
 		
 		eb.printAllPrice();
@@ -18,6 +19,7 @@ class Book5 {
 	
 	void setPrice(int price) {
 		this.price = price; // 코드 실행 시 이 때 price에는 40000의 값이 저장됨
+		
 	}
 	
 	void printPrice() {
@@ -43,6 +45,7 @@ class EBook4 extends Book5 {
 		super.setPrice(price + 10000);
 		// 메소드 내에서 부모클래스의 메소드를 호출하고 싶다면, super을 사용하면된다.
 		this.price = price;
+		
 	}
 	
 	void printPrice() {

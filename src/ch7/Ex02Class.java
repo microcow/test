@@ -10,6 +10,8 @@ public class Ex02Class {
 		// Book book1 : Book 타입의 인스턴스 book1 생성
 		// new Book(); : book1의 인스턴스(객체)메모리와 주소를 생성함과 동시에 Book이라는 생성자 호출
 		// 이때 변수인 book1은 참조변수 혹은 인스턴스(객체)라 부른다 (값을 저장하지 않고 주소를 저장하고 있기 때문)
+		// new 키워드는 인스턴스를 생성하는 데 사용된다.
+		
 		book1.title = "자바문법책";
 		book1.author = "엘컴퓨터학원";
 		book1.price = 50000;

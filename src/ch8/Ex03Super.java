@@ -10,6 +10,9 @@ public class Ex03Super {
 		System.out.println("책의 제목은 [" + eb.title + "]이고 글자의 색은 [" + eb.fontColor + "]입니다.");
 		// EBook2 클래스에는 title이란 인스턴스 변수가 없으므로 부모클래스의 title 인스턴스 변수에 저장된 값을 불러왔다
 		// 만약, EBook2 클래스에도 title이란 변수가 있었고, 값이 "야호"라고 저장되어있었다면, 위 코드 출력 시 "야호"가 출력될 것이다.
+		
+		System.out.println(eb.title);
+		System.out.println(eb.author);
 	}
 
 }
@@ -22,8 +25,7 @@ class Book3 {
 	Book3(String title, String author) { // 아래의 super에 의해 호출된 부모 클래스 생성자
 		this.title = title;
 		this.author = author;
-		// 위 생성자가 super에 의해 호출되었다면 this는 super에 의해 호출되었기에, eb의 인스턴스 변수가 아닌 super의 인스턴스 변수이다.
-		// 메소드를 호출할 때 사용한 인스턴스를 this라 칭함
+		// 이 때, 해당 생성자는 eb의 super에 의해 호출되었기에 this는 eb 인스턴스를 말한다. 
 	}
 	
 	
@@ -40,7 +42,7 @@ class EBook2 extends Book3 {
 	EBook2() {
 		super("언어 문법", "엘컴퓨터학원"); 
 		// super();은 부모의 생성자를 호출하는 키워드이다.
-		// super(호출하고자 하는 부모 클래스 생성자 파라미터입력); → 다음과 같이 입력하여 호출할 수 있다.
+		// super(호출하고자 하는 부모 클래스 생성자 파라미터입력); → 다음과 같이 입력하여 생성자를 호출할 수 있다.
 		// 이 때 super에는 해당 생성자를 호출한 인스턴스의 정보가 저장되어있다
 		
 		/* super("언어 문법", "엘컴퓨터학원"); 부분을 주석처리 할 경우 오류가 발생한다. 그 이유는 자식클래스에서 생성자를 만들때 자동으로 부모의 빈 생성자를 호출하게 되는데 (java에서 자동으로 생성해주는 *ch7 Ex13)
