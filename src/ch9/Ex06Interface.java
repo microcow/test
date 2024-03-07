@@ -44,7 +44,7 @@ public class Ex06Interface {
 		
 		//printService.setting(); → printService 인터페이스에는 setting이라는 메소드가 없으므로 호출 불가
 		
-		PrintServiceForPrinter pfp = car;
+		PrintServiceForPrinter pfp = car; // new Car; 은 안되나?
 		pfp.setting();
 		// PrintServiceForPrinter 인터페이스에는 setting이라는 메소드가 있으므로 호출 가능
 		
