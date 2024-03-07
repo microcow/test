@@ -23,6 +23,10 @@ public class Ex05AbstractClass {
 		bc.add(pb);
 		bc.add(eb);
 		bc.printBooks();
+		
+		SonAudioBook abook = new SonAudioBook();
+		abook.setvol(10);
+		abook.print();
 	}
 
 }
@@ -56,7 +60,7 @@ abstract class Book5 {
 }
 
 class PaperBook extends Book5 {
-	//★ 부모클래스가 추상클래스일 경우 자식클래스는 무조건 부모클래스에 있는 모든 추상메소드를 오버라이딩 해야한다. ★
+	//★ 부모클래스가 추상클래스일 경우 자식클래스는 무조건 부모클래스에 있는 모든 추상메소드를 오버라이딩 해야한다. ★ (타입은 바꿔서)
 	
 	private String type;
 
@@ -137,8 +141,38 @@ class Bookcase {
 	}
 }
 
-/*
-class AudioBook extends Book5 {
-	
 
-}*/
+abstract class MomAudioBook{
+	private int vol;
+	
+	public abstract void print();
+	
+	void setvol(int vol) {
+		this.vol = vol;
+	}
+	int getvol() {
+		return this.vol;
+	}
+	
+}
+
+class SonAudioBook extends MomAudioBook{
+	
+	@Override
+	public void print() {
+		System.out.println(this.getvol());
+	}
+}
+
+/*
+문제 1.
+AudioBook 클래스에서 컴파일 오류가 발생하지 않도록 추상 메소드를 구현하세요.
+
+문제 2.
+AudioBook 클래스에 볼륨 속성을 추가하고 print 메소드 호출 시 볼륨 정보가 출력되도록 오버라이딩 하세요.
+
+문제 3.
+장바구니 클래스를 추가하세요.
+장바구니에 책을 담을 수 있는 메소드를 추가하세요.
+장바구니에 담긴 책의 제목과 저자, 금액을 출력하는 메소드를 추가하세요. 
+*/

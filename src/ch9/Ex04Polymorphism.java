@@ -42,7 +42,7 @@ class Product {
 	public Product compareProduct(Product p) {
 		return null;
 	}*/
-	// 질문 - return 타입에 클래스가 오는 경우는 뭐지
+	// 질문 - return 타입에 클래스가 오는 경우 : 해당 클래스 타입의 인스턴스를 넘겨주어야 할 때
 	
 	public int compareProduct(Product a) {
 		return 0;
@@ -69,9 +69,9 @@ class Book4 extends Product {
 	}
 	
 	@Override
-	public boolean equalsProduct(Product p) { //오버라이딩 때문에 p의 타입은 Product 클래스이다. //Product가 부모클래스 이기에 자식클래스 인스턴스를 받을 수 있다
+	public boolean equalsProduct(Product p) { //오버라이딩 때문에 p의 타입은 Book4클래스가 아닌 Product 클래스이다. //Product가 부모클래스 이기에 자식클래스 인스턴스를 받을 수 있다
 		if (!(p instanceof Book4))
-			// instanceof 연산자는 형변환이 가능한지 물어보는 키워드이다 (p가 Book4타입으로 형변환이 가능한가?)
+			// instanceof 연산자는 형변환이 가능한지 물어보는 키워드이다 (p가 Book4타입으로 형변환이 가능한가? 라는 뜻)
 			// p 파라미터가 받은 인스턴스가 Book4타입이라면 형변환 가능 // 받음과 동시에 업캐스팅? = yes(*ch9 Ex03)
 			return false;
 		
