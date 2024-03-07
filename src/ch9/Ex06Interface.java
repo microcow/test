@@ -27,7 +27,7 @@ public class Ex06Interface {
 		orderService.order(cart);
 
 		PrintService printService = null;
-		// 인터페이스도 인스턴스 생성이 가능하다.
+		// 인터페이스도 인스턴스 생성이 가능하다. (추상클래스와 차이점1)
 		printService = eb;
 		// 업캐스팅을 위해선 해당 인터페이스를 implements(구현)하고 있어야한다. (업캐스팅 정리 - 일반 클래스: 부모클래스의 인스턴스가 자식클래스를 품을 수 있다 / 인터페이스: 인터페이스를 구현하고 있는 클래스의 인스턴스를 품을 수 있다)
 		// eb가 printService에 업캐스팅되는 순간 PrintSetvice의 메소드에 한해서만 호출할 수 있다. (printSetvice가)
@@ -192,7 +192,7 @@ class EBook5 extends Book6 implements PrintService {
 }
 
 class Car implements OrderItem, PrintServiceForPrinter {
-	// 인터페이스는 다중 implements(구현)이 가능하다 (상속은 한 클래스만 받을 수 있다)
+	// 인터페이스는 다중 implements(구현)이 가능하다 (추상클래스와 차이점2)
 	// implements한 인터페이스의 메소드는 모두 오버라이딩 해주어야하며, OrderItem로 업캐스팅 시 OrderItem의 메소드만 사용 가능하다.(반대로 PrintServiceForPrinter로 업캐스팅 시 PrintServiceForPrinter의 메소드만 사용 가능하다.)
 	private String modelName;
 	private int totalPrice;
