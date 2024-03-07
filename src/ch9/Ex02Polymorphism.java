@@ -82,7 +82,7 @@ class Cart{
 	private Book2[] books = new Book2[10];
 	private int index = 0;
 	
-	public void add(Book2 book) {	// 다형성
+	public void add(Book2 book) { // 업캐스팅
 		books[index] = book;
 		index++;
 		//index는 지역변수가 아니기 때문에 1씩 증가한 값이 유지됨

@@ -84,7 +84,7 @@ class Book4 extends Product {
 	
 	//문제 1.
 	@Override
-	public int compareProduct(Product a) { // Book4타입을 파라미터로 받을 경우 a는 받는 순간 업캐스팅
+	public int compareProduct(Product a) { // Book4타입을 파라미터로 받을 경우 a는 받는 순간 업캐스팅 (업캐스팅 하였지만 a는 부모클래스 소속이기에 다운캐스팅 하기 전까지 자식클래스 메소드 사용 불가) 
 		if (!(a instanceof Book4))
 			return 0;				
 		Book4 price1 = (Book4)a; // a의 Book4클래스로 다운캐스팅을 받아줄 Book4 클래스 인스턴스 price1 생성

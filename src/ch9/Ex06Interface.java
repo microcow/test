@@ -24,7 +24,7 @@ public class Ex06Interface {
 		cart.add(car);
 		
 		OrderService orderService = new OrderService();
-		orderService.order(cart);
+		orderService.order(cart); //전혀 연관없는 인스턴스를 던질 수 있다
 
 		PrintService printService = null;
 		// 인터페이스도 인스턴스 생성이 가능하다. (추상클래스와 차이점1)
@@ -63,10 +63,11 @@ public class Ex06Interface {
 		box.setprice(10000);
 		box.setinput("입고일자");
 		box.setoutput("출고일자");
-		box.setter(box);
-		box.getter();
+		box.save(box);
+		box.print(box);
+		// 스태틱이 아닌 메소드에도 인스턴스를 아규먼트로 던질 수 있다.(이 때 파라미터는 클래스 타입이나 인터페이스 타입으로 받아야한다.)
+		
 	}
-
 }
 
 class Cart2 {
@@ -80,7 +81,7 @@ class Cart2 {
 	
 	public void add(OrderItem item) { //업캐스팅
 		// 파라미터 items는 OrderItem을 implements하고있는 모든 클래스의 인스턴스를 받을 수 있다
-		// 업캐스팅 받은 파라미터 item은 OrderItem의 오버라이딩 된 메소드만 사용할 수 있다
+		// 업캐스팅 받은 파라미터 item은 OrderItem이 오버라이딩 된 클래스의 메소드만 호출할 수 있다
 		items[index] = item;
 		index++;
 	}
@@ -93,7 +94,7 @@ class Cart2 {
 interface OrderItem {
 	// 부모 자식 관계가 아님에도 다형성을 사용해야 할 때 인터페이스를 사용한다
 	// 인터페이스는 특정 기능에 한해서만 다형성을 사용할 수 있다
-	// 인터페이스는 추상메소드만 가질 수 있다. (일반 메소드는 가질 수 없다)(다만, 클래스(static)메소드와 디폴트(default)메소드는 가질 수 있다.)
+	// 인터페이스는 추상메소드만 가질 수 있다. (일반 메소드는 가질 수 없다(추상클래스와 차이점2))(다만, 클래스(static)메소드와 디폴트(default)메소드는 가질 수 있다.)
 	// 인터페이스를 implements하는 클래스는 인터페이스의 추상메소드를 반드시 모두 오버라이딩 해야한다.
 	public abstract String getOrderName();
 	public abstract int getOrderPrice(); 
@@ -104,8 +105,6 @@ class Book6 implements OrderItem {
 	String title;
 	String author;
 	int price;
-	
-	
 	
 	public String getTitle() {
 		return title;
@@ -192,7 +191,7 @@ class EBook5 extends Book6 implements PrintService {
 }
 
 class Car implements OrderItem, PrintServiceForPrinter {
-	// 인터페이스는 다중 implements(구현)이 가능하다 (추상클래스와 차이점2)
+	// 인터페이스는 다중 implements(구현)이 가능하다 (추상클래스와 차이점3)
 	// implements한 인터페이스의 메소드는 모두 오버라이딩 해주어야하며, OrderItem로 업캐스팅 시 OrderItem의 메소드만 사용 가능하다.(반대로 PrintServiceForPrinter로 업캐스팅 시 PrintServiceForPrinter의 메소드만 사용 가능하다.)
 	private String modelName;
 	private int totalPrice;
@@ -259,8 +258,10 @@ class Car implements OrderItem, PrintServiceForPrinter {
 }
 
 class OrderService {
-	public void order(Cart2 cart) { //전혀 연관없는 클래스의 형태를 파라미터로 받을 수도 있다
-		OrderItem[] items = cart.get(); //전혀 연관없는 인터페이스의 형태로 인스턴스를 생성할수도 있다
+	public void order(Cart2 cart) { //전혀 연관없는 클래스의 형태를 파라미터로 받을 수도 있다 /// 질문 - 이것도 업캐스팅? : no (접근제한자 참고)
+		OrderItem[] items = cart.get(); 
+		//클래스 내에서 전혀 연관없는 인터페이스의 형태로 인스턴스를 생성할수도 있다
+		//파라미터 cart는 Cart2 클래스와 같은 형태이므로 get메소드를 호출할 수 있다.
 		for (int i=0; i<items.length; i++) {
 			if (items[i] == null)
 				break;
@@ -293,75 +294,64 @@ interface PrintServiceForPrinter extends PrintService {
 	}
 }
 // 문제 1
-class Getter {
-	Box[] get = new Box[10];
-	int i = 0;
-	
-	void setter(Box setter) {
-		get[i] = setter;
-			i++;
-	}
-	void getter() {
-		for (int f=0; f<get.length; f++) {
-			if (get[f]==null)
-				break;
-		System.out.println(get[f].gettitle() + get[f].getprice() + get[f].getinput() + get[f].getoutput());
-		}
-	}
-}
-
-
-interface info{
-	public abstract String gettitle();
-	public abstract int getprice();
-	public abstract String getinput();
-	public abstract String getoutput();
-	
-}
-
-class Box extends Getter implements info{
+class Getter  {
+	int i=0;
+	info[] arr = new info[i+1]; /// 질문 - arr 배열은 무한히 받기 위해선 메모리 선언을 어떻게 해야하는가
 	String title;
 	int price;
 	String input;
 	String output;
-	info[] arr;
-	int a;
 	
-	void addProduct(info i) {
-		arr[a] = i;
-		String boxserial = i.gettitle() + "asfdasfd";
-		a++;
+	public void save(info save) {
+		//if(arr[i] == null) 항상 거짓이기에 성립불가 해당 식을 사용하고 싶다면 반복문을 사용하자	
+		arr[i] = save;
+				i++;
 	}
 	
-	void settitle(String title) {
+	public String gettitle() {
+		return this.title;
+	}
+	public int getprice() {
+		return this.price;
+	}
+	public String getinput() {
+		return this.input;
+	}
+	public String getouput() {
+		return this.output;
+	}
+	
+	public void print(info para) {
+		System.out.print(this.title + this.price + this.input + this.output);
+	}
+}
+interface info{
+	public abstract void settitle(String a);
+	public abstract void setprice(int a);
+	public abstract void setinput(String a);
+	public abstract void setoutput(String a);
+}
+
+class Box extends Getter implements info{
+	
+	@Override
+	public void settitle(String title) {
 		this.title = title;
 	}
-	void setprice(int price) {
+	@Override
+	public void setprice(int price) {
 		this.price = price;
 	}
-	void setinput(String input) {
+	@Override
+	public void setinput(String input) {
 		this.input = input;
 	}
-	void setoutput(String output) {
+	@Override
+	public void setoutput(String output) {
 		this.output = output;
 	}
+		
 	
-	@Override
-	public String gettitle() {
-		return title;
-	}
-	@Override
-	public int getprice() {
-		return price;
-	}
-	@Override
-	public String getinput() {
-		return input;
-	}
-	@Override
-	public String getoutput() {
-		return output;
-	}
 }
 /*
 문제 1.
