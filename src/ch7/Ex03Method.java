@@ -54,7 +54,7 @@ class Book2 {
 	// 메소드 앞에 적는 것(void)은 return 타입이다
 	// void는 해당 메소드가 return을 하지 않는다는 뜻의 타입이다.
 	// void를 사용하였을 땐, 메소드 내에서 System.out.print과 같이 출력 까지 처리하는 편
-	// 즉, void로 된 메소드를 호출하였을 때는 결과값을 리턴하지 않는다 
+	// 즉, void로 된 메소드를 호출하였을 때는 결과값을 리턴하지 않는다.
 		// 메소드는 class 안에 존재해야한다
 		// 메소드를 만드는 방법은 class의 {안에서 printInfo() {를 입력
 		System.out.println("---------------");
