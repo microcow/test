@@ -37,7 +37,7 @@ class EBook2 {
 	static class TaxCalculator { // 프로그램 구동과 동시에 메모리에 존재한다. 
 		// 클래스 앞에 static이 붙은 이너클래스를 static 이너클래스라 부른다. ///원래 클래스(아우터클래스) 생성시에는 static을 사용할 수 없다? : Yes
 		// 아우터클래스명.이너클래스명으로 바로 접근이 가능하다.
-		// 스태틱 이너클래스에선 스태틱 변수를 가질 수 있다 (일반 이너클래스에선 불가 → 1.8에서 불가)
+		// 스태틱 이너클래스에선 스태틱 변수를 가질 수 있다 (일반 이너클래스에선 불가 → 1.8버전에서 불가)
 		private static float tax;
 		public static final int KOREA = 1;
 		public static final int USA = 2;
