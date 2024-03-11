@@ -7,39 +7,44 @@ public class Ex03LocalClasstest {
 		String bookauthor = scanner.nextLine();
 		EBook10 test = new EBook10();
 		test.author(bookauthor);
-		test.getname(test.name12);
 		
 
 	}
 }
 
 class EBook10{
-	char name12;
 	
-	boolean author (String name) {
+	void author (String name) {
 		
-		class Author{			
-			char A;
-			char setname (String name) {
-				A = name.charAt(0);
-				return A;
-			}	////// 내부클래스에 집어넣기
+		class Author{			 ///name2.charAt(i) 값이 A의 메모리 배열 수인 10보다 작을 경우 오류가 발생하는 이유
+			char[] A= new char [10];
+			
+			
+			void setname (String name2) {
+				for (int i=0; i<this.A.length; i++) {
+					if ((name2.charAt(i) >= 'A' && name2.charAt(i) <='Z') || name2.charAt(i) == ' ') {
+					this.A[i] = name2.charAt(i);
+					continue;
+					}
+					else
+						break;
+				}
+			}
+			void getname () {
+				for (int i=0; i<this.A.length; i++)
+				System.out.print(this.A[i]);
+			}
+			
 		}
-		Author B = new Author();
-		if ((B.setname(name) >='A' && B.setname(name) <='Z')||B.setname(name) == ' ') {
-			name12=B.setname(name); //B.setname(name)의 값이 return A;로 치환되는 것임
-			return true;
-		}
-		else return false;
+		Author T = new Author();
+		T.setname(name);
+		T.getname();
 	}
-	void getname(char A) {
-		this.name12 = A;
-		System.out.print(this.name12);
-	}
+}
 	
 
 			
-}
+
 		
 		
 		

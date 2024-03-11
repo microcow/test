@@ -15,7 +15,7 @@ public class Ex02Polymorphism {
 		abook.setTitle("자바 기초");
 		
 		Cart cart = new Cart();
-		cart.add(book); // 아규먼트로 다른 클래스의 인스턴스를 던질수도 있다
+		cart.add(book); // 아규먼트로 다른 클래스의 인스턴스를 던질수도 있다 (단, 받는 파라미터의 클래스와 동일해야한다)
 		cart.add(ebook);
 		cart.add(cbook);
 		cart.add(abook);

@@ -28,11 +28,13 @@ public class Ex06Interface {
 
 		PrintService printService = null;
 		// 인터페이스도 인스턴스 생성이 가능하다. (추상클래스와 차이점1)
+		/// PrintService Print = new PrintService; → null로만 생성가능??
+		
 		printService = eb;
 		// 업캐스팅을 위해선 해당 인터페이스를 implements(구현)하고 있어야한다. (업캐스팅 정리 - 일반 클래스: 부모클래스의 인스턴스가 자식클래스를 품을 수 있다 / 인터페이스: 인터페이스를 구현하고 있는 클래스의 인스턴스를 품을 수 있다)
-		// eb가 printService에 업캐스팅되는 순간 PrintSetvice의 메소드에 한해서만 호출할 수 있다. (printSetvice가)
+		// printService가 eb로 업캐스팅되어도 PrintService의 메소드에 한해서만 호출할 수 있다. (printService가)
 		printService.printInfo();
-		// 따라서, 위 코드 출력시 eb의 클래스인 EBook5의 printInfo 메소드를 호출한다 (*ch9 Ex01)
+		// 따라서, 위 코드 출력시 eb의 클래스인 EBook5의 printInfo 메소드를 호출한다 (오버라이딩 된 메소드가 있다면, 본래 클래스에 있는 메소드가 아닌 업캐스팅 된 클래스의 메소드를 호출한다.)(*ch9 Ex01)
 		
 		printService = car;
 		// car또한 PrintService인터페이스를 implements(구현)하였기 때문에 업캐스팅이 가능하다.
