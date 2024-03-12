@@ -19,6 +19,16 @@ class EBook10{
 		class Author{			 ///name2.charAt(i) 값이 A의 메모리 배열 수인 10보다 작을 경우 오류가 발생하는 이유
 			char[] A= new char [10];
 			
+			boolean checkEng(String name) {
+				char[] chs = name.toCharArray(); // 집가서
+				for (int i=0; i<chs.length; i++) {
+					if (!(chs[i] >= 'A' && chs[i] <='Z')) {
+						return false;
+					}
+				}
+				
+				return true;
+			}
 			
 			void setname (String name2) {
 				for (int i=0; i<this.A.length; i++) {
@@ -36,9 +46,11 @@ class EBook10{
 			}
 			
 		}
-		Author T = new Author();
-		T.setname(name);
-		T.getname();
+		Author author = new Author();
+		author.setname(name);
+		author.getname();
+		//return author.checkEng(name);
+		
 	}
 }
 	
