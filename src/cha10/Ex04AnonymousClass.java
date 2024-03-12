@@ -32,7 +32,7 @@ public interface Ex04AnonymousClass {
 			}
 			
 		});
-		
+		//문제 1
 		b1.printInfo(new PrintService() {
 
 			@Override
@@ -107,6 +107,7 @@ class Book implements Device{
 	
 	public void printInfo(PrintService ps) { 
 		ps.print();
+		ps.printbook();
 	}
 	public void createBook(Device para) {
 		para.create();
