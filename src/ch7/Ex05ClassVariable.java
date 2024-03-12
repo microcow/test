@@ -20,12 +20,14 @@ public class Ex05ClassVariable {
 		System.out.println();
 		
 		Book4.tax = 1.4f;
+		// 인스턴스 변수가 클래스 변수일 경우에 클래스명.변수명을 입력하여 접근
 		b1.printInfo();
 		b2.printInfo();
 		System.out.println();
 		
 		b1.tax = 1.5f;
-		//클래스 변수를 특정 인스턴스만 변경하려고 한다면 경고표시가 노출되며, java에서 수정해서 실행함
+		// 클래스 변수를 특정 인스턴스만 변경하려고 한다면 경고표시가 노출되며, java에서 수정해서 실행함
+		// 클래스 변수는 모든 인스턴스에 동일하게 적용되어야 하기에 Book4.tax로 변경해서 실행함
 		b1.printInfo();
 		b2.printInfo();
 	}

@@ -16,7 +16,7 @@ class EBook10{
 	
 	void author (String name) {
 		
-		class Author{			 ///name2.charAt(i) 값이 A의 메모리 배열 수인 10보다 작을 경우 오류가 발생하는 이유
+		class Author{	 ///name2.charAt(i) 값이 A의 메모리 배열 수인 10보다 작을 경우 오류가 발생하는 이유
 			char[] A= new char [10];
 			
 			boolean checkEng(String name) {

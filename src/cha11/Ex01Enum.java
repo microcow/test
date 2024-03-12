@@ -198,7 +198,7 @@ class Month2 {
 		return values[ordinal-1];
 	}
 }
-// ★ eume 생성 방법 enum은 상수들의 집합을 만들어주는 기능이다 ★
+// ★ eume 생성 방법 enum은 '상수'들의 집합을 만들어주는 기능이다 ★
 enum Day3 { 
 	SUN, MON, TUE, WED, THU, FRI, SAT;
 	// ★ enum을 통해 인스턴스 생성 (상수 처럼 사용 가능) 이넘 멤버라고 부른다.★

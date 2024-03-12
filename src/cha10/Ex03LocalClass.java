@@ -48,6 +48,7 @@ class EBook3 {
 		float dollarPrice = p.getDollarPrice();
 		System.out.println(dollarPrice);
 		
+		
 		if (!(taxPrice >= 0 && taxPrice <= 50000)) //0보다 크거나 같고 50000보다 작거나 같지 않을 경우 false를 리턴
 			return false;
 		else if (!(dollarPrice >= 0 && dollarPrice <= 50))

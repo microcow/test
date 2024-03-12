@@ -62,8 +62,16 @@ class Outter{
 			this.age = age;
 		}
 		void print (Inner para) { ///파라미터 타입이 inner인데 outter 인스턴스 받을 수 있는지 : 불가능 (반대로 Outter 타입일 땐 inner 인스턴스 받을 수 있음)
-			System.out.println(this.price + Outter.this.title + name + Outter.this.age + this.age); 
+			System.out.println(this.price + Outter.this.title + name + Outter.this.age + this.age + age); 
 			/// outter age는 정의(값 설정)되지 않았는데 출력가능? : 불가능
+			
+			// ---- 아우터클래스,이너클래스,지역클래스 모두 동일한 이름의 인스턴스가 존재할 때 우선순위
+			// 아우터클래스.this.인스턴스 명 : 아우터클래스의 인스턴스
+			// this.인스턴스 명 : 이너클래스의 인스턴스
+			// 인스턴스 명 : 지역변수(파라미터)
+			
+			// 만약, 지역변수에는 동일한 인스턴스 명이 없을 때 인스턴스 명만 입력 시 그다음 우선순위인 이너클래스의 인스턴스 출력
+			// 마찬가지로, 지역변수와 이너클래스 모두 동일한 인스턴스 명이 없을 땐 아우터클래스의 인스턴스 출력
 		}
 		
 	}
