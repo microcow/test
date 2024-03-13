@@ -82,7 +82,8 @@ public class Ex01Enum {
 		// nextInt에 반환된 숫자에 -1한 값의 Day3배열을 payDay3에 저장 
 		Day3 payDay4 = Day3.values()[3];
 		// ★ payDay4라는 Day3 인스턴스 생성 후  Day3배열의 [3]을 저장(WED)
-		System.out.println(payDay3.name()); //name 메소드 → 해당 인스턴스에 저장된 스트링을 return해준다.
+		System.out.println(payDay3.name()); 
+				//name 메소드 → 해당 인스턴스에 저장된 스트링을 return해준다.(자바에서 기본 제공해주는 lang클래스 이기에 import하지 않아도 사용 가능)(*ch8 Ex08)
 		System.out.println("보너스 받는 달을 숫자로 입력해 주세요: ");
 		Month3 bonusMonth3 = Month3.values()[s.nextInt()-1];
 		

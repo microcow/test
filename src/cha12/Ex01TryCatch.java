@@ -12,7 +12,8 @@ public class Ex01TryCatch {
 			// 정상적으로 숫자 입력 시 catch문을 실행하지 않는다
 			System.out.println(num);
 			
-		} catch (Exception e) { ///Exception e가 뭘까
+		} catch (Exception e) {
+			//→ 오류 발생 시 인스턴스 속성들이 메모리에 올라가고(인스턴스생성) catch는 그 메모리(인스턴스)를 형체화시킴 (Exception e로 받고있음)
 			System.out.println("숫자만 입력 가능 합니다.");
 			
 			//e.printStackTrace();

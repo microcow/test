@@ -33,9 +33,7 @@ public enum Ex03Country {
 }
 
 enum genre{ // 이넘은 public만 접근제한자만 허용된다.
-	무협(1),
-	만화(2),
-	소설(3);
+	무협(1),만화(2),소설(3);
 	int cord;
 	
 	genre(int cord){

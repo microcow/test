@@ -80,7 +80,7 @@ class Book2 {
 		this.genre = genre;
 	}
 	
-	genre getGenre() {
+	genre getString() {
 		if (genre.cord != 0)
 		return genre;
 		else return genre;
@@ -89,7 +89,7 @@ class Book2 {
 		return this.genre; // 변수와 파라미터가 동일 이름일 경우 this를 사용해서 구분 (본문과 관련없는 소소한 팁)
 	}
 	void print() {
-		System.out.print(getGenre()); // this가 없더라도 호출자받은 인스턴스 정보로 메소드 호출 (본문과 관련없는 소소한 팁)
+		System.out.print(getString()); // this가 없더라도 호출자받은 인스턴스 정보로 메소드 호출 (본문과 관련없는 소소한 팁)
 	}
 
 	

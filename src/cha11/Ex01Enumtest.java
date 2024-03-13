@@ -22,3 +22,7 @@ public class Ex01Enumtest {
 enum Book{
 	book, ebook, audoibook;
 }
+/*
+문제 1.
+enum 과 switch 문을 사용한 예제를 작성하세요.
+*/
