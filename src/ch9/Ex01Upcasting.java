@@ -2,7 +2,8 @@ package ch9;
 
 public class Ex01Upcasting {
 	public static void main(String[] args) {
-		Book book = null; // 인스턴스를 빈 값으로 만들려면 null을 이용하자
+		Book book = null; // 인스턴스를 빈 값으로 만들려면 null을 이용하자 
+		// Book book = null; : 인스턴스는 생성되었으나 어떠한 클래스의 객체(인스턴스 변수)도 참조하지 않고 있음을 나타냄 (즉, = new Book(); 혹은 = new EBook();을 통해 해당 클래스를 참조시키거나 자식클래스(업캐스팅)를 참조시켜주어야 사용 가능)
 		book = new Book();
 		book.setTitle("자바 기본문법");
 		System.out.println(book.getTitle());

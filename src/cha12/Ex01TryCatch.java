@@ -4,8 +4,9 @@ public class Ex01TryCatch {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		
+		// ★ 오류(예외)가 발생하는 코드가 try문 밖에 있을 경우 try catch문으로 잡을 수 없다. ★
 		try { // 예외가 발생될만한 코드를 try 블럭안에 입력한다 (외부에 의한 오류가 발생할 것 같을 때 사용)
-				// try 블럭 내에서 예외 발생 시 아래의 코드를 실행하지 않고 즉시 catch 블럭으로 이동한다
+				// try 블럭 내에서 예외 발생 시 오류가 발생한 코드의 아래의 코드를 실행하지 않고 즉시 catch 블럭으로 이동한다
 			System.out.print("문자열을 입력하여 예외를 발생시키세요:");
 			int num = scanner.nextInt(); 
 			// num은 int값이므로 nextInt에 문자열 입력 시 예외발생(아래 코드 미실행 후 catch 블럭으로 이동한다.)

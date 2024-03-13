@@ -2,9 +2,7 @@ package cha12;
 import java.util.Scanner;
 public class Ex05Throw {
 	public static void main(String[] args) {
-		IDMismatchException test = new IDMismatchException("sd");
-		test.getMessage();
-		
+
 		while (true) {
 			User user = null;
 			
@@ -40,7 +38,7 @@ class LoginService {
 		try {
 			if (!DB_ID.equals(user.getId())) {
 				throw new IDMismatchException("잘못된 아이디를 입력하였습니다.");
-				// DB_ID와user.getId()가 일치하지 않으면 throw 문이 실행된다.
+				// DB_ID와user.getId()가 일치하지 않으면 throw 문이 실행된다. (.equals의 전후 기준 문자열 비교 키워드)
 				/* throw가 IDMismatchException이라는 클래스의 예외를 발생시켰다.(java에서 만든 Exception이 아님)
 				 	즉, 원래라면 try문에서 오류가 발생할 경우 catch문에서 Exception클래스 등으로 예외를 받아야하지만
 				 	throw는 if문 등을 통해 오류가 발생할 경우 throw문이 예외를 받아, 따로 만든 예외 클래스를 발생시킨다 (단, 해당 클래스가 Exception 클래스를 상속받고 있어야한다.)*/ 
