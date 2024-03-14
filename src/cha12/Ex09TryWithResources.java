@@ -16,7 +16,7 @@ public class Ex09TryWithResources {
 	
 	public static void try1() { //TryWithResources 구문
 		try ( // 사용한 자원을 무조건 반납해야하는 코드가 있다면 try문 () 안에 작성해준다.
-			  // 그런 후 finally 키워드를 통해 자동으로 반납이 되도록 한다.		
+			  // 즉, try2()에 있는 finally 키워드를 통해 close하는 코드를 생략해준다.
 			// 괄호안에 있는 모든 클래스를 모두 닫아줄 수 있는가 = no. java.io패키지에서 가능한 것(AutoCloseable)을 확인해야함
 			FileReader fr = new FileReader("./src/com/lcomputerstudy/books/java/ch12/Ex01TryCatch.java");
 			BufferedReader br = new BufferedReader(fr);
