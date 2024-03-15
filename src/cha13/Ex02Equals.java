@@ -43,6 +43,12 @@ public class Ex02Equals {
 		System.out.println(s1.equals(s2));
 		// String클래스도 java에서 문자열을 비교하도록 equals 메소드를 오버라이딩 하고 있기에 true가 반환된다.
 		// 즉, String 타입의 두 문자열을 비교하려면 ==이 아닌 equals를 사용하자
+		
+		test111 a = new test111();
+		a.a = "";
+		System.out.println(b5.equals(a));
+		b5 = a;
+		System.out.println(b5.equals(b5));
 	}
 
 }
@@ -79,7 +85,10 @@ class Book4 {
 	@Override
 	public boolean equals(Object obj) {
 		//Object 클래스는 모든 클래스의 부모클래스이므로 모든 인스턴스를 업캐스팅 받을 수 있다.
-		if (!(obj instanceof Book4)) //instanceof 키워드는 obj인스턴스가 Book4클래스 타입으로 형변환(다운캐스팅)이 가능한가를 true, false로 반환한다
+		if (!(obj instanceof Book4)) 
+			// instanceof 키워드는 왼쪽의 인스턴스가 오른쪽의 클래스로 다운캐스팅이 가능한지 확인한다.
+			/* ★★ obj 파라미터가 최상위 클래스인 Object로, 모든 클래스의 인스턴스를 받을 수 있지만, 업캐스팅 받더라도 '업캐스팅 받은 자식클래스로만 다운캐스팅이 가능'하기에,
+			    Book4로 다운캐스팅 가능한 조건인 Book4의 '자식클래스'이거나 Book4클래스로 부터 업캐스팅을 받은 것이 아닐 경우엔 Book4 클래스로 다운캐스팅이 불가능하다.*/ 
 			return false;
 		Book4 book = (Book4)obj;
 		// obj는 Object클래스 이므로 Book4클래스의 인스턴스 변수에는 접근이 불가하므로, 다운캐스팅을 해준 것
@@ -90,5 +99,12 @@ class Book4 {
 	@Override
 	public String toString() {
 		return "Book4 [title=" + title + ", author=" + author + ", edition=" + edition + "]";
+	}
+}
+class test111 extends Book4{
+	String a;
+	
+	public test111(){
+		super("", "", 0);
 	}
 }

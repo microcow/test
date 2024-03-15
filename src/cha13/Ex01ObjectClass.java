@@ -63,8 +63,11 @@ class Book2 {
 		return "제목: " + title + ", 저자: " + author;
 	}
 	
-	public void print(Object o) {
-		System.out.println("제목: " + title + ", 저자: " + author);
+	public static void print(Object o) {
+		if (!(o instanceof Book2)) 
+			return;
+		Book2 book = (Book2)o; // 위에서 o가 Book2 클래스의 인스턴스 구조를 받았기(o=b2)에 다운캐스팅이 가능하다.
+		System.out.println("제목: " + book.title + ", 저자: " + book.author);
 	}
 }
 

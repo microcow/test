@@ -72,6 +72,7 @@ class Book4 extends Product {
 	public boolean equalsProduct(Product p) { //오버라이딩 때문에 p의 타입은 Book4클래스가 아닌 Product 클래스이다. //Product가 부모클래스 이기에 자식클래스 인스턴스를 받을 수 있다
 		if (!(p instanceof Book4))
 			// instanceof 연산자는 형변환이 가능한지 물어보는 키워드이다 (p가 Book4타입으로 형변환이 가능한가? 라는 뜻)
+			// instanceof 키워드는 왼쪽의 인스턴스가 오른쪽의 클래스와 객체(인스턴스 변수)가 동일한지 확인 후 true, false로 반환한다
 			// p 파라미터가 받은 인스턴스가 Book4타입이라면 형변환 가능 // 받음과 동시에 업캐스팅? = yes(*ch9 Ex03)
 			return false;
 		
