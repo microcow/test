@@ -11,6 +11,7 @@ public class Ex01ObjectClass {
 		System.out.println(o.toString());
 		// toString 메소드는 Object클래스의 메소드이며 해당 인스턴스의 클래스와 메모리 주소(해시코드)가 출력된다.
 		// java.lang.Object@49e4cb85 출력됨 @~~~는 해당 인스턴스 메모리 주소를 16진수로 나타냈다고 생각
+		// 호출자가 String타입일 경우 String클래스가 toString메소드를 오버라이딩하고 있기에 메모리 주소가 아닌 호출자 내용(문자열)을 return한다.
 		
 		System.out.println("---");
 		

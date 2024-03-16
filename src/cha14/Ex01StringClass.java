@@ -41,6 +41,7 @@ public class Ex01StringClass {
 		System.out.println(s3 == s4);
 		System.out.println(s3.equals(s4));
 		// equals 메소드는 문자열이 같은지 확인 (주소 여부 상관x)
+		// == 은 주소(문자 풀)를 비교하고 equals는 문자열을 비교한다. (* cha14 Ex01.test 참고)
 		System.out.println(s1.equals(s2));
 		System.out.println();
 		

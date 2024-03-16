@@ -7,10 +7,10 @@ public class Ex02Equals {
 		Book3 b3 = new Book3("자바 알고리즘", "엘컴퓨터학원", 7);
 		
 		System.out.println(b1); 
-		//인스턴스만 입력 시 toString();이 자동  호출됨
+		//인스턴스만 입력 시 toString();이 자동 호출됨
 		System.out.println(b2);
 		System.out.println(b1.equals(b2));
-		// .equals는 b1과 b2의 주소를 비교해 같다면 true, 다르면 false를 반환하는 메소드이다.
+		// .equals는 b1과 b2의 메모리 주소를 비교해 같다면 true, 다르면 false를 반환하는 메소드이다.
 		System.out.println();
 		
 		System.out.println(b2);

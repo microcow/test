@@ -1,9 +1,16 @@
 package cha13;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class test {
 	public static void main(String[] args) {
 		Book12 book = new Book12();
 		test11 test = new test11();
+		String[] test2 = {"d"};
+		String test3 = "ds";
+		StringBuffer text = new StringBuffer();
+		System.out.println(text);
 		
 		book.title = "";
 		book.author = "";
@@ -15,6 +22,8 @@ public class test {
 		
 		book = test;
 		System.out.println(book.equals(book));
+		System.out.println(Arrays.toString(test2));
+		System.out.println(test3.toString());
 	}
 }
 	class Book12 {
