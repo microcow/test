@@ -41,7 +41,7 @@ public class Ex02Equals {
 		System.out.println(s1 == s2);
 		// 주소가 다르므로 false가 출력된다.
 		System.out.println(s1.equals(s2));
-		// String클래스도 java에서 문자열을 비교하도록 equals 메소드를 오버라이딩 하고 있기에 true가 반환된다.
+		// ★ String클래스도 java에서 문자열을 비교하도록 equals 메소드를 오버라이딩 하고 있기에 true가 반환된다.
 		// 즉, String 타입의 두 문자열을 비교하려면 ==이 아닌 equals를 사용하자
 		
 		test111 a = new test111();

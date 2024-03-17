@@ -24,7 +24,22 @@ public class test {
 		System.out.println(book.equals(book));
 		System.out.println(Arrays.toString(test2));
 		System.out.println(test3.toString());
+		
+		// 현재 now원이 있고 요금 충전 시 plus만큼의 추가 충전 혜택이 있을 때 target금액을 달성하기 까지 필요한 충전 금액 = money
+		int now = 1230;
+		float plus = 0.05f;
+		int target = 40950;
+		int money = 0;	
+		
+		for (int a=0; a<target; a+=100) {
+			if ((a+(a*plus)+now) >= target) {
+				money = a;
+				break;
+			}		
+		}
+		System.out.println(money);
 	}
+	
 }
 	class Book12 {
 		public String title;
