@@ -2,10 +2,10 @@ package cha16;
 import java.util.Calendar;
 public class Ex01Calendar {
 	public static void main(String[] args) {
-		//Calendar 클래스는 시간을 계산하기 위한 클래스이고, Date클래스는 시간을 출력하기 위한 클래스
+		//Calendar 클래스와 Date 클래스는 구식방식임
 		
 		Calendar now = Calendar.getInstance();
-		// Calendar.getInstance() 메소드는 현재 날짜(년,월,일,시,분,초)가 저장되어있는 정보를 return한다.
+		// Calendar.getInstance() 메소드는 현재 날짜(년,월,일,시,분,초)가 저장되어있는 '정돈되지 않은' 시간 정보를 return한다. 
 		
 		int year = now.get(Calendar.YEAR);
 		// Calendar 클래스의 get메소드는 아규먼트로 Calendar클래스와 변수를 보낼 경우 해당 정보를 return한다.(해당코드는 년도 return)
@@ -62,8 +62,9 @@ public class Ex01Calendar {
 		Calendar end = Calendar.getInstance();
 		end.set(2030, 9, 7, 0, 0, 0);
 		// set메소드사용 시 아규먼트로(년 월 일 시 분 초) 수정이 가능하다. 
+		System.out.println("---");	
 		System.out.println(start.getTime());
-		// Calendar클래스의 getTime 메소드는 호출자를 Date 클래스의 타입으로 return한다.
+		// ★ Calendar클래스의 getTime 메소드는 호출자의 정돈되지 않은 시간 정보를 Date 클래스의 타입(예_Mon Mar 18 17:28:32 KST 2024)으로 시간을 시간을 정돈하여 return한다
 		System.out.println(end.getTime());
 		
 		long diffMilli = end.getTimeInMillis() - start.getTimeInMillis();	// 밀리세컨즈
@@ -79,19 +80,20 @@ public class Ex01Calendar {
 		long diffDay = diffMilli / (24 * 60 * 60 * 1000);	// 일
 		System.out.println(diffDay + " 일");
 		long diffYear = diffMilli / (365 * 24 * 60L * 60 * 1000);	// 년
-		// 결과값이 int 타입을 초과할 수 있기에 숫자 중 하나라도 L(ling)타입을 가지고 있어야한다 (하나만 있으면 돼서 꼭 60이 가질 필요는 없음) 
+		// 결과값이 int 타입을 초과할 수 있기에 숫자 중 하나라도 L(long)타입을 가지고 있어야한다 (하나만 있으면 돼서 꼭 60이 가질 필요는 없음) 
 		System.out.println(diffYear + " 년");
 		System.out.println();
 		
 		System.out.print(diffDay / 365 + " 년 ");
 		System.out.println(diffDay % 365 + " 일 차이");
 		// diffDay를 365로 나눈 나머지
+		// 이처럼 두 날짜의 차이를 비교하기엔 LocalDate 클래스의 방식보다 상당히 비효율적이다.
 		System.out.println();
 		
 		Calendar today = Calendar.getInstance();
 		System.out.println((today.getTime()).toString());
-		//Date클래스의 toString메소드는 호출자를 문자열로 return해준다. 
-		/// 그럼 그냥 getTime만 호출했을 땐 뭐지 // 상수들이 int타입으로 되어있음(연산 가능)
+		//Date클래스의 toString메소드는 호출자를 String타입으로 return해준다. 
+		/// 그럼 그냥 getInstance만 호출했을 땐 뭐지 → Calendar타입
 		
 		today.add(Calendar.DATE, 1);
 		// 오늘 날짜에서 하루를 더하는 모습

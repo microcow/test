@@ -52,6 +52,7 @@ public class Ex06Interface {
 		
 		PrintServiceForPrinter.getPrinterType();
 		// 인터페이스가 메소드를 호출할 수 있다.
+		
 		pfp.setPrinter();
 		pfp.printInfo();
 		//pfp 인스턴스는 PrintServiceForPrinter인터페이스의 인스턴스이며 PrintService인스턴스를 상속받고 있기에 printInfo 메소드를 사용할 수 있다.
@@ -73,7 +74,7 @@ public class Ex06Interface {
 }
 
 class Cart2 {
-	OrderItem[] items; //items는 OrderItem을 implements하고있는 모든 클래스의 인스턴스를 받을 수 있다
+	OrderItem[] items; //인스턴스 변수 items는 OrderItem을 implements하고있는 모든 클래스의 인스턴스를 받을 수 있다
 	int index;
 	
 	public Cart2() {
@@ -260,7 +261,7 @@ class Car implements OrderItem, PrintServiceForPrinter {
 }
 
 class OrderService {
-	public void order(Cart2 cart) { //전혀 연관없는 클래스의 형태를 파라미터로 받을 수도 있다 /// 질문 - 이것도 업캐스팅? : no (접근제한자 참고)
+	public void order(Cart2 cart) { //전혀 연관없는 클래스의 형태를 파라미터로 받을 수도 있다 
 		OrderItem[] items = cart.get(); 
 		//클래스 내에서 전혀 연관없는 인터페이스의 형태로 인스턴스를 생성할수도 있다
 		//파라미터 cart는 Cart2 클래스와 같은 형태이므로 get메소드를 호출할 수 있다.
