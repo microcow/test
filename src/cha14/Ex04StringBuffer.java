@@ -19,9 +19,9 @@ public class Ex04StringBuffer {
 		StringBuffer sb = new StringBuffer("자바");
 		//StringBuffer 클래스는 더하는 문자열을 새롭게 인스턴스에 저장하는 것이 아닌 기존에 있는 문자열에 누적시킬 때 사용한다. (String클래스가 아님)
 		sb.append(" ").append("문법 ").append("엘컴퓨터학원 ");
-		//append메소드는 아규먼트의 문자열을 호출자의 문자열에 추가하며, .으로 연결하여 연속적으로 사용할 수 있다.
+		//StringBuffer클래스의 append메소드는 아규먼트의 문자열을 호출자의 문자열에 추가하며, .으로 연결하여 연속적으로 사용할 수 있다.
 		sb.append(123);
-		// 아규먼트로 숫자를 던지더라도 자동으로 문자열로 저장된다.
+		// 아규먼트로 숫자,char타입 등을 던지더라도 자동으로 문자열로 저장된다.
 		String str = sb.toString();
 		//StringBuffer클래스가 오버라이딩하고 있는 toString메소드는 호출자의 값을 String타입으로 바꾸어 return해준다
 		// 즉, StringBuffer를 사용 후에 toString메소드를 이용해 최종적으로 String타입으로 바꿔주어야한다.

@@ -4,8 +4,8 @@ public class Ex01StringClass {
 	public static void main(String[] args) {
 		
 		/* String 클래스는 원래 String s1 = new Stinrg("안녕"); 이런 식으로 참조형으로 인스턴스를 생성해야하지만
-		 java에서 편의를 위해 String s1 = "안녕";과 같이 기본형으로도 생성을 할 수 있게 한다. (String의 S가 대문자인 이유, String이 파랑색인 이유)
-		*/
+		 java에서 편의를 위해 String s1 = "안녕";과 같이 기본형으로도 생성을 할 수 있게 한다. (String의 S가 대문자인 이유, String이 파랑색인 이유)*/
+		
 		
 		String s1 = "엘컴퓨터학원";
 		// s1이 "엘컴퓨터학원"이라는 문자열을 최초로 생성했으며, 해당 문자열을 문자열풀에 저장했다.
@@ -32,15 +32,15 @@ public class Ex01StringClass {
 		
 		System.out.println(System.identityHashCode(s1));
 		System.out.println(System.identityHashCode(s3));
+		System.out.println("---");
 		System.out.println(System.identityHashCode(s3.intern()));
 		// intern 메소드는 문자열 풀의 주소를 가져온다.
-		/// s3의 값이 바뀌어도 intern의 값이 동일한 이유?
 		System.out.println();
 		
 		System.out.println(s1 == s2);
 		System.out.println(s3 == s4);
 		System.out.println(s3.equals(s4));
-		// equals 메소드는 문자열이 같은지 확인 (주소 여부 상관x)
+		// String 타입의 equals 메소드는 문자열이 같은지 확인 (주소 여부 상관x)
 		// == 은 주소(문자 풀)를 비교하고 equals는 문자열을 비교한다. (* cha14 Ex01.test 참고)
 		System.out.println(s1.equals(s2));
 		System.out.println();
@@ -49,6 +49,7 @@ public class Ex01StringClass {
 		//System.out.println(s5.length());
 		String s6 = "";
 		System.out.println(s6.length());
+		// String 타입의 length 메소드는 문자열의 길이를 나타낸다.
 		// null;과 ""; 은 둘 다 비어있지만 다르다. 둘 다 내용은 비었지만 null은 메모리가 없고 ""은 메모리가 있다.
 	}
 }

@@ -5,6 +5,10 @@ public class Ex03StringUtilstest {
 	public static void main(String[] args) {
 		String title = "동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세";
 		String[] strArr = title.split(" +");
+		//문제 1.
+		System.out.println(title.substring(18));
+		
+		//문제 2.
 		System.out.println(Arrays.toString(strArr));
 		
 		for (int i=strArr.length-1; i<strArr.length; i--) {

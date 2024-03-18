@@ -77,13 +77,14 @@ public class Ex01Enum {
 		System.out.println("- enum 사용");
 		
 		System.out.print("월급날의 요일을 숫자로 입력해 주세요 (일:1 ~ 토:7): ");
+		Day3[] payDay11 = Day3.values();
 		Day3 payDay3 = Day3.values()[s.nextInt()-1];
-		// ★★ eume명.values()를 입력하면 Day3 eume에 생성된 인스턴스 7개의 배열을 생성해 return해준다 (배열은 Day3타입이다.) eume 배열 생성 예시 (Day3[] test = Day3.values();)
+		// ★★ 이넘명.values() 메소드는 enum클래스에서 사용되며, 입력하면 해당 eume에 생성된 이넘멤버(상수)들을 배열로 저장해 return해준다 (배열은 Day3타입이다.) eume 배열 생성 예시 (Day3[] test = Day3.values();)
 		// nextInt에 반환된 숫자에 -1한 값의 Day3배열을 payDay3에 저장 
 		Day3 payDay4 = Day3.values()[3];
-		// ★ payDay4라는 Day3 인스턴스 생성 후  Day3배열의 [3]을 저장(WED)
+		// ★ payDay4라는 Day3 인스턴스 생성 후  Day3배열의 [3]의 값을 저장(WED)
 		System.out.println(payDay3.name()); 
-				//name 메소드 → 해당 인스턴스에 저장된 스트링을 return해준다.(자바에서 기본 제공해주는 lang클래스 이기에 import하지 않아도 사용 가능)(*ch8 Ex08)
+				//Enum클래스의 name 메소드 → 해당 인스턴스에 저장된 스트링을 return해준다.(자바에서 기본 제공해주는 lang클래스 이기에 import하지 않아도 사용 가능)(*ch8 Ex08)
 		System.out.println("보너스 받는 달을 숫자로 입력해 주세요: ");
 		Month3 bonusMonth3 = Month3.values()[s.nextInt()-1];
 		

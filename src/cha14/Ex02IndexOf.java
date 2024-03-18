@@ -13,9 +13,9 @@ public class Ex02IndexOf {
 		String s2 = "[엘컴퓨터학원] 자바 기본문법!! (자료구조 포함) ";
 		String filter = "[]() ";
 		String result = "L";
-		for (int i=0; i<s2.length(); i++) { // 문자열.length를 입력 시 문자열의 길이를 return한다
+		for (int i=0; i<s2.length(); i++) { // Stirng클래스의 length 메소드는 문자열의 길이를 return한다
 			char ch = s2.charAt(i);
-			// charAt() 메소드는 괄호내에 있는 숫자의 순서에 맞는 문자열 하나를 캐릭터 타입으로 return한다. 
+			// String클래스의 charAt() 메소드는 괄호내에 있는 숫자의 순서에 맞는 문자열 하나를 캐릭터 타입으로 return한다. 
 			
 			if (filter.indexOf(ch) == -1) {
 				result += String.valueOf(ch); // result = result + String.valueOf(ch); 와 동일한 코드			
@@ -38,7 +38,7 @@ public class Ex02IndexOf {
 			// 최초 ","을 찾았을 때의 indexOf는 1이란 값을 반환하며, pos는 1이 될것이고 해당 코드에서 target.length();만큼 더해주었기에 pos는 2가되고 반복문이 재시작 되면 indexOf는 2부터 카운팅을 할 것이다
 			count++;
 			/// pos가 0일 경우 while문이 거짓이므로 while문이 멈춰야하지 않나? : 아님. indexOf 메소드는 해당 문자열의 위치를 찾을때까지 훑음
-			/// 그럼 끝까지 다 찾은 뒤에 pos가 s2.length보다 클 경우에 멈추는건가? (카운팅을 시작하는 위치인 pos가 s2의 문자열 보다 클 경우에 멈추는가?) : yes. 보다 클 경우 -1 반환함
+			/// 그럼 끝까지 다 찾은 뒤에 pos가 s2.length보다 클 경우에 반복문이 멈추는건가? (카운팅을 시작하는 위치인 pos가 s2의 문자열 보다 클 경우에 멈추는가?) : yes. 보다 클 경우 -1 반환함
 		}
 		System.out.println(count);
 		

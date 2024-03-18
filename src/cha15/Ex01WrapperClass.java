@@ -14,7 +14,7 @@ public class Ex01WrapperClass {
 		System.out.println(str2);
 		
 		int i = Integer.parseInt(str); //Integer클래스는 int 타입을 위한 클래스이다.
-		// Integer.parseInt 메소드는 아규먼트의 문자열이 숫자형태로 변환이 가능할 경우 숫자형태(int타입)로 return해준다.
+		// ★ Integer.parseInt 메소드는 아규먼트의 문자열(String타입)이 숫자형태로 변환이 가능할 경우 숫자형태(int타입)로 return해준다.
 		// 숫자형태로 변환이 불가할 경우 예외(NumberFormatException)발생
 		int i2 = i+10;
 		System.out.println(i2);

@@ -99,11 +99,12 @@ public class Ex03StringUtils {
 		s1 = "자바  기본    문법  엘 컴퓨터 학원 ";
 		String[] strArr1 = s1.split(" +");
 		// split 메소드는 호출자의 문자열을 아규먼트에 해당하는 부분을 기준으로 잘라서 배열로 return한다.
-		// 위 예시는 공백을 기준으로 잘라서 배열에 저장한다. (+의 의미(정규표현식)는 좌측에 있는 문자열(공백)일 경우에 잘라라는 말)
+		// 위 예시는 공백 1칸 이상을 기준으로 잘라서 배열에 저장한다. (+의 의미(정규표현식)는 좌측에 있는 문자열(공백)일 경우에 잘라라는 말)
 		// 즉, s1.split("  +");와 같이 공백이 2칸이라면, '엘 컴퓨터 학원' 부분은 공백이 한칸이므로 잘리지 않음
-		System.out.println(strArr1[0] + strArr1[1]);
+		System.out.println("---------");
+		System.out.println(strArr1[0] + strArr1[2]); /// "기본"과 "문법" 사이 4칸의 공백은 왜 사이에 자르지 않는지? 자르고 저장되는 기준? : 공백이 1칸 이상일 경우 해당 공백을 자른다
 		System.out.println(Arrays.toString(strArr1));
-		//Arrays.toString 메소드는 아규먼트의 배열에 저장된 값을 모두 ,로 구분하여 []에 감싸서 return한다. (배열만 아규먼트로 가능)
+		// Arrays.toString 메소드는 아규먼트의 배열에 저장된 값을 모두 ,로 구분하여 []에 감싸서 return한다. (배열만 아규먼트로 가능)
 		strArr1 = s1.split(" +", 3);
 		// split 메소드의 아규먼트가 두개일 경우, 첫번째 아규먼트를 두번째 아규먼트의 수 만큼만 배열이 되게 잘라라는 의미 (첫번째 아규먼트 부분을 기준으로 잘른 후 배열에 저장하는데, 배열이 3개가 되었다면 더이상 자르지 말라)
 		System.out.println(Arrays.toString(strArr1));

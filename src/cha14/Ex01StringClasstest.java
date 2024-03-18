@@ -14,20 +14,26 @@ public class Ex01StringClasstest {
 		System.out.println(System.identityHashCode(bb));
 		System.out.println(System.identityHashCode(aa.intern()));
 		System.out.println(System.identityHashCode(bb.intern()));
+		System.out.println("---");
+		System.out.println(System.identityHashCode(a.aa));
+		System.out.println(System.identityHashCode(b.bb));
 		System.out.println(System.identityHashCode(a.aa.intern()));
 		System.out.println(System.identityHashCode(b.bb.intern()));
 		
 		System.out.println(a.aa == b.bb);
+		// 주소를 비교하기에 다른클래스의 다른인스턴스 변수들이지만 결과는 true
 	}
 
 }
 class A {
 	//int a = 0;
 	String aa = "dd";
+//	String aa = new String("dd");
 }
 class B {
 	//int b = 0;
 	String bb = "dd";
+//	String bb = new String("dd");
 }
 /*
 문제 1.
