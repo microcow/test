@@ -92,8 +92,8 @@ public class Ex01Calendar {
 		
 		Calendar today = Calendar.getInstance();
 		System.out.println((today.getTime()).toString());
-		//Date클래스의 toString메소드는 호출자를 String타입으로 return해준다. 
-		/// 그럼 그냥 getInstance만 호출했을 땐 뭐지 → Calendar타입
+		// Date클래스의 toString메소드는 호출자를 String 클래스 타입으로 return해준다. 
+		/// 그럼 그냥 getInstance만 호출했을 땐 뭐지 → Calendar 클래스타입
 		
 		today.add(Calendar.DATE, 1);
 		// 오늘 날짜에서 하루를 더하는 모습

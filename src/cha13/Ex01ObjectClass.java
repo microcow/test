@@ -21,7 +21,7 @@ public class Ex01ObjectClass {
 		System.out.println("---");
 		
 		System.out.println(b1);
-		// 인스턴스만 출력할 경우 .toString()을 자동으로 호출해 출력한다.
+		// ★ 인스턴스만 출력할 경우 .toString()을 자동으로 호출해 출력한다.
 		
 		System.out.println("---");
 		
