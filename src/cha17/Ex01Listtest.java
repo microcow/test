@@ -21,7 +21,8 @@ public class Ex01Listtest {
 				new Book2("10", "자바"),
 			};
 		List<Book2> books = new ArrayList<Book2>(Arrays.asList(arrBook));
-		Book2.printAllBooksWithForEach(books);
+		//Book2.printAllBooksWithForEach(books);
+		Book2.removeWithIterator(books);
 	}
 }
 class Book2 {
@@ -52,12 +53,13 @@ class Book2 {
 	}
 	public static void removeWithIterator(List<Book2> books) {
 		for (Iterator<Book2> it = books.iterator(); it.hasNext(); ) {
-			if (it.author != "엘컴퓨터학원") {
-				it.remove();
-			}
-		
-			System.out.println(books.toString());
+			Book2 book = it.next(); 
+			if 
+				(!(book.getAuthor().equals("엘컴퓨터학원"))) 
+				it.remove(); 
+				/// 이 때의 remove는 it에만 영향을 주는 게 아닌 it의 값에 대응하는 books의 값도 삭제하는가 : yes (기본 컬렉션에서 제거한다)
 		}
+		System.out.println(books.toString());
 	}
 }
 /*

@@ -8,6 +8,14 @@ import java.util.ListIterator;
 import java.util.Objects;
 public class Ex01List {
 	
+	/* 컬렉션 프레임워크 (참고: http://www.tcpschool.com/java/java_collectionFramework_concept)
+	- 데이터를 쉽고 효과적으로 처리할 수 있는 표준화된 방법을 제공하는 클래스의 집합이다.
+	- 데이터를 저장하는 자료구조 & 데이터를 처리하는 알고리즘을 구조화하여 클래스로 구현해 놓은 것이다.
+	- 컬렉션 프레임워크는 인터페이스로 구현되며, 핵심 인터페이스는 List, Set, Map 등이 있다.
+	- 컬렉션 프레임워크라고 해서 모두 Collection 인터페이스를 상속받는 것은 아니다. List나 Set은 Collection 인터페이스를 상속받지만 Map은 그렇지 않다.
+	- 컬렉션 프레임워크에 속하는 인터페이스를 구현한 클래스를 컬렉션 클래스라고 한다. ArrayList, LinkedLIst, HashSet 이런게 다 컬렉션 클래스다.
+	 */
+	
 	// 개발 시 현재 상황에는 어떤 자료구조 기법을 사용하는 게 가장 효율적인가 (판단하여 기법을 선택할 수 있어야함) (List, set, map 등)
 	// 미리 java에서 자주 사용하는 자료구조를 인터페이스나 클래스로 만들어 놓은 것을 Collection(프레임워크)이라고 한다
 	
@@ -121,6 +129,7 @@ class Cart {
 		// ★ 어떤 클래스를 어떤 스타일의 Collection으로 저장할건지 제네릭스(<Book>)을 통해 표현해주어야한다. (여기선 배열타입 선택)
 		// ★ 해당 ArrayList는 Book타입의 인스턴스만 저장할 수있다 (=제네릭스 ///나중에 제네릭스는 어떻게 돌아가는지 확인필요)
 		// ★ Book타입의 ArratList 2개의 배열을 생성하였지만, 2개 이상으로 늘어나더라도 가변적으로 배열이 증가한다
+		/// 배열로 생성하였지만 books[0] 이런 식으로 따로 빼서 쓸순 없나봄 (get 메소드를 통해 빼서 써야하나봄)
 	}
 	
 	public void add(Book book) {
@@ -131,7 +140,7 @@ class Cart {
 	public void add(int index, Book book) {
 		books.add(index, book);
 		/* ★ List인터페이스의 아규먼트가 두개있는 add메소드는 파라미터로 받은 인스턴스가 제네릭스(<Book>)과 일치하다면,
-		첫번째 아규먼트의 인덱스에 두번째 아규먼트를 리스트(books)를 추가한다.(해당 인덱스에 이미 데이터가 있다면 뒤로 밀어낸 후 저장함) */
+		첫번째 아규먼트의 인덱스에 두번째 아규먼트를 리스트(books)에 추가한다.(해당 인덱스에 이미 데이터가 있다면 뒤로 밀어낸 후 저장함) */
 	}
 	public boolean checkForDuplicateBook(Book book) {
 		return books.contains(book);
@@ -161,11 +170,11 @@ class Cart {
 	public static void printAllBooksWithIterator(List<Book> books) {
 		System.out.println("Iterator");
 		for (Iterator<Book> it = books.iterator(); it.hasNext(); ) { // for문의 조건(it.hasNext)이 참일 경우에 반복
-			// ★ iterator 메소드는 호출자에 저장된 값을 그대로 Iterator인터페이스 타입으로 return한다.
+			// ★ iterator 메소드는 호출자에 저장된 값을 그대로 Iterator인터페이스 타입으로 return한다. /// 굳이 바꾸는 이유? List에선 삭제가 불가능하기에 삭제 등 작업하려고?
 			// hasNext메소드는 호출자 배열에 현재 가르키고있는 커서에 값이 저장되어있다면 true를 return한다.
 			/// 커서위치는 무조건 호출자 배열의 첫번째?
 			System.out.println(it.next());
-			// next 메소드는 현재 커서가 가르키고있는 위치의 data값을 return한 후 커서를 한칸 옆으로 옮긴다.
+			// next 메소드는 현재 커서가 가르키고있는 위치의 data값을 String 타입으로 return한 후 커서를 한칸 옆으로 옮긴다.
 		}
 	}
 	
@@ -210,9 +219,14 @@ class Cart {
 	
 	public static void removeWithIterator(List<Book> books) {
 		// Iterator문은 메소드 내에서 내용 삭제가 가능하다 (삭제하려는 메소드 호출자 타입이 Iterator이기에 가능) 
+		// Iterator는 읽어들이는 방법일 뿐이지 컬렉션을 내재하고 있다	
 		for (Iterator<Book> it = books.iterator(); it.hasNext(); ) {
-			Book book = it.next();
-			it.remove();
+			Book book = it.next(); // remove를 하려면 .next가 선행되어야한다.
+			it.remove(); 
+			/* 이 때의 remove는 it에만 영향을 주는 게 아닌 it의 값에 대응하는 books의 값도 삭제하는가 : yes (기본 컬렉션에서 제거한다)
+			 	ArrayList 컬렉션을 Iterator로 읽고자 했고, Iterator 객체는 컬렉션을 내재하고 있기 때문에 iterator.remove() 할 때 기존 컬렉션에서 지워지는 것
+			 	(Removes from the underlying collection)
+			 */
 			System.out.println("삭제: " + book);
 		}
 		
