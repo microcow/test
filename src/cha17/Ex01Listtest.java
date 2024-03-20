@@ -8,28 +8,28 @@ import java.util.ListIterator;
 
 public class Ex01Listtest {
 	public static void main(String[] args) {
-		Book2[] arrBook = {
-				new Book2("1", "엘컴퓨터학원"), 
-				new Book2("2", "자바"),
-				new Book2("3", "엘컴퓨터학원"),
-				new Book2("4", "자바"),
-				new Book2("5", "자바"),
-				new Book2("6", "엘컴퓨터학원"),
-				new Book2("7", "자바"),
-				new Book2("8", "엘컴퓨터학원"),
-				new Book2("9", "엘컴퓨터학원"),
-				new Book2("10", "자바"),
+		Book22[] arrBook = {
+				new Book22("1", "엘컴퓨터학원"), 
+				new Book22("2", "자바"),
+				new Book22("3", "엘컴퓨터학원"),
+				new Book22("4", "자바"),
+				new Book22("5", "자바"),
+				new Book22("6", "엘컴퓨터학원"),
+				new Book22("7", "자바"),
+				new Book22("8", "엘컴퓨터학원"),
+				new Book22("9", "엘컴퓨터학원"),
+				new Book22("10", "자바"),
 			};
-		List<Book2> books = new ArrayList<Book2>(Arrays.asList(arrBook));
-		//Book2.printAllBooksWithForEach(books);
-		Book2.removeWithIterator(books);
+		List<Book22> books = new ArrayList<Book22>(Arrays.asList(arrBook));
+		//Book22.printAllBooksWithForEach(books);
+		Book22.removeWithIterator(books);
 	}
 }
-class Book2 {
+class Book22 {
 	private String title;
 	private String author;
 	
-	public Book2(String title, String author) {
+	public Book22(String title, String author) {
 		this.title = title;
 		this.author = author;
 	}
@@ -44,16 +44,16 @@ class Book2 {
 	public String toString() {
 		return "Book [title=" + title + ", author=" + author + "]";
 	}
-	public static void printAllBooksWithForEach(List<Book2> books) {
+	public static void printAllBooksWithForEach(List<Book22> books) {
 		System.out.println("foreach");
-		for (Book2 book : books) {
+		for (Book22 book : books) {
 			System.out.println(book);
 			
 		}
 	}
-	public static void removeWithIterator(List<Book2> books) {
-		for (Iterator<Book2> it = books.iterator(); it.hasNext(); ) {
-			Book2 book = it.next(); 
+	public static void removeWithIterator(List<Book22> books) {
+		for (Iterator<Book22> it = books.iterator(); it.hasNext(); ) {
+			Book22 book = it.next(); 
 			if 
 				(!(book.getAuthor().equals("엘컴퓨터학원"))) 
 				it.remove(); 
