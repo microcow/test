@@ -1,5 +1,6 @@
 package cha17;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 public class Ex03SubType {
 	
@@ -11,6 +12,7 @@ public class Ex03SubType {
 		// Music 타입 인스턴스를 배열로 저장할 수 있는 musicList란 인스턴스 생성
 		musicList.add(new Music("노래1"));
 		musicList.add(new Music("노래2"));
+		/// add 메소드에 아규먼트로 Music클래스의 인스턴스를 생성하며 문자열을 집어넣으니 musicList에 추가됐다??
 		
 		// PECS: Producer Extends, Consumer super (extends 와일드카드는 읽어서 제공만 하는 기능이고, super 와일드 카드는 소모(수정)하는 기능이다)
 		Player.play(musicList);
@@ -51,6 +53,7 @@ public class Ex03SubType {
 		Player.play(movieList);
 		/// ★ Player.play(new Movie("무비1")); 코드와 차이점? → movieList는 List인터페이스 소속 인스턴스임 new Movie();는 Movie클래스임
 		
+		Music.removeContent(contents);
 	}
 
 }
@@ -78,7 +81,7 @@ class Player {
 		// ★★ 단, extends 키워드를 사용했을 땐 playList는 읽기 전용이 된다 (상한 와일드카드 이기에, 자식클래스의 특정 타입을 품을 수 없을수 있기에 수정 불가)
 		/// Content 인터페이스의 자식 인터페이스를 구현하고 있는 클래스도 입력 가능? : yes (<K extends T> = T와 T자식클래스만 입력 가능)
 		// extends 키워드를 사용한 와일드카드를 상한 와일드카드라 부른다.
-		for (Content c : playList) {
+		for (Content c : playList) { // ★★ 타입으론 와일드 카드<? extends Content>는 설정이 불가하므로 Content로 기입
 			System.out.println("재생: " + c.getTitle());
 		}
 		System.out.println();
@@ -183,4 +186,30 @@ class Music implements Content {
 	public void setLyricist(String lyricist) {
 		this.lyricist = lyricist;
 	}
+	/* public static <T extends Content> void removeWithIterator(T books) {
+		for (Iterator<T> it = books.iterator(); it.hasNext(); ) {
+			Music book = it.next(); 
+			if 
+				
+				it.remove(); 
+		}
+	}*/
+	
+	// 문제 1
+	public static void removeContent(List<? extends Content> playList) {
+		playList.remove(playList.size()-1);
+		 for (Content c : playList) { // ★★ 파라미터로 받을 때 빼곤 타입으론 와일드 카드<? extends Content>의 설정이 불가하므로 Content로 기입
+			System.out.println(c.getTitle());
+		}
+		/* playList.getTitle(); = palyList는 List 소속이기에 getTitle(); 메소드를 호출하지 못함 이에 Music클래스가 구현하고 있는 Content 인터페이스의
+		  인스턴스로 playList를 옮긴 후(for : 문을 통해 c로 옮김) Content 인터페이스를 구현하고 있는 Music클래스가 getTitle 메소드를 오버라이딩 하고 있기에 출력  */
+	}
 }
+/*
+문제 1.
+마지막 컨텐츠를 삭제하는 기능을 플레이어에 추가하세요.
+
+문제 2.
+컨텐츠를 거꾸로 출력하세요.
+힌트) Collections.reverse()
+*/

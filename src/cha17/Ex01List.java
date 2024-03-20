@@ -162,7 +162,7 @@ class Cart {
 		// List타입을 받을때도 제네릭스까지 적어주어야한다.
 		System.out.println("for");
 		for (int i=0; i<books.size(); i++) {
-			// List타입의 size메소드는 배열의 .length와 동일하다 (길이)
+			// ★ List타입의 size메소드는 배열의 .length와 동일하다 (길이)
 			Book book = books.get(i);
 			System.out.println(book);
 		}
@@ -183,7 +183,7 @@ class Cart {
 		System.out.println("ListIterator");
 		System.out.println("next");
 		ListIterator<Book> it = books.listIterator();
-		// ListIterator는 양방향 검색이 가능하다. (Iterator 메소드로 정방향으로 커서 옮김 → hasPrevious 메소드로 역방향으로 커서 옮김)
+		// listIterator는 양방향 검색이 가능하다. (hasNext 메소드로 정방향으로 커서 옮김 → hasPrevious 메소드로 역방향으로 커서 옮김)
 		
 		while (it.hasNext()) {
 			System.out.println(it.next());
@@ -198,7 +198,7 @@ class Cart {
 	public static void printAllBooksWithForEach(List<Book> books) {
 		System.out.println("foreach");
 		for (Book book : books) {		// 바이트 코드 변환 시 보일러 플레이트 최소화
-			// books의 요소를 book에 저장하고 println후 그 다음 요소를 다시 book에 저장하는 방법 (forEach)
+			// ★ books의 요소를 book에 저장하고 println후 그 다음 요소를 다시 book에 저장하는 방법 (forEach)
 			System.out.println(book);
 		}
 	}
