@@ -1,5 +1,6 @@
 package cha17;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 public class Ex04Generics {
 	public static void main(String[] args) {
@@ -16,6 +17,10 @@ public class Ex04Generics {
 		List<Board> bList = new ArrayList<Board>();
 		bList.add(b1);
 		bList.add(b2);
+		// 위 add 메소드를 통해 b1과 b2를 bList에 저장해도 되지만
+		
+		List<Board> bList2 = new ArrayList<Board>(Arrays.asList(b1, b2));
+		// Arrays.asList 메소드를 통해 한번에 저장할수도 있다.
 		
 		service = new BoardService();
 		// service.printList1(bList);	// error
@@ -42,6 +47,25 @@ public class Ex04Generics {
 		// bs.printList1(bList);	// error
 		service.printList2(pList);
 		service.printList3(pList);
+		
+		
+		
+		//문제 1. 
+		Diary a = new Diary(); // Diary 클래스 인스턴스 생성
+		a.setTitle("다이어리"); // Diart 클래스 인스턴스 a 인스턴스변수 셋팅
+		List<Diary> b = new ArrayList<Diary>(); // Diary클래스를 요소로 가지는 List b 생성
+		b.add(a); // List b에 Diary클래스 a요소 추가
+		DiaryService c = new DiaryService(); // b의 요소사용(출력)을 도와줄 DiaryService 클래스 c 생성
+		c.printList3(b); // c 메소드를 활용해 b 요소들 출력
+		
+		
+		
+		/// List 인스턴스를 생성할 때 제네릭스에서 와일드카드를 사용하지 않는지?
+		List<? extends BoardDefaultService>test = new ArrayList<>();
+		// → 빈 인스턴스 생성(선언)은 가능 하지만, 생성자 호출(new ArrayList)할 때에는 사용이 불가한듯 = new ArrayList<? extends BoardDefaultService>(); 오류
+		// → 단, 다이아몬드 연산자 (<>) 사용 시 생성자 호출할 때 사용 가능
+		test = new ArrayList<DiaryService>();
+		
 		
 	}
 }
@@ -77,13 +101,18 @@ class BoardService implements BoardDefaultService {
 	@Override
 	public void printList3(List<?> boardList) { // Object 클래스로 업캐스팅
 		System.out.println("printList3");
-		for (Object obj : boardList) { 
+		for (Object obj : boardList) {
+			/* ★★ board에 일일히 저장하는 이유는 for:(for each)문에서 boardList는 파라미터 타입(와일드카드)에 의해 Object클래스로 업캐스팅 되긴 했지만,
+			   속에 저장되어있는 요소들은 Board클래스이기에, 해당 작업은 boardList의 요소하나를 obj라는 인스턴스에 복사하는 방식(obj = boardList 와는 다름) */
+			// ★ 예를 들자면, boardList의 요소에 Board클래스의 인스턴스 b1과 b2가 있다면 해당 작업을 통해 for문이 첫번째 실행될때는 obj = b1이 될테고, for문이 두번째 실행되게 되면 obj = b2가 된다
+			// ★ 즉, boardList는 List소속이지만 안의 요소들은 제너릭스(<?>)소속이다.
 			if (!(obj instanceof Board)) return;
 			
 			Board board = (Board)obj; // ★ Board 클래스에 오버라이딩된 메소드를 사용하기 위해 다운캐스팅
-			/// for문으로 obj에 boardList를 옮겨담지 않고 바로 Board board = (Board)boardList; 해버릴 경우 내용이 출력되지 않는 이유
-			/* // for : 문은 boardList의 첫번째 요소를 obj에 담고 obj를 Board클래스로 다운캐스팅 한 후 board에 저장 그리고 반복 
+			/// for문으로 obj에 boardList를 옮겨담지 않고 바로 Board board = (Board)boardList; 해버릴 경우 내용이 출력되지 않는 이유 → 바로 위 내용 참고
+			/* // for:(for each)문은 boardList의 첫번째 요소를 obj에 담고 obj를 Board클래스로 다운캐스팅 한 후 board에 저장 그리고 반복 
 			 (이 때, for문을 통해 요소를 저장 할 때 갱신되는게 아닌 obj에 요소들이 누적되는 형태?) : 요소가 누적되는게 아닌 갱신된다.  */
+			
 			
 			System.out.println(board.getTitle());
 			System.out.println(board.getContent());
@@ -162,6 +191,35 @@ class Photo extends Board {
 	@Override
 	public String toString() {
 		return "Photo [title=" + getTitle() + ", content=" + getContent() + "photo=" + photo + "]";
+	}
+}
+
+
+// 문제 1.
+class Diary {
+	private String title;
+	
+	public void setTitle(String a) {
+		this.title = a;
+	}
+	
+	public String getDiary() {
+		return this.title;
+	}
+}
+class DiaryService implements BoardDefaultService {
+	
+	public void printList3(List<?> diaryList) {
+		System.out.println("printList3");
+		for (Object obj : diaryList) {
+	
+			if (!(obj instanceof Diary)) return;
+			
+			Diary board = (Diary)obj; 	
+			
+			System.out.println(board.getDiary());
+			System.out.println("-----");
+		}
 	}
 }
 

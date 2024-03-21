@@ -14,7 +14,7 @@ public class Ex03SubType {
 		// Music 타입 인스턴스를 배열로 저장할 수 있는 musicList란 인스턴스 생성
 		musicList.add(new Music("노래1"));
 		musicList.add(new Music("노래2"));
-		/// add 메소드에 아규먼트로 Music클래스의 인스턴스를 생성하며 문자열을 집어넣으니 musicList에 추가됐다?
+		/// add 메소드에 아규먼트로 Music클래스의 인스턴스를 생성하며 문자열을 집어넣으니 musicList에 추가됐다? : 그냥 딥한 메소드임 외우자
 		
 		// PECS: Producer Extends, Consumer super (extends 와일드카드는 읽어서 제공만 하는 기능이고, super 와일드 카드는 소모(수정)하는 기능이다)
 		Player.play(musicList);
@@ -47,7 +47,7 @@ public class Ex03SubType {
 		// ★ 메서드를 호출할 때 제너릭 메소드를 넘겨줄 수 있다 /// (static 메소드에 한해?) 	
 		Player.play(new Movie("무비1"));
 		// ★★ 굳이 제너릭 메소드를 적지 않아도 아규먼트로 인스턴스를 생성(메모리만 있고 형체는 없는 인스턴스)하며 넘겨주고 있기에 메소드 내 T가 movie 클래스임을 특정할 수 있으므로 생략이 가능하다.
-		/// <Movie>를 생략해도 괜찮은 이유는 원래 적어야하지만 java에서 자동으로 처리해주기 때문?
+		/// <Movie>를 생략해도 괜찮은 이유는 원래 적어야하지만 java에서 자동으로 처리해주기 때문? : yes
 		Player.play(movie);
 		// ★★ 마찬가지로, 아규먼트로 new Movie()와 같이 인스턴스를 생성하며 넘겨줘도 되지만 인스턴스 자체를 넘겨주어도 T가 movie 클래스임을 특정할 수 있으므로 제너릭 메소드 부분 생략이 가능하다
 		
@@ -62,7 +62,7 @@ public class Ex03SubType {
 		Music.reverse(contents);
 		
 				
-		/// 문제 2 Collections.reverse(); 사용방법?
+		/// 문제 2
 		Music.reverse2(movieList);
 		
 	}
@@ -228,8 +228,11 @@ class Music implements Content {
 		
 	}
 	public static void reverse2(List<? extends Content> reverse2) {
-		Collections.reverse(reverse2); /// 문제 2.해당 코드 실행안되는 이유
-		System.out.println(reverse2);
+		Collections.reverse(reverse2); /// 문제 2.해당 코드 실행안되는 이유 : import를 하지 않았었음
+		for (int i=0; i<reverse2.size(); i++) {
+			Content C =reverse2.get(i);
+			System.out.println(C.getTitle());
+		}
 	}
 }
 /*

@@ -77,30 +77,51 @@ public class Ex01List {
 		// 요소들을 출력하는 방법4
 		System.out.println();
 		
-		Book[] arrBook = {
-					new Book("파이썬 알고리즘", "엘컴퓨터학원"), 
-					new Book("파이썬 크롤링", "엘컴퓨터학원")
-				};
 		
+		Book test = new Book("반갑", "습니다");;
 		
+		Book[] arrBook = { // arrBook 인스턴스는 Book클래스의 인스턴스를 배열로 저장할 수 있다.
+				new Book("파이썬 알고리즘", "엘컴퓨터학원"), 
+				new Book("파이썬 크롤링", "엘컴퓨터학원"),
+				test
+			};
 		
+		Book[] test2 = new Book[2];
+		test2[0] = new Book("안녕", "하세요");
+		
+				
+		// ★★ ArrayList<> 생성자의 유형 // ※ Integer는 예시 클래스임
+		ArrayList<Integer> integers1 = new ArrayList<Integer>(); // 타입 지정 // 코드 해석 : integers1은 Interger타입의 인스턴스를 저장할 수 있는 배열이다. (정확히는 배열과는 다름. 배열 형태로 저장함. integers1[0] 이런식으로 사용 불가)
+		ArrayList<Integer> integers2 = new ArrayList<>(); // 타입 생략 가능 (다이아몬드 연산자)
+		List<Integer> integers3 = new ArrayList<>(10); // 용량(배열) 설정(가변적임) // ※ Collection타입이 ArrayList에서 List로 변경! : List는 ArrayList클래스가 구현하고있는 인터페이스이므로 업캐스팅 가능
+		List<Integer> integers4 = new ArrayList<>(integers1); // 다른 Collection값 저장
+		List<Book> integers5 = new ArrayList<>(Arrays.asList(arrBook)); /* Arrays.asList메소드의 아규먼트로 배열인스턴스가 온다면, 배열인스턴스의 요소들을 [0]부터 차곡차곡 integers5에 저장 (배열이 가변적임) 
+		★ 만약 해당 방법이 아니라면 List<Book> integers5 = new ArrayList<>();로 생성 후 integers5.add(arrBook[0]);과 같이 배열을 하나하나 따로 저장해줘야하는 번거로움이 있음) */
+		List<Book> integers6 = new ArrayList<>(Arrays.asList(test)); // Arrays.asList 메소드에서 꼭 배열타입의 인스턴스만 넘길필요 없음 (단, 선언만 하면 안되고 = null 혹은 = new Book();을 통한 메모리가 있어야함 )
+		List<Book> integers7 = new ArrayList<>(Arrays.asList(test2)); // 값이 없는 배열은 null로 저장된다 //System.out.println(integers67.toString()); → null 확인
+		List<Integer> integers8 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5)); // Arrays.asList() // 1, 2, 3, 4, 5는 ★Integer클래스★의 인스턴스고, 여러개를 한번에 저장할수도 있음
 		
 		// List<Book> books2 = Arrays.asList(arrBook); //(이렇게 생성할 경우 List 배열의 길이는 던진 배열인스턴스의 길이로 고정되며 늘릴 수 없음)
 		/* ★★ new ArrayList<>() 생성자로 리스트를 만드는 것과는 달리 Arrays.asList()메서드를 통해 리스트를 만들 경우 해당 리스트들은 길이가 고정된다 (배열길이 가변x)
 		 	      따라서, 위 코드가 아닌 아래 코드와 같이 생성해야한다.
 		 */
+		
+		
+		
 		List<Book> books2 = new ArrayList<Book>(Arrays.asList(arrBook));
-		// ★ ArrayList 생성자의 아규먼트에 리스트 인스턴스를 입력하게 될 경우(타입 동일필수) 해당 인스턴스의 요소들을 retrun한다.
+		// ★★ new ArrayList<타입>(List인스턴스) : 생성자는 아규먼트에 Lsit 인스턴스를 입력하게 될 경우(타입 통일필수) 해당 인스턴스의 요소들을 retrun한다.
+		// ★★ new ArrayList<타입>() : 생성자는 타입의 인스턴스(요소) 10개를 저장할 수 있는 배열을 return한다. (<타입>은 생략 가능)
 		// 따라서, 아규먼트로 Arrays.asList(배열인스턴스) 입력 시 List 배열의 길이가 가변적이다.
 			
 		/* ★ ArrayList는 생성자이며, Arrays.asList(arrBook)부분은 생성자 아규먼트이다. 아규먼트로 숫자가 올수도 있고 이처럼 콜렉션타입의 인스턴스가 올 수도 있다
 		    두 경우 호출되는 생성자는 다르며, 숫자를 입력할 경우 생성하고자 하는 리스트의 길이를 지정하는 생성자가 호출되며, 콜렉션 타입의 인스턴스를 입력할 경우 해당 요소들을 List로 return하는 생성자가 호출된다.
 		 */
 		
-		
+		System.out.println("123122131231");
 		System.out.println(books2.toString());
 		books2.addAll(books);
-		// addAll메소드는 호출자의 List에 아규먼트의 List를 더해준다(더해진 data는 가장 뒷부분에 저장).
+		// addAll메소드는 호출자(List타입)에 아규먼트(List타입)를 통으로 더해준다(더해진 data는 가장 뒷부분에 저장). (addAll메소드는 ArrayList에 다른 ArrayList의 데이터를 통째로 붙이기 위한 메서드이다.)
+		// add와 차이점 : add는 아규먼트에 List타입이 아닌 일반 제너릭스 타입의 인스턴스를 넣어야함
 		System.out.println(books2);
 		System.out.println();
 		
@@ -135,11 +156,11 @@ class Cart {
 	/* 다양한 기능의 메소드가 있는 Cart클래스 이지만, 일반 메소드 호출 시에는 cart의 인스턴스로 호출하고 아규먼트로 다른 클래스나 List를 넘겨주고,
 	 	스태틱 메소드 호출 시에는 Cart클래스의 이름으로 호출하고 아규먼트로 다른 클래스나 List를 넘겨주고 있다. 즉, 다른 클래스의 인스턴스나 List를 위한 메소드이더라도 호출은 해당 클래스와 관련해서 하자*/
 	
-	private List<Book> books; //Book타입의 인스턴스를 받을 수 있는 List로서의 역할을하는 books이다
+	private List<Book> books; // Book타입의 인스턴스를 받을 수 있는 List로서의 역할을하는 books이다
 	// ★★ books는 List소속이지만 그 요소들은 Book소속이다 라는 뜻
 	// ★ ArrayList 클래스는 List인터페이스를 구현 중이기에, List로 업캐스팅이 가능하다
 		// tip. 받는 타입으로는 클래스보다 인터페이스로 받을 때가 더욱 확장성이 뛰어나다
-	/// ★ books는 Book타입의 자식 클래스도 저장할 수 있는가? : 불가. 제네릭스는 서브타입을 허용하지 않음
+	/// ★ books는 Book타입의 자식 클래스도 저장할 수 있는가? : 가능. 단, List생성 할 때의 제네릭스 타입과 ArrayList의 제네릭스 타입은 일치해야함
 		
 	public Cart() {
 		books = new ArrayList<Book>(2); // 업캐스팅
@@ -191,7 +212,7 @@ class Cart {
 		for (Iterator<Book> it = books.iterator(); it.hasNext(); ) { // for문의 조건(it.hasNext)이 참일 경우에 반복
 			// ★ iterator 메소드는 호출자에 저장된 값을 그대로 Iterator인터페이스 타입으로 return한다.
 			// hasNext메소드는 호출자 배열에 현재 가르키고있는 커서에 값이 저장되어있다면 true를 return한다.
-			/// 커서위치는 무조건 호출자 배열의 첫번째?
+			/// 커서위치는 무조건 호출자 배열의 첫번째? : yes
 			System.out.println(it.next());
 			// next 메소드는 현재 커서가 가르키고있는 위치의 data값을 String 타입으로 return한 후 커서를 한칸 옆으로 옮긴다.
 		}
@@ -238,7 +259,7 @@ class Cart {
 	
 	
 	public static void removeWithIterator(List<Book> books) {
-		// Iterator문은 메소드 내에서 내용 삭제가 가능하다 (삭제하려는 메소드 호출자 타입이 Iterator이기에 가능)  /// 굳이 바꾸는 이유? List에선 삭제가 불가능하기에 삭제 등 작업하려고? 
+		// Iterator문은 메소드 내에서 내용 삭제가 가능하다 (삭제하려는 메소드 호출자 타입이 Iterator이기에 가능) 
 		// Iterator는 컬렉션을 내재하고 있다	
 		/* ★★ Iterator은 콜렉션(List, set, map 등)으로서의 역할이 아니라 콜렉션들의 요소들을 불러오거나 편집하는데
 			용이하도록 메소드를 모아놓은 인터페이스이다. (콜렉션의 요소를 가르키는 커서라고 생각)★ */
