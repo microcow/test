@@ -1,7 +1,9 @@
 package cha17;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 public class Ex03SubType {
 	
 	public static void main(String[] args) {
@@ -12,7 +14,7 @@ public class Ex03SubType {
 		// Music 타입 인스턴스를 배열로 저장할 수 있는 musicList란 인스턴스 생성
 		musicList.add(new Music("노래1"));
 		musicList.add(new Music("노래2"));
-		/// add 메소드에 아규먼트로 Music클래스의 인스턴스를 생성하며 문자열을 집어넣으니 musicList에 추가됐다??
+		/// add 메소드에 아규먼트로 Music클래스의 인스턴스를 생성하며 문자열을 집어넣으니 musicList에 추가됐다?
 		
 		// PECS: Producer Extends, Consumer super (extends 와일드카드는 읽어서 제공만 하는 기능이고, super 와일드 카드는 소모(수정)하는 기능이다)
 		Player.play(musicList);
@@ -51,15 +53,24 @@ public class Ex03SubType {
 		
 		
 		Player.play(movieList);
-		/// ★ Player.play(new Movie("무비1")); 코드와 차이점? → movieList는 List인터페이스 소속 인스턴스임 new Movie();는 Movie클래스임
+		// ★ Player.play(new Movie("무비1")); 코드와 차이점? → movieList는 List인터페이스 소속 인스턴스임 new Movie();는 Movie클래스임
 		
+		
+		//문제 1
 		Music.removeContent(contents);
+		//문제 2
+		Music.reverse(contents);
+		
+				
+		/// 문제 2 Collections.reverse(); 사용방법?
+		Music.reverse2(movieList);
+		
 	}
 
 }
 
 
-class Player {
+class Player { 
 	// 제너릭스 오버로딩 안됨
 	/*
 	public static void play(List<Content> playList) {
@@ -117,6 +128,7 @@ class Player {
 		/// 메소드 호출 시 제너릭 메소드를 적지 않아도 되는데 <T extends Content> 이 부분을 지우면 컴파일에러 발생하는 이유? 원래 호출 시 적어야하는데 java에서 자동으로 제너릭 메소드를 적어주기 때문?
 		System.out.println(content.getTitle());
 		System.out.println();
+		
 	}
 }
 
@@ -203,6 +215,21 @@ class Music implements Content {
 		}
 		/* playList.getTitle(); = palyList는 List 소속이기에 getTitle(); 메소드를 호출하지 못함 이에 Music클래스가 구현하고 있는 Content 인터페이스의
 		  인스턴스로 playList를 옮긴 후(for : 문을 통해 c로 옮김) Content 인터페이스를 구현하고 있는 Music클래스가 getTitle 메소드를 오버라이딩 하고 있기에 출력  */
+	}
+	// 문제 2
+	public static void reverse(List<? extends Content> reverse) {
+		//ListIterator<Content> it = reverse.listIterator();
+		for (int i=1; i<reverse.size()+1; i++) {
+			System.out.println("---");
+			Content C =reverse.get(reverse.size()-i);
+			System.out.println(C.getTitle());
+			
+		}
+		
+	}
+	public static void reverse2(List<? extends Content> reverse2) {
+		Collections.reverse(reverse2); /// 문제 2.해당 코드 실행안되는 이유
+		System.out.println(reverse2);
 	}
 }
 /*
