@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Objects;
+
 public class Ex01List {
 	
 	/* 컬렉션 프레임워크 (참고: http://www.tcpschool.com/java/java_collectionFramework_concept)
@@ -80,17 +81,22 @@ public class Ex01List {
 		System.out.println();
 		
 		
-		Book test = new Book("반갑", "습니다");;
 		
+		
+		
+		
+		Book test = new Book("반갑", "습니다");;
+				
 		Book[] arrBook = { // arrBook 인스턴스는 Book클래스의 인스턴스를 배열로 저장할 수 있다.
 				new Book("파이썬 알고리즘", "엘컴퓨터학원"), 
 				new Book("파이썬 크롤링", "엘컴퓨터학원"),
 				test
 			};
-		
+				
 		Book[] test2 = new Book[2];
-		test2[0] = new Book("안녕", "하세요");
+		test2[0] = new Book("안녕", "하세요");	
 		
+		Book dooly = new Book("국어", "영어");
 				
 		// ★★ ArrayList<> 생성 방법 ★★ // ※ Integer는 예시 클래스임
 		ArrayList<Integer> integers1 = new ArrayList<Integer>(); // 타입 지정 // 코드 해석 : integers1은 Interger타입의 인스턴스를 저장할 수 있는 배열이다. (정확히는 배열과는 다름. 배열 형태로 저장함. integers1[0] 이런식으로 사용 불가)
@@ -98,10 +104,12 @@ public class Ex01List {
 		List<Integer> integers3 = new ArrayList<>(10); // 용량(배열) 설정(가변적임) // ※ Collection타입이 ArrayList에서 List로 변경! : List는 ArrayList클래스가 구현하고있는 인터페이스이므로 업캐스팅 가능
 		List<Integer> integers4 = new ArrayList<>(integers1); // 다른 Collection값 저장
 		List<Book> integers5 = new ArrayList<>(Arrays.asList(arrBook)); /* Arrays.asList메소드의 아규먼트로 배열인스턴스가 온다면, 배열인스턴스의 요소들을 [0]부터 차곡차곡 integers5에 저장 (배열이 가변적임) 
-		★ 만약 해당 방법이 아니라면 List<Book> integers5 = new ArrayList<>();로 생성 후 integers5.add(arrBook[0]);과 같이 배열을 하나하나 따로 저장해줘야하는 번거로움이 있음) */
+		★ 만약 해당 방법이 아니라면 List<Book> integers5 = new ArrayList<>();로 생성 후 integers5.add(arrBook[0]);과 같이 배열을 하나하나 따로 저장해줘야하는 번거로움이 있음)
+		★★★저장되는 요소는 인스턴스가 될수도 있고 문자열 등이 될수도 있으며★★★, 뭐가됐든 Arrays.asList는 아규먼트에서 요소들을 빼서 저장하는 메소드이다. 
+		 */
 		List<Book> integers6 = new ArrayList<>(Arrays.asList(test)); // Arrays.asList 메소드에서 꼭 배열타입의 인스턴스만 넘길필요 없음 (단, 선언만 하면 안되고 = null 혹은 = new Book();을 통한 메모리가 있어야함 )
 		List<Book> integers7 = new ArrayList<>(Arrays.asList(test2)); // 값이 없는 배열은 null로 저장된다 //System.out.println(integers67.toString()); → null 확인
-		List<Integer> integers8 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5)); // Arrays.asList() // 1, 2, 3, 4, 5는 ★Integer클래스★의 인스턴스고, 여러개를 한번에 저장할수도 있음
+		List<Integer> integers8 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5)); // Arrays.asList() // 요소가 정수로 저장되었음
 		List<Book> integers9 = new ArrayList<>();
 		Collections.addAll(integers9, test); // Collections.addAll(Collection인스턴스, 제네릭타입인스턴스) 메소드를 사용하여 제네릭타입에 맞는 인스턴스를 List에 저장 가능
 		Collections.addAll(integers9, arrBook); // 마찬가지로 제네릭타입인스턴스가 배열일 경우, 요소(인스턴스)들을 List에 순서대로 저장 
@@ -109,12 +117,16 @@ public class Ex01List {
 		integers10.addAll(integers9); // addAll메소드는 호출자(Collection타입)에 아규먼트(Collection타입)를 통으로 더해준다(List타입일 경우 더해진 data는 가장 뒷부분에 저장, Set타입은 중복처리).
 		integers9.retainAll(integers10); // retainAll 메소드는 호출자와 아규먼트(Collection타입)가 중복되는 내용만 호출자에 저장한다 (중복되지 않는 내용 삭제),(아규먼트로 사용된 Collection타입 인스턴스의 내용은 비교에만 쓰일뿐 삭제되지 않음.)
 		integers9.removeAll(integers10); // removeAll 메소드는 호출자의 내용에서 아규먼트(Collection타입)의 내용을 삭제해여 호출자에 저장한다 (즉, 중복되는 내용만 삭제),(아규먼트로 사용된 Collection타입 인스턴스의 내용은 비교에만 쓰일뿐 삭제되지 않음.)
-		
+		List<Book> integers11 = new ArrayList<>(Arrays.asList(dooly));
 		
 		// List<Book> books2 = Arrays.asList(arrBook); //(이렇게 생성할 경우 List 배열의 길이는 던진 배열인스턴스의 길이로 고정되며 늘릴 수 없음)
 		/* ★★ new ArrayList<>() 생성자로 리스트를 만드는 것과는 달리 Arrays.asList()메서드를 통해 리스트를 만들 경우 해당 리스트들은 길이가 고정된다 (배열길이 가변x)
 		 	      따라서, 위 코드가 아닌 아래 코드와 같이 생성해야한다.
 		 */
+		
+		
+		
+		
 		
 		
 		
@@ -128,7 +140,7 @@ public class Ex01List {
 		 */
 		
 		System.out.println("123122131231");
-		System.out.println(books2.toString());
+		System.out.println(books2.toString()); // ★★ 오버라이딩 되지 않은 to.String()은 "요소"를 출력한다
 		
 		books2.addAll(books);
 		// addAll메소드는 호출자(List타입)에 아규먼트(List타입)를 통으로 더해준다(더해진 data는 가장 뒷부분에 저장). (addAll메소드는 ArrayList에 다른 ArrayList의 데이터를 통째로 붙이기 위한 메서드이다.)
@@ -172,6 +184,7 @@ class Cart {
 	
 	private List<Book> books; // Book타입의 인스턴스를 받을 수 있는 List로서의 역할을하는 books이다
 	// ★★ books는 List소속이지만 그 요소들은 Book소속이다 라는 뜻
+	// ★★★ 저장되는 요소는 인스턴스가 될수도 있고 문자열 등이 될수도 있다 ★★★
 	// ★ ArrayList 클래스는 List인터페이스를 구현 중이기에, List로 업캐스팅이 가능하다
 		// tip. 받는 타입으로는 클래스보다 인터페이스로 받을 때가 더욱 확장성이 뛰어나다
 	/// ★ books는 Book타입의 자식 클래스도 저장할 수 있는가? : 가능. 단, List생성 할 때의 제네릭스 타입과 ArrayList의 제네릭스 타입은 일치해야함
@@ -187,7 +200,7 @@ class Cart {
 	
 	public void add(Book book) {
 		books.add(book);
-		// ★ List인터페이스의 아규먼트가 하나있는 add메소드는 파라미터로 받은 인스턴스가 제네릭스(<Book>)과 일치하다면, 리스트(books)에 추가한다.
+		// ★ List인터페이스의 아규먼트가 하나있는 add메소드는 파라미터로 받은 인스턴스 타입이 제네릭스(<Book>)과 일치하다면, 리스트(books)에 추가한다.
 		/// 그냥 books라고 적혀있는데 호출자.books인가? == this.books? = yes
 	}
 	public void add(int index, Book book) {

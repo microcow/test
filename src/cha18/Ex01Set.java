@@ -17,7 +17,7 @@ public class Ex01Set {
 	
 	public static void main(String[] args) {
 		Integer[] intg1 = {1, 2, 3, 4, 5, 6, 7, 8};
-		// 정수를 입력하였지만 숫자들은 각각의 Integer클래스의 인스턴스로서 inth1에 저장되었음 (즉, intg1[0] = 1이다)
+		// 정수를 입력하였지만 숫자들은 각각의 Integer클래스의 인스턴스로서 inth1에 저장되었음 (즉, intg1[0] = 1이다) : no 요소가 정수로 저장되었음
 		/// 인스턴스라 하면 노란색으로 알고있었는데., 인스턴스는 인스턴스 변수도 가지고 있을텐데
 		/// Integer 1 = new Integer(); → 불가
 		

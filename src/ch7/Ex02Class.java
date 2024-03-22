@@ -8,7 +8,8 @@ public class Ex02Class {
 	public static void main(String[] args) {
 		Book book1 = new Book();
 		// Book book1 : Book 타입의 인스턴스 book1 생성
-		// new Book(); : book1의 인스턴스(객체)메모리와 주소를 생성함과 동시에 Book이라는 생성자 호출
+		// new Book(); : book1의 인스턴스(객체)메모리와 주소를 생성함과 동시에 Book이라는 생성자 호출 
+		// ★★ new Book(); 을 할 때 형체는 없고 데이터만 있는 인스턴스가 생성되며 book1이 이를 복제하는 구조이다 (즉, 인스턴스를 생성하는 시점은 new Book();의 시점이고 book1 인스턴스는 그렇게 생성된 데이터를 복제한다)
 		// 이때 변수인 book1은 참조변수 혹은 인스턴스(객체)라 부른다 (값을 저장하지 않고 주소를 저장하고 있기 때문)
 		// new 키워드는 인스턴스를 생성하는 데 사용된다.
 		
