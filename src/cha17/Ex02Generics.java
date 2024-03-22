@@ -13,6 +13,7 @@ public class Ex02Generics {
 		Cart2<Book2> cart = new Cart2<Book2>();		
 		// 클래스 옆의 <> 를 '제네릭스'라 부르고 제네릭스를 생성할 때 적는 타입, 즉 <> 안에 있는 걸 '타입 아규먼트'라 부른다
 		// ★ cart는 Book2 인스턴스를 저장하는 컬렉션임을 선언
+		
 		cart.add(b1);
 		cart.add(b2);
 		cart.add(b3);
@@ -76,6 +77,7 @@ class Car {
 class Cart2<T> {	
 	// 받을땐 타입 파라미터라고 한다 (타입 파라미터이자 타입 변수이다)
 	// 여기선 <T>가 <Book2>를 받을 수 있다
+	// 자바에서 제공하는 Collection(List)이 아닌 새로 Coollection역할을 할 수 있는 클래스를 생성하고 있다.  
 	
 	private List<T> items;
 	

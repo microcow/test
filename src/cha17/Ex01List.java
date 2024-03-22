@@ -1,6 +1,8 @@
 package cha17;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.List;
@@ -90,7 +92,7 @@ public class Ex01List {
 		test2[0] = new Book("안녕", "하세요");
 		
 				
-		// ★★ ArrayList<> 생성자의 유형 // ※ Integer는 예시 클래스임
+		// ★★ ArrayList<> 생성 방법 ★★ // ※ Integer는 예시 클래스임
 		ArrayList<Integer> integers1 = new ArrayList<Integer>(); // 타입 지정 // 코드 해석 : integers1은 Interger타입의 인스턴스를 저장할 수 있는 배열이다. (정확히는 배열과는 다름. 배열 형태로 저장함. integers1[0] 이런식으로 사용 불가)
 		ArrayList<Integer> integers2 = new ArrayList<>(); // 타입 생략 가능 (다이아몬드 연산자)
 		List<Integer> integers3 = new ArrayList<>(10); // 용량(배열) 설정(가변적임) // ※ Collection타입이 ArrayList에서 List로 변경! : List는 ArrayList클래스가 구현하고있는 인터페이스이므로 업캐스팅 가능
@@ -100,6 +102,14 @@ public class Ex01List {
 		List<Book> integers6 = new ArrayList<>(Arrays.asList(test)); // Arrays.asList 메소드에서 꼭 배열타입의 인스턴스만 넘길필요 없음 (단, 선언만 하면 안되고 = null 혹은 = new Book();을 통한 메모리가 있어야함 )
 		List<Book> integers7 = new ArrayList<>(Arrays.asList(test2)); // 값이 없는 배열은 null로 저장된다 //System.out.println(integers67.toString()); → null 확인
 		List<Integer> integers8 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5)); // Arrays.asList() // 1, 2, 3, 4, 5는 ★Integer클래스★의 인스턴스고, 여러개를 한번에 저장할수도 있음
+		List<Book> integers9 = new ArrayList<>();
+		Collections.addAll(integers9, test); // Collections.addAll(Collection인스턴스, 제네릭타입인스턴스) 메소드를 사용하여 제네릭타입에 맞는 인스턴스를 List에 저장 가능
+		Collections.addAll(integers9, arrBook); // 마찬가지로 제네릭타입인스턴스가 배열일 경우, 요소(인스턴스)들을 List에 순서대로 저장 
+		List<Book> integers10 = new ArrayList<>(); 
+		integers10.addAll(integers9); // addAll메소드는 호출자(Collection타입)에 아규먼트(Collection타입)를 통으로 더해준다(List타입일 경우 더해진 data는 가장 뒷부분에 저장, Set타입은 중복처리).
+		integers9.retainAll(integers10); // retainAll 메소드는 호출자와 아규먼트(Collection타입)가 중복되는 내용만 호출자에 저장한다 (중복되지 않는 내용 삭제),(아규먼트로 사용된 Collection타입 인스턴스의 내용은 비교에만 쓰일뿐 삭제되지 않음.)
+		integers9.removeAll(integers10); // removeAll 메소드는 호출자의 내용에서 아규먼트(Collection타입)의 내용을 삭제해여 호출자에 저장한다 (즉, 중복되는 내용만 삭제),(아규먼트로 사용된 Collection타입 인스턴스의 내용은 비교에만 쓰일뿐 삭제되지 않음.)
+		
 		
 		// List<Book> books2 = Arrays.asList(arrBook); //(이렇게 생성할 경우 List 배열의 길이는 던진 배열인스턴스의 길이로 고정되며 늘릴 수 없음)
 		/* ★★ new ArrayList<>() 생성자로 리스트를 만드는 것과는 달리 Arrays.asList()메서드를 통해 리스트를 만들 경우 해당 리스트들은 길이가 고정된다 (배열길이 가변x)
@@ -119,9 +129,13 @@ public class Ex01List {
 		
 		System.out.println("123122131231");
 		System.out.println(books2.toString());
+		
 		books2.addAll(books);
 		// addAll메소드는 호출자(List타입)에 아규먼트(List타입)를 통으로 더해준다(더해진 data는 가장 뒷부분에 저장). (addAll메소드는 ArrayList에 다른 ArrayList의 데이터를 통째로 붙이기 위한 메서드이다.)
 		// add와 차이점 : add는 아규먼트에 List타입이 아닌 일반 제너릭스 타입의 인스턴스를 넣어야함
+		Collections.addAll(integers9, arrBook);
+		// Collections.addAll(Collection인스턴스, 제네릭타입인스턴스) 메소드(스태틱메소드)를 사용하여 제네릭타입에 맞는 인스턴스를 List에 저장 가능
+		
 		System.out.println(books2);
 		System.out.println();
 		
@@ -237,8 +251,9 @@ class Cart {
 	public static void printAllBooksWithForEach(List<Book> books) {
 		System.out.println("foreach");
 		for (Book book : books) {		// 바이트 코드 변환 시 보일러 플레이트 최소화
-			// ★ books의 요소를 book에 저장하고 println후 그 다음 요소를 다시 book에 저장하는 방법 (forEach)
+			// ★★★ books의 요소를 book에 저장하고 println후 그 다음 요소를 다시 book에 저장하는 방법 (forEach)
 			// ★ 요소들은 book에 누적되는게 아닌 갱신된다.
+			// ★★ books에 있는 Book클래스의 요소를 빼서 book 인스턴스에 저장하는 것이지 books 자체를 저장하는게 아님 (books != book)
 			System.out.println(book);
 		}
 	}
@@ -265,7 +280,7 @@ class Cart {
 			용이하도록 메소드를 모아놓은 인터페이스이다. (콜렉션의 요소를 가르키는 커서라고 생각)★ */
 		for (Iterator<Book> it = books.iterator(); it.hasNext(); ) {
 			Book book = it.next(); // remove를 하려면 .next가 선행되어야한다.
-			it.remove(); 
+			it.remove();
 			/* 이 때의 remove는 it에만 영향을 주는 게 아닌 it의 값에 대응하는 books의 값도 삭제하는가 : yes (기본 컬렉션에서 제거한다)
 			 	ArrayList 컬렉션을 Iterator로 읽고자 했고, Iterator 객체는 컬렉션을 내재하고 있기 때문에 iterator.remove() 할 때 기존 컬렉션에서 지워지는 것
 			 	(Removes from the underlying collection)
