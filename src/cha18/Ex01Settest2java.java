@@ -12,11 +12,13 @@ public class Ex01Settest2java {
 		String[] dool = {"국어", "영어"};
 		String[] ddo = {"영어", "수학"};
 		String[] dou = {"국어", "수학", "과학"};
-				
+						
 		Set<String> list = new HashSet<>(Arrays.asList(dool)); // ★★★ Arrays를 set로 저장하는 방법
 		Set<String> list2 = new HashSet<>(Arrays.asList(ddo));
 		Set<String> list3 = new HashSet<>(Arrays.asList(dou));
+		// Set<String> list = new HashSet<>(dool);
 		// ★★ 배열은 List로 추가할 수 있지만 set으로 추가될 수 없다 List는 Set으로 추가될 수 있기에 배열을 set으로 추가하기 위해선 List를 경유(Arrays.asList)하여야한다.
+		// ★★ String배열 타입을 바로 HashSet타입으로 변경할 수 없다
 		
 		list.addAll(list2);
 		list.addAll(list3);
@@ -40,7 +42,7 @@ public class Ex01Settest2java {
 		
 		list4.addAll(list5);
 		list4.addAll(list6);
-		System.out.println(list4); /// 왜 뒤에서부터 출력되지? addAll은 추가하는 데이터가 맨앞으로 오고 나머지를 뒤로 밀어내나? set은 순서없이 저장한다
+		System.out.println(list4); /// 왜 뒤에서부터 출력? addAll은 추가하는 데이터가 맨앞으로 오고 나머지를 뒤로 밀어내나? set은 순서없이 저장한다
 		/// 출력 시 문제 1과 2의 차이점
 		// ★★★ 위 String[]의 배열인스턴스는 배열에 "문자열"을 저장했지만 asd는 배열에 "인스턴스"를 저장했기에 인스턴스끼리 비교하므로 중복을 걸러내지 못함
 		// ★★ 즉, list는 요소들로 "문자열"들을 저장하고있고 list4는 요소들로 "인스턴스"들을 저장하고있음. 따라서, toSting시 list는 저장하고 있는 문자열을 출력하고 list4는 인스턴스주소를 출력함 

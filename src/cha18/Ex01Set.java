@@ -42,6 +42,7 @@ public class Ex01Set {
 		
 		Set<Integer> s2 = new HashSet<>(list1);
 		// List와 동일하게 생성자 아규먼트에 타입 인스턴스가 온다면, s2의 요소로 저장하지만, 중복되는 내용(Hashcode)이 있다면 중복처리한다.
+		// ★★ HashSet 생성자의 아규먼트로는 List 혹은 Set만 올 수 있다
 		
 		print(s2);
 		s2.remove(2);
