@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Stack;
 public class Ex01Settest2java {
 	public static void main(String[] args) {
 		// 문제 1
@@ -16,9 +17,10 @@ public class Ex01Settest2java {
 		Set<String> list = new HashSet<>(Arrays.asList(dool)); // ★★★ Arrays를 set로 저장하는 방법
 		Set<String> list2 = new HashSet<>(Arrays.asList(ddo));
 		Set<String> list3 = new HashSet<>(Arrays.asList(dou));
-		// Set<String> list = new HashSet<>(dool);
+		// Set<String> list111 = new HashSet<>(dool);
 		// ★★ 배열은 List로 추가할 수 있지만 set으로 추가될 수 없다 List는 Set으로 추가될 수 있기에 배열을 set으로 추가하기 위해선 List를 경유(Arrays.asList)하여야한다.
 		// ★★ String배열 타입을 바로 HashSet타입으로 변경할 수 없다
+		
 		
 		list.addAll(list2);
 		list.addAll(list3);
@@ -39,7 +41,6 @@ public class Ex01Settest2java {
 		System.out.println(list4);
 		Set<Dooly2> list5 = new HashSet<>(Arrays.asList(ddochi));
 		Set<Dooly2> list6 = new HashSet<>(Arrays.asList(asd));
-		
 		list4.addAll(list5);
 		list4.addAll(list6);
 		System.out.println(list4); /// 왜 뒤에서부터 출력? addAll은 추가하는 데이터가 맨앞으로 오고 나머지를 뒤로 밀어내나? set은 순서없이 저장한다

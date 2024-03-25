@@ -8,7 +8,7 @@ public class Ex04Queue {
 		// ★ Queue란 선입 선출을 의미한다 (fifo). (!= 스택)
 		// 먼저 들어온 데이터를 먼저 처리해야할 경우 사용한다.
 		
-		// LinkedList는 Queue 인터페이스를 구현하고 있다.
+		
 		
 		QueueTicketDispenser.takeNum();
 		QueueTicketDispenser.takeNum();
@@ -42,6 +42,7 @@ class QueueTicketDispenser {
 
 class Restaurant {
 	public static Queue<Integer> q = new LinkedList<>(); // 업캐스팅
+	// LinkedList 클래스는 Queue 인터페이스를 구현하고 있다.
 	
 	
 	public static void serving() {

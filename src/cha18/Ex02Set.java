@@ -84,7 +84,7 @@ class Course {
 		List<String> oSubjects = new ArrayList<>(subjects);
 		// Set타입의 subjects를 List타입으로 변경 후 oSubjects에 저장
 		Collections.sort(oSubjects);
-		// Collections.oSubjects 메소드는 List타입을 오름차순으로 정렬해주는 메소드이다.
+		// Collections.sort 메소드는 List타입을 오름차순으로 정렬해주는 메소드이다.
 		return oSubjects;
 	}
 	

@@ -11,6 +11,8 @@ import java.util.Objects;
 
 public class Ex01List {
 	
+	// ★ Collection은 Collection 인스턴스에 제네릭스 타입과 맞는 인스턴스의 "요소"를 저장하는데(add, addAll, 생성자 등으로 저장할 때) 그 요소는 문자열이나 정수가 될 수도 있고 인스턴스가 될 수 있다
+	
 	/* 컬렉션 프레임워크 (참고: http://www.tcpschool.com/java/java_collectionFramework_concept)
 	- 데이터를 쉽고 효과적으로 처리할 수 있는 표준화된 방법을 제공하는 클래스의 집합이다.
 	- 데이터를 저장하는 자료구조 & 데이터를 처리하는 알고리즘을 구조화하여 클래스로 구현해 놓은 것이다.
@@ -195,7 +197,7 @@ class Cart {
 		// ★ 해당 ArrayList는 Book타입의 인스턴스만 저장할 수있다
 		// ★ Book타입 인스턴스를 2개 저장할 수 있는 ArratList 배열을 생성하였지만, 2개 이상으로 늘어나더라도 가변적으로 배열이 증가한다 (2를 안적어도 됨)
 		
-		/// 배열로 생성하였지만 books[0] 이런 식으로 따로 빼서 쓸순 없나봄 (get 메소드를 통해 빼서 써야하나봄)
+		/// ★★ 배열로 생성하였지만 books[0] 이런 식으로 따로 빼서 쓸순 없나봄 (get 메소드를 통해 빼서 써야하나봄)
 	}
 	
 	public void add(Book book) {
@@ -220,7 +222,7 @@ class Cart {
 	}
 	public Book getBook(int index) {
 		return books.get(index);
-		// ★ List인터페이스의 get메소드는 List의 index번호에 있는 인스턴스를 return한다. (return타입은 List의 제네릭스(<Book>) 타입과 일치해야한다)
+		// ★ List인터페이스의 get메소드는 List의 index번호에 있는 요소를 return한다. (return타입은 List의 제네릭스(<Book>) 타입과 일치해야한다)
 	}
 	
 	public static void printAllBooksWithFor(List<Book> books) {
@@ -289,8 +291,8 @@ class Cart {
 	public static void removeWithIterator(List<Book> books) {
 		// Iterator문은 메소드 내에서 내용 삭제가 가능하다 (삭제하려는 메소드 호출자 타입이 Iterator이기에 가능) 
 		// Iterator는 컬렉션을 내재하고 있다	
-		/* ★★ Iterator은 콜렉션(List, set, map 등)으로서의 역할이 아니라 콜렉션들의 요소들을 불러오거나 편집하는데
-			용이하도록 메소드를 모아놓은 인터페이스이다. (콜렉션의 요소를 가르키는 커서라고 생각)★ */
+		/* ★★ Iterator은 콜렉션(List, set, map 등)으로서의 역할이 아니라 콜렉션들의 요소들을 불러오거나 편집하는데 
+			용이하도록 메소드를 모아놓은 인터페이스이다. (콜렉션의 요소를 가르키는 커서라고 생각)★ (검색어 iterator)*/
 		for (Iterator<Book> it = books.iterator(); it.hasNext(); ) {
 			Book book = it.next(); // remove를 하려면 .next가 선행되어야한다.
 			it.remove();
