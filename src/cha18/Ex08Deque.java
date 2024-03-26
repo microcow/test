@@ -40,7 +40,7 @@ public class Ex08Deque {
 		Restaurant2.q.pollLast();
 		Restaurant2.printQueue();
 		
-		/// pushFirst , popFirst 같은 메소드는 없는지
+		
 		
 		// ★★ Deque는 양방향이므로 저장소의 앞부분이나 뒷부분 중 원하는 곳에 데이터를 저장할 수 있고, 원하는 곳의 데이터를 추출할 수 있다.
 		// 즉, 선입선출을 원하는대로 섞어서 사용 가능하다.

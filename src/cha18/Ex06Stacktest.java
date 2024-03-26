@@ -52,7 +52,7 @@ class Page2{
 
 class Book2{
 	private Stack<Page2> pageStack = new Stack<>();
-	private List<Page2> pageList = new ArrayList<>();
+	private List<Page2> pageList = new ArrayList<>(); // new LinkedList<>();
 	/// ArrayList를 사용할 때와 LinkedList를 사용할 때 차이?
 	private int pageNo;
 	

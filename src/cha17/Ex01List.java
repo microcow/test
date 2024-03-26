@@ -239,9 +239,11 @@ class Cart {
 	public static void printAllBooksWithIterator(List<Book> books) {
 		System.out.println("Iterator");
 		for (Iterator<Book> it = books.iterator(); it.hasNext(); ) { // for문의 조건(it.hasNext)이 참일 경우에 반복
-			// ★ iterator 메소드는 호출자에 저장된 값을 그대로 Iterator인터페이스 타입으로 return한다.
+			// ★★ iterator 메소드는 호출자에 저장된 값을 그대로 Iterator인터페이스 타입으로 return한다.
 			// hasNext메소드는 호출자 배열에 현재 가르키고있는 커서에 값이 저장되어있다면 true를 return한다.
 			/// 커서위치는 무조건 호출자 배열의 첫번째? : yes
+			/* set Collection을 제외한 Collection에서 get(인덱스) 메소드를 사용하지 않고 반복문을 사용하기 위해
+			   .iterator() 메소드를 통한 후 Iterator의 메소드를 사용하여 반복문 활용 */
 			System.out.println(it.next());
 			// next 메소드는 현재 커서가 가르키고있는 위치의 data값을 String 타입으로 return한 후 커서를 한칸 옆으로 옮긴다.
 		}

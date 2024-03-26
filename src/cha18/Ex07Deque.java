@@ -55,6 +55,10 @@ class Book22 {
 		// 선입 확인 메소드 : peekFirst
 		// 후입 확인 메소드 : peekLast
 		
+		// poll과 pop 메소드는 값을 추출한 후 그 값을 삭제함
+		/*/// pushFirst , popFirst 같은 메소드는 없는지 : 없음.
+		 *   First와 Last처럼 Deque타입에 방향을 지정할 때 offer, poll, peek 등으로 통일해서 사용 그 외 Stack과 Queue의 메소드도 사용 가능 */
+						
 		this.pageList = new LinkedList<>();
 	}
 	public String getTitle() {
