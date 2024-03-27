@@ -33,6 +33,7 @@ class Student2 implements Comparable<Student2>{
 		int result = Integer.valueOf(this.no).compareTo(stu.getNo());
 		if (result == 0) {
 			result = (this.name.compareTo(stu.name) * -1);
+			// result = (stu.name.compareTo(this.name));
 		}
 		/// 출력 시 name이 내림차순으로 정렬되지 않는 이유
 		return result;

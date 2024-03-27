@@ -46,7 +46,7 @@ class Book3 implements Comparable<Book3> {
 		int result = Integer.valueOf(no).compareTo(book.getNo()) * -1; 
 		// Integer클래스의 compareTo를 호출하고있음 (숫자 비교)(Integer 클래스는 이미 conpareTo를 오버라이딩 하고 있음)
 		// 그냥 int result = no - book.getNo로 작성해도 되지만 해당 방법으로도 비교 가능
-		// *-1을 하면, 결과값이 반대가 되므로 내림차순으로 정렬된다.
+		// *-1을 하면, 결과값이 반대가 되므로 내림차순으로 정렬된다. (*-1 말고 compareTo의 호출자와 아규먼트를 바꾸어도 내림차순으로 정렬 가능)
 		/// no는 valueOf를 통해 Interger 클래스의 인스턴스로 바뀌었고 book.getNo는 int 타입인데 둘 다 정수를 가지고 있지만 타입이 다른데 비교 가능? : yes. compareTo 파라미터가 Integer타입임
 		if (result == 0)
 			result = title.compareTo(book.title); // String클래스의 compareTo를 호출하고있음 (문자열 비교)(Integer 클래스는 이미 conpareTo를 오버라이딩 하고 있음)(0일 경우 no의 값이 동일하기에 문자열을 비교하고 있음)
