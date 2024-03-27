@@ -27,7 +27,7 @@ public class Ex01Listtest {
 		
 		System.out.println(books);
 		// Set말고 List(ArraysList)도 마찬가지로 인스턴스의 요소(문자열, 인스턴스 변수 등)를 저장하고 있다면 .toSting을 따로 오버라이딩하지 않았고 문자열을 저장 하고 있다면 문자열이 출력될테지만 인스턴스를 저장하고 있다면 주소가 출력됨 
-		// 따라서, List나 Set이 저장하고 있는 인스턴스의 요소(문자열, 인스턴스 변수 등)들을 출력하고 싶다면 출력해주는 메소드를 생성하거나 .toSting을 요소(문자열, 인스턴스 변수 등)들을 출력해주는 기능으로 오버라이딩해서 출력하자
+		// 따라서, List나 Set이 저장하고 있는 인스턴스의 요소(문자열, 인스턴스 변수 등)들을 출력하고 싶다면 출력해주는 메소드를 생성하거나 .toSting을 오버라이딩 해 요소(문자열, 인스턴스 변수 등)들을 출력하자
 
 		String d [] = {"d", "s"};
 		List<String> aa = new ArrayList<String>(Arrays.asList(d));

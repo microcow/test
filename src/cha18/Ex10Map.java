@@ -22,7 +22,7 @@ public class Ex10Map {
 		// HashMap은 Map인터페이스를 구현하고 있기에 업캐스팅 가능하다.
 		// HashMap은 key와 value으로 구성되어 있다 <key, value>
 		// HashMap은 Set과 유사하게 내용 정렬이 되지 않는다
-		// 내용 정렬을 위해선 LinkedHashMap이나 TreeMap을 사용해야한다.
+		// 내용 정렬을 위해선 LinkedHashMap이나 TreeMap을 사용해야한다. (기능 차이 찾아보기)
 		
 		teamA.put("A", "자바");
 		// put 메소드를 활용해 데이터를 추가할 수 있다
@@ -37,14 +37,23 @@ public class Ex10Map {
 		
 		
 		for (Map.Entry<String, String> e : teamA.entrySet()) { // for each로 값을 가져오는 방법
-			// ★★★ entrySet메소드는 Map타입을 Set타입으로 retrun해준다.
-			// ★ Map으로 부터 데이터를 가져오기 위해선 해당 map을 enrtySet 메소드를 활용해 요소들을 set으로 바꾸어 Map.Entry타입으로 바꿔주어야한다.
+			// ★★★ entrySet메소드는 Map타입을 Set타입으로 retrun해준다(key와 value 모두 return). ★ 그 Set의 요소는 Entry타입이다
+			// ★ Map으로 부터 데이터를 가져오기 위해선 해당 map을 enrtySet 메소드를 활용해 set으로 바꾸어 요소들을 Entry타입으로 바꿔주어야한다.
+			// ★ Map의 key와 value를 다루기 위해서(메소드를 사용하기 위해) Entry타입으로 바꿔주는거다
 			// ★ Map타입 인스턴스를 entrySet메소드로 Set타입으로 바꾼 뒤 Map.Entry<키, 값>으로 Map타입 인스턴스를 Entry객체로 바꾸어 키와 값을 갖고 있는 하나의 객체로 얻는다
-			// Entry타입으로 바꾸기 위해 Set으로 변경이 선행되기에 정렬되지 않음
+			// Entry타입으로 바꾸기 위해 Set으로 변경이 선행되기에 ★정렬되지 않음 (어떤 요소가 처음으로 올 지 모름)
 			/// Map.Entry 구조? Map.Entry로 생성한 인스턴스 e는 어떻게 Set타입을 저장할 수 있는지 (Map인터페이스 안에 있는 Entry인터페이스)
+			//	 ㄴ> teamA.entrySet의 return타입이 Set이고 그 Set의 요소가 Entry<String, String> 타입임
 			System.out.println("이름: " + e.getKey() + "\t스킬: " + e.getValue());
 			// getKey 메소드 : Map의 key 값을 가져온다 (Entry 타입만 사용 가능한 메소드)
 			// getValue 메소드 : Map의 value 값을 가져온다 (Entry 타입만 사용 가능한 메소드)
+			/* Map.Entry 인터페이스란?
+				- Map 인터페이스의 내부 인터페이스(inner interface) 이다.
+				- Map에 저장되는 key-value 쌍을 다루기 위해 내부적으로 Entry 인터페이스를 정의해 놓았다.
+				- Map인터페이스를 구현하는 클래스 에서는 Map.Entry 인터페이스도 함께 구현해야 한다.
+				- 맵에 저장되는 엔트리의 조작을 위한 메소드가 정의되어있다.*/
+			/// Map은 Collection이 아니지만 Map의 Entry 인터페이스는 Collection인가?? : no
+			System.out.println("ㄴㅇㄹㄴㅇㄹ");
 		}
 		System.out.println();
 		
@@ -82,9 +91,9 @@ public class Ex10Map {
 		// ★ values 메소드는 value(값)만 저장되어있는 리스트를 retrun한다.
 		// ★ removeAll 메소드는 아규먼트에 저장되어있는 값을 삭제한다. (아규먼트로는 Collection타입이 와야한다.)
 		// 즉, skill값인 "안드로이드"라고 저장되어 있는 데이터는 employee에서 삭제되었다 (물론, 해당 key와 value 모두 삭제된다)
-		// ★ remove 메소드는 아규먼트에 저장되어있는 값을 삭제한다 (아규먼트로는 Object타입이 와야한다.)
+		// ★ remove 메소드는 아규먼트에 저장되어있는 값을 호출자에서 삭제한다 (아규먼트로는 Object타입이 와야한다.)
 		System.out.println(employee.keySet());
-		// ★ keySet 메소드는 key값만 저장되어있는 리스트를 retrun한다.
+		// ★ keySet 메소드는 key값만 저장되어있는 리스트를 Set으로 retrun한다.
 		
 		System.out.println("< C, F PL이 소속돼 있는 지 확인 >");
 		Map<String, String> pl = new HashMap<>();
@@ -92,8 +101,9 @@ public class Ex10Map {
 		pl.put("F", "자바");
 		System.out.println(employee.entrySet().containsAll(pl.entrySet()) );
 		// containsAll 메소드는 아규먼트의 값이 호출자에 있다면 true를 retrun한다. (아규먼트로는 Collection타입이 와야한다.)
-		// 호출자 Map과 아규먼트 Map 모두 Set타입으로 바꿔주어야한다.
-		/// containsAll 메소드는 아규먼트에 저장된 key와 value 모두 일치하는게 호출자에 있을 때 true를 retrun하는가. (All이니까 모두 일치?)
+		// 호출자 Map이 entrySet을 통해 Entry타입이 되었으므로 비교를 위해 아규먼트 또한 모두 Entry타입으로 바꿔주어야한다.
+		/// containsAll 메소드는 아규먼트에 저장된 key와 value 모두 일치하는게 호출자에 있을 때 true를 retrun하는가. (All이니까 모두 일치)
+		
 		System.out.println();
 		
 		System.out.println("< 팀A와 B의 팀원이 모두 같은 지 확인 >");
@@ -105,10 +115,13 @@ public class Ex10Map {
 		System.out.println(employee.containsValue("자바"));
 		System.out.println(employee.containsValue("자바스크립트"));
 		// containsAll 메소드는 아규먼트의 값이 호출자에 있다면 true를 retrun한다. (아규먼트로는 Object타입이 와야한다.)
-		/// containsValue니까 Value만 일치?
+		/// containsValue니까 Value만 일치? = yes
 		
 		// contain 메소드는 아규먼트의 값이 호출자에 있다면 true를 retrun한다. (단, class1.values().contain()과 같이 호출자를 명확히 해야한다)(key값을 비교할건지 value값을 비교할건지)
 		
+		System.out.println(employee.entrySet());
+		System.out.println(employee);
+		// 출력 결과는 동일하나 위에는 Set타입이고 아래는 Map타입임
 		
 	}
 

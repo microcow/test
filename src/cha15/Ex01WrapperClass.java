@@ -6,6 +6,8 @@ public class Ex01WrapperClass {
 		
 		// WrapperClass클래스는 기본형(int double float 등)을 위한 클래스이다.
 		
+		// ★★ Integer 클래스는 간단한 정수 값을 나타내며 하나의 int 값을 저장할 수 있다.
+		
 		System.out.print("숫자 7을 입력하세요:");
 		//int i = s.nextLine();
 		String str = s.nextLine();
@@ -20,7 +22,7 @@ public class Ex01WrapperClass {
 		System.out.println(i2);
 		System.out.println();
 		
-		// Integer intg1 = new Integer(i); → 기본형을 참조형(인스턴스)로 바꿀때 new Interger을 사용하면 오류 발생 (Integer.valueOf 메소드를 사용하자)
+		// Integer intg1 = new Integer(i); → 기본형을 참조형(인스턴스)로 바꿀때 new Integer을 사용하면 오류 발생 (Integer.valueOf 메소드를 사용하자)
 		Integer intg1 = Integer.valueOf(i);
 		// ★ Interger.valueOf 메소드는 아규먼트를 int 타입에서, 해당 값을 인스턴스 변수로 가진 Integer클래스의 참조형(인스턴스)로 return한다.
 		// 즉, intg1 인스턴스는 i(int 타입 변수)의 값(7)을 인스턴스 변수로 가지고 있는 인스턴스이다.(int 타입의 인스턴스 변수로 가지고있다)

@@ -214,7 +214,7 @@ class Cart {
 		return books.contains(book);
 		// ★ List인터페이스의 contain 메소드는 호출자 아규먼트로 보낸 인스턴스가 List(Books)에 존재하는지를 return한다.
 		// 이는 파라미터의 값 주소가 List에 있는지 확인하는 방식이므로, 만약 인스턴스의 일부 정보만 일치하더라도 true를 return받고 싶다면 equals나 hashcode 메소드를 오버라이딩해서 사용해야함
-		// eqauls 메소드에서 특정 부분만 같다면 ture를 반환하도록 오버라이딩 해주고 hashcode에서도 특정 부분만 같다면 같은 주소를 return(Objects.hash메소드)하도록 오버라이딩
+		// eqauls 메소드에서 특정 부분만 같다면 ture를 반환하도록 오버라이딩 해주고 hashcode에서도 특정 부분만 같다면 같은 주소를 return(Objects.hash 메소드)하도록 오버라이딩
 	}
 	public List<Book> getAllBooks() {
 		// Collection을 리턴할 때는 리턴타입에 제네릭스까지 적어주어야한다.
