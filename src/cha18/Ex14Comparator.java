@@ -62,6 +62,18 @@ public class Ex14Comparator {
 		System.out.println(list);
 		System.out.println();
 		
+		Comparator<String> T = Comparator.reverseOrder();
+		Collections.sort(list, T);
+		// 이처럼 인스턴스에 정렬 방식을 저장하여 사용할 수 있다
+		System.out.println(list);
+			
+		T = Comparator.naturalOrder();
+		Collections.sort(list, T);
+		System.out.println(list);
+		// Comparator.reverseOrder와 반대로 오름차순 정렬 시에는 Comparator.naturalOrder(); 메소드 사용
+		// naturalOrder는 compareTo를 호출한 후 오름차순으로 정렬하는 방식 (그냥 compareTo만 호출해도 오름차순으로 정렬되긴 하다)
+		
+		
 		System.out.println("< 대소문자 상관없이 알파뱃 오름차순 정렬 >");
 		Collections.sort(list, String.CASE_INSENSITIVE_ORDER);
 		// String.CASE_INSENSITIVE_ORDER 는 대소문자 상관없이 알파벳을 오름차순으로 정렬해준다

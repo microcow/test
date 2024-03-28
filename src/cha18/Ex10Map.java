@@ -37,7 +37,7 @@ public class Ex10Map {
 		
 		
 		for (Map.Entry<String, String> e : teamA.entrySet()) { // for each로 값을 가져오는 방법
-			// ★★★ entrySet메소드는 Map타입을 Set타입으로 retrun해준다(key와 value 모두 return). ★ 그 Set의 요소는 Entry타입이다
+			// ★★★ entrySet메소드는 Map타입을 Set타입으로 retrun해준다(key와 value 모두 return). ★ 그 Set의 요소는 Entry타입이다 즉, for each는 요소를 하나하나 넘겨주니까 teamA에 있는 요소가 Entry타입으로 바뀌고 그 요소를 하나하나 넘겨주고있다
 			// ★ Map으로 부터 데이터를 가져오기 위해선 해당 map을 enrtySet 메소드를 활용해 set으로 바꾸어 요소들을 Entry타입으로 바꿔주어야한다.
 			// ★ Map의 key와 value를 다루기 위해서(메소드를 사용하기 위해) Entry타입으로 바꿔주는거다
 			// ★ Map타입 인스턴스를 entrySet메소드로 Set타입으로 바꾼 뒤 Map.Entry<키, 값>으로 Map타입 인스턴스를 Entry객체로 바꾸어 키와 값을 갖고 있는 하나의 객체로 얻는다

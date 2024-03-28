@@ -35,5 +35,5 @@ binarySearch 를 이용해 검색하세요.
 Arrays.asList를 이용해 리스트 생성 후 해당 리스트에 임의의 값을 추가하세요.
 
 문제 3.
-Arrays.equals 와 Arrays.deepEquals 를 사용하여 1차원 배열과 2차원 배열의 값을 비교하는 코드를 작성하세요.
+Arrays.equals 와 Arrays.deepEquals 를 사용하여 1차원 배열과 2차원 배열의 값을 비교하는 코드를 작성하세요. 검색해서 풀어보기
 */
