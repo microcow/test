@@ -47,14 +47,14 @@ class Book3 implements Comparable<Book3> {
 		// Integer클래스의 compareTo를 호출하고있음 (숫자 비교)(Integer 클래스는 이미 conpareTo를 오버라이딩 하고 있음)
 		// 그냥 int result = no - book.getNo로 작성해도 되지만 해당 방법으로도 비교 가능
 		// *-1을 하면, 결과값이 반대가 되므로 내림차순으로 정렬된다. (*-1 말고 compareTo의 호출자와 아규먼트를 바꾸어도 내림차순으로 정렬 가능)
-		/// no는 valueOf를 통해 Interger 클래스의 인스턴스로 바뀌었고 book.getNo는 int 타입인데 둘 다 정수를 가지고 있지만 타입이 다른데 비교 가능? : yes. compareTo 파라미터가 Integer타입임
+		// no는 valueOf를 통해 Interger 클래스의 인스턴스로 바뀌었고 book.getNo는 int 타입인데 둘 다 정수를 가지고 있지만 타입이 다른데 비교 가능? : yes. compareTo 파라미터가 Integer타입임
 		if (result == 0)
 			result = title.compareTo(book.title); // String클래스의 compareTo를 호출하고있음 (문자열 비교)(Integer 클래스는 이미 conpareTo를 오버라이딩 하고 있음)(0일 경우 no의 값이 동일하기에 문자열을 비교하고 있음)
 		return result;
-		// 호출자가 더 크면 양수를, 아규먼트가 더 크면 음수, 같으면 0을 return한다.
+		// 호출자가 더 크면 양수를, 아규먼트가 더 크면 음수, 같으면 0을 return한다.		
+		// ★ 오버라이딩 시 byte, char, double, short, long, int, float같은 PrimitiveType의 배열에는 적용이 불가능하니 Integer같은 Wrapper "Class"를 이용해야 한다
 		
-		
-		/// Integer클래스와 String클래스의 compareTo는 오름차순으로 정렬하지 않고 값을 비교만하여 결과를 return하지 않나? : yes. 해당 compareTo도 동일하게 결과값(int)을 return함
+		// Integer클래스와 String클래스의 compareTo는 오름차순으로 정렬하지 않고 값을 비교만하여 결과를 return하지 않나? : yes 해당 compareTo도 동일하게 결과값(int)을 return함
 		/// book에는 Book3타입 인스턴스가 3개가 있는데 반복문도 아닌데 no에는 무슨 값이 오고 book은 어떤 인스턴스인지?
 			/// sort호출 시 요소 하나씩 compareTo를 호출하고 그 옆에 인덱스가 아규먼트로 오는건가
 		/// return되는 result값이 양수일 경우 서로 위치를 바꾸는건가 (오름차순으로 정렬되기 때문)
