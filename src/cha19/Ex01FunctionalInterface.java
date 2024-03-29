@@ -23,7 +23,7 @@ public class Ex01FunctionalInterface {
 			// 단점 : 시간이 오래걸리는 등 효율성이 다소 떨어짐
 		
 		// 선언형 : 무엇을(what) 가져올 것인지 미리 만들어져있는 메소드를 호출만 하여 값을 가져옴 (How가 미리 만들어져 있음)
-			// 장점 : 직접 코딩하지 않고 구하고자 하는 값을 미리 만들어져있는(FunctionalInterface) 메소드의 아규먼트 등으로만 넘겨주기만 하면 됨 (람다식은 메소드를 넘기는 것 처럼 보이지만 정확히는 인스턴스를 넘기는 것이다)
+			// 장점 : 직접 코딩하지 않고 구하고자 하는 값을 미리 만들어져있는(FunctionalInterface) 메소드의 아규먼트 등으로만 넘겨주기만 하면 됨 (람다식은 함수를 넘기는 것 처럼 보이지만 정확히는 인스턴스를 넘기는 것이다)
 		
 		// ★★ 람다식의 인터페이스들은 각각 반드시 오버라이딩해야하는 추상메소드가 하나씩 있으며(람다식으로 오버라이딩 해야하는 메소드), 해당 추상메소드 외 메소드(디폴트메소드)도 가지고 있다. 
 		// 디폴트 메소드는 오버라이딩 한 추상메소드와 함께 사용하거나 추상메소드를 동작하고 활용하는데 도움을 준다. 
@@ -83,7 +83,7 @@ public class Ex01FunctionalInterface {
 		System.out.println(p4.test(19));
 		Predicate<String> p5 = Predicate.isEqual("ok");
 		// isEqual 메소드는 해당 문자열과 일치하는 문자열이 test의 아규먼트로 호출할 경우 true를 retrun한다.
-		/// Predicate 람다식은 파라미터랑 ->가 없는데
+		/// Predicate 람다식은 파라미터랑 ->가 없는데 : 그냥 클래식 메소드 호출하고 있는 것임 람다식은 ()와 ->가 있어야함
 		System.out.println(p5.test("ok"));
 		System.out.println();
 		// Predicate의 추상메소드는 test 하나 뿐이다
@@ -137,6 +137,7 @@ public class Ex01FunctionalInterface {
 		System.out.println();
 		// ObjIntConsumer 인터페이스는 Consumer 인터페이스와 마찬가지로 파라미터로 던지기만 하고 retrun할 필요가 없을 때 람다식으로 사용
 		// 단, 파라미터를 2개 던질(받을) 수 있는데 첫번째는 Object 타입, 두번째는 Int타입을 던질 수 있다
+		/// 위 구조 람다식 이해하기 (return 타입이 없는데 제네릭 타입이 적혀있는 이유?)
 		
 		System.out.println("< ToIntFunction >");
 		ToIntFunction<String> tif = str -> Integer.parseInt(str);

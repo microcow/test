@@ -14,6 +14,8 @@ public class testtest {
 			}
 		};
 		System.out.println(as.qqq());
+		
+		
 	}
 
 }
