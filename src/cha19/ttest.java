@@ -1,7 +1,6 @@
 package cha19;
-
 /// 부모클래스의 메소드도 익명클래스로 즉시 오버라이딩해서 사용할 수 있나 : 가능
-public class testtest {
+public class ttest {
 	public static void main(String[] args) {
 		Test2 test = new Test2();
 		System.out.println(test); // 부모클래스의 인스턴스도 가지고 있으나, 값을 지정하지 않을 경우 0으로 출력
@@ -15,7 +14,13 @@ public class testtest {
 		};
 		System.out.println(as.qqq());
 		
-		
+		Test tnt = new Test() {
+			@Override
+			int qqq() {
+				return 12345;
+			}
+		};
+		tnt.qqq(); // 본인클래스의 메소드는 오버라이딩 안되는듯
 	}
 
 }

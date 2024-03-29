@@ -7,10 +7,9 @@ import java.util.function.Predicate;
 public class Ex02Lambdatest {
 	public static void main(String[] args) {
 		Map<String, User2> user = UserGet.getUser();
-		Map<String, User2> timeuser = null;
 		
 		// 문제 2. (출력 방법 1)
-		timeuser = UserGet.search2(user, i -> i.getIn()>=5 && i.getIn()<=9);
+		Map<String, User2> timeuser = UserGet.search2(user, i -> i.getIn()>=5 && i.getIn()<=9);
 		UserGet.printTime(timeuser);
 		
 		// 문제 2. (출력 방법 2. 디폴트 메소드 활용)

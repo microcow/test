@@ -28,9 +28,13 @@ public class Ex06Interface {
 
 		PrintService printService = null;
 		// 인터페이스도 인스턴스 생성이 가능하다. (추상클래스와 차이점1)
-		/// PrintService Print = new PrintService; → null로만 생성가능??
+		// 단, 구현 코드가 들어가지 않아서 new(인스턴스화)될 수 없다.
+		// 생성자를 가질 수 없고, 객체 생성을 할 수 없다.
+		
+		
 		
 		printService = eb;
+		
 		// 업캐스팅을 위해선 해당 인터페이스를 implements(구현)하고 있어야한다. (업캐스팅 정리 - 일반 클래스: 부모클래스의 인스턴스가 자식클래스를 품을 수 있다 / 인터페이스: 인터페이스를 구현하고 있는 클래스의 인스턴스를 품을 수 있다)
 		// printService가 eb로 업캐스팅되어도 PrintService의 메소드에 한해서만 호출할 수 있다. (printService가)
 		printService.printInfo();
@@ -50,15 +54,28 @@ public class Ex06Interface {
 		pfp.setting();
 		// PrintServiceForPrinter 인터페이스에는 setting이라는 메소드가 있으므로 호출 가능
 		
+		PrintService fff = car;
+		
 		PrintServiceForPrinter.getPrinterType();
 		// 인터페이스가 메소드를 호출할 수 있다.
-		
+			
 		pfp.setPrinter();
 		pfp.printInfo();
 		//pfp 인스턴스는 PrintServiceForPrinter인터페이스의 인스턴스이며 PrintService인스턴스를 상속받고 있기에 printInfo 메소드를 사용할 수 있다.
 		
 		//printService = book1;	→ book1의 클래스는 printService 인터페이스를 구현하고 있지 않기에 오류
 		//printService.printInfo();
+		
+		
+		PrintServiceForPrinter cc = null;
+		//cc.setPrinter2(); 오류
+		cc = car;
+		cc.setPrinter2();
+		/// PrintService를 상속받고 있는 다른 인터페이스의 인스턴스도 PrintService의 디폴트 메소드 호출 가능? : 불가능 단, 해당 인터페이스를 구현하고 있는 클래스 or 해당 인터페이스를 상속받고 있는 인터페이스를 구현하고 있는 클래스의 인스턴스를 업캐스팅 받으면 호출 가능
+		
+		Car dd = new Car();
+		dd.setPrinter2();	
+		/// PrintService를 구현하고 있는 다른 클래스의 인스턴스도 PrintService의 디폴트 메소드 호출 가능? : 가능
 		
 		//문제 1
 		Box box = new Box();
@@ -278,7 +295,15 @@ class OrderService {
 }
 
 interface PrintService {
+	int a = 123;
+	// 인터페이스의 인스턴스 변수는 public static final이 선언된 것으로 간주된다
+	
 	public abstract void printInfo();
+	
+	default public void setPrinter2() {
+		System.out.println("기본값: 1번 프린터");
+	// 인터페이스에서 default는 해당 메소드를 오버라이딩 해도되고 안해도 된다는 의미이다
+	} 
 }
 
 interface PrintServiceForPrinter extends PrintService {

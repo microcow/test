@@ -14,7 +14,7 @@ public class Ex14Comparator {
 		/* ★기본 방식으로 정렬을 하고 싶다면, 
 		   '요소 클래스'가 'Comparator'인터페이스를 구현하고 있고 compareTo 메소드를 오버라이딩 한 뒤 sort 호출 시 List를 넘겨주면된다. */	
 		/* ★★ 기본 방식이 아닌 사용자가 정렬 방식을 설정하고 싶다면, '두번째 아규먼트의 클래스'가 'Comparator'인터페이스를 구현하고 있고 compare 메소드를 오버라이딩 한 뒤
-		    sort 호출 시 List와  정렬 방식(compare이 오버라이딩 된)클래스의 인스턴스를 넘겨주면된다. (익명클래스를 사용하고 싶다면 Comparator를 두번째 아규먼트로 입력 후 오버라이딩)*/
+		    sort 호출 시 List와 정렬 방식(compare이 오버라이딩 된)클래스의 인스턴스를 넘겨주면된다. (익명클래스를 사용하고 싶다면 Comparator를 두번째 아규먼트로 입력 후 오버라이딩)*/
 		// ★★ sort(아규먼트 하나)와 sort(아규먼트 둘)의 차이점은 sort(아규먼트 하나)는 정해진 기본방식 하나로만 정렬이 가능하고 sort(아규먼트 둘)은 정렬 방식을 매번 새롭게 정할 수 있다  
 		// ★ 오버라이딩 시 byte, char, double, short, long, int, float같은 PrimitiveType의 배열에는 적용이 불가능하니 Integer같은 Wrapper "Class"를 이용해야 한다
 		

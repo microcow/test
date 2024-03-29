@@ -136,8 +136,9 @@ public class Ex01FunctionalInterface {
 		oi.accept(LocalDateTime.now(), 5);
 		System.out.println();
 		// ObjIntConsumer 인터페이스는 Consumer 인터페이스와 마찬가지로 파라미터로 던지기만 하고 retrun할 필요가 없을 때 람다식으로 사용
-		// 단, 파라미터를 2개 던질(받을) 수 있는데 첫번째는 Object 타입, 두번째는 Int타입을 던질 수 있다
-		/// 위 구조 람다식 이해하기 (return 타입이 없는데 제네릭 타입이 적혀있는 이유?)
+		// 단, 파라미터를 2개 던질(받을) 수 있는데 첫번째는 Object 타입, 두번째는 Int타입을 던질 수 있다 (Object 타입이라고 한건 모든 클래스를 다 받을 수 있다는말. 실제론 T t로 받고있기에 ObjIntConsumer의 첫번째 제네릭 타입으로 받고 있음)
+		/* 위 구조 람다식 이해하기 (return 타입이 없는데 제네릭 타입이 적혀있는 이유?) : Object라 적어도 상관 없으나 요소(LocalDateTime)의 메소드를 사용하기 위해서 LocalDateTime을 제네릭타입으로 사용했다
+		Object라 적었다면 time은 Object클래스 소속이 되었으므로 plusYears 메소드 사용 불가 Int은 기본형이기에 제네릭타입에 기입하지 않음 */
 		
 		System.out.println("< ToIntFunction >");
 		ToIntFunction<String> tif = str -> Integer.parseInt(str);

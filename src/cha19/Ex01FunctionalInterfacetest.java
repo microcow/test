@@ -17,10 +17,10 @@ public class Ex01FunctionalInterfacetest {
 		  
 		  System.out.println("문제 2. BinaryOperator");
 		  Comparator<Integer> integerComparator = Comparator.naturalOrder();	          
-	      // Comparator.naturalOrder는 compareTo를 호출한 후 오름차순으로 정렬하는 방식 (*cha19. Ex01)
+	      // Comparator.naturalOrder는 compareTo를 호출한 후 오름차순으로 정렬하는 방식(return 타입 Comparator) (*cha18. Ex14)
 		  // Comparator<Integer> integerComparator = Comparator.reverseOrder(); 해당 식 사용 시 minBy와 maxby가 반대로 출력됨
 		  
-		  BinaryOperator<Integer> intBinaryOperator = BinaryOperator.minBy(integerComparator);
+		  BinaryOperator<Integer> intBinaryOperator = BinaryOperator.minBy(Comparator.naturalOrder()); // 아규먼트로 integerComparator를 사용해도 되고 Comparator.naturalOrder()를 사용해도 됨
 		  // ★ BinaryOperator 메소드는 제네릭 타입과 return타입이 동일하며, BiFunction과 기능이 유사하며 BiFunction 인터페이스를 상속받고 있다(BiFunction 메소드 사용 가능).
 		  // BinaryOperator의 minBy() 메서드는 매개변수로 전달된 비교자(Comparator)(오름차순)를 기반으로 apply() 메서드로 전달된 두 매개변수를 비교 후 작은 값을 반환
 	      // BinaryOperator.minBy(integerComparator)가 apply() 메서드에서 동작
