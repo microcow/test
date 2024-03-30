@@ -2,11 +2,15 @@ package cha19;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
+
 public class Ex03MethodReferences {
 	public static void main(String[] args) {
 		System.out.println("< 메서드 참조 >");
@@ -71,7 +75,7 @@ public class Ex03MethodReferences {
 				 * 						public R apply (T t){
 				 * 							return new Book(t); };
 				 */
-				// Book::validateLength는 str -> Book.validateLength(str) 과 동일하다 (람다식)
+		// Book::validateLength는 str -> Book.validateLength(str) 과 동일하다 (람다식)
 		
 		Collections.sort(store.getItems(), Item::compareByTitleAsc);
 		Collections.sort(store.getItems(), (item1, item2) -> Item.compareByTitleAsc(item1, item2));
@@ -95,12 +99,30 @@ public class Ex03MethodReferences {
 		Consumer<Store> printItems2 = Store::forEach;
 		// str -> str.forEach();와 동일 코드 // 이때 str은 forEach를 호출하는데 사용된다
 		// 즉, 메소드 참조 방식에서는 넘어오는 아규먼트가 메소드 호출 시 아규먼트로만 사용되는게아닌 호출자로도 사용될 수 있다(컴파일러가 자동으로 치환해줌)
+		// 호출 메소드가 static이 아닐 때(인스턴스 메소드일 때) :: 앞에 클래스 명을 사용하고 싶다면, Consumer 인터페이스를 사용해야한다 (파라미터만 주고 retrun은 없는)
 		/// 만약 accept의 아규먼트가 두개고 forEach 메소드도 아규먼트 1개를 필요로 한다면 무엇을 호출자로 쓸지 무엇을 아규먼트로 쓸지는? : 컴파일 오류 발생 (accecpt의 아규먼트는 하나로 고정)
 		/// 만약 accept의 아규먼트가 한개고 forEach 메소드도 아규먼트 1개를 필요로 한다면 무엇을 호출자로 쓸지 무엇을 아규먼트로 쓸지는? : 컴파일 오류 발생
-		/// 만약 accept의 아규먼트가 두개고 forEach 메소드도 아규먼트 두개를 필요로 한다면 무엇을 호출자로 쓸지는? : 컴파일 오류 발생 (accecpt의 아규먼트는 하나로 고정
-		// 호출 메소드가 static이 아닐 때 :: 앞에 클래스 명을 사용하고 싶다면, Consumer 인터페이스를 사용해야한다 (파라미터만 주고 retrun은 없는)
+		/// 만약 accept의 아규먼트가 두개고 forEach 메소드도 아규먼트 두개를 필요로 한다면 무엇을 호출자로 쓸지는? : 컴파일 오류 발생 (accecpt의 아규먼트는 하나로 고정		
 		printItems2.accept(store);
 		System.out.println();
+		
+		// 문제 1.
+		System.out.println("---");
+		Collections.sort(store.getItems(), Store::test1); //sort의 추상메소드 compare을 추상메소드로 오버라이딩 한 후 내용에서 test1 메소드 호출
+		store.forEach();
+		Collections.sort(store.getItems(), (item1, item2) -> Store.test1(item1, item2)); // 람다식
+		store.forEach();
+		
+		// 문제 2.
+		Supplier<Item> test2 = store::test2;
+		Supplier<Item> test3 = () -> store.test2(); //람다식
+		System.out.println(test2.get().getTitle());
+		
+		
+		Consumer<Store> test4 = Store::test2;
+		Consumer<Store> test5 = sto -> sto.test2(); //람다식
+		test4.accept(store);
+		/// 클래스::메소드 방식으로는 Consumer인터페이스처럼 주기만 하고 Predicate인터페이스 등을 사용해서 retrun받지는 못하는가
 	}
 
 }
@@ -113,9 +135,8 @@ class Store {
 			if (validateItem.test(title))
 				items.add(createItem.apply(title));
 		}
-	}
-	
-	public List<Item> getItems() {
+	}	
+	public List<Item> getItems() {		
 		return items;
 	}
 	
@@ -123,6 +144,12 @@ class Store {
 		for (Item item : items) {
 			System.out.println("[title]" + item.getTitle());
 		}
+	}
+	public static int test1(Item b1, Item b2) {	
+		return (b1.getTitle().compareTo(b2.getTitle()))*-1;
+	}
+	public Item test2() {
+		return items.get(1);
 	}
 }
 
@@ -155,3 +182,11 @@ class Book implements Item {
 	
 
 }
+/*
+문제 1.
+Store의 Item을 메소드 참조를 이용하여 내림차순으로 정렬하세요.
+
+문제 2.
+인스턴스 메소드를 Store에 추가후 메소드 참조를 통해 호출하세요.
+메소드 참조를 이용하여 인스턴스 메소드를 호출하는 두 가지 방식 모두 사용하세요. 
+*/

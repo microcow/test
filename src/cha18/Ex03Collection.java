@@ -1,5 +1,6 @@
 package cha18;
 import java.util.ArrayList;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -22,7 +23,7 @@ public class Ex03Collection {
 	public static void main(String[] args) {
 		List<Integer> arrayList = new ArrayList<>();
 		List<Integer> linkedList = new LinkedList<>();
-		Queue<Integer> linkedList2 = new LinkedList<>();
+		Queue<Integer> linkedList2 = new LinkedList<>(); // 왜 에러나지 잘되다가
 		Set<Integer> hashSet = new HashSet<>();
 		Set<Integer> linkedHashSet = new LinkedHashSet<>();
 		Set<Integer> treeSet = new TreeSet<>();
