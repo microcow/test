@@ -5,12 +5,15 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
+import java.util.function.Function;
 import java.util.function.IntConsumer;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 public class Ex04Stream {
 	
 	// Stream이란 저장 요소를 하나씩 참조해서 람다식으로 처리할 수 있도록 해주는 반복자이다.
+	// 배열은 요소들을 인덱스를 사용하여 직접 접근하고, 스트림은 요소들을 연속된 데이터 흐름으로 처리한다.
+	// ★★ 즉, 스트림은 하나의 시퀀스(흐름)이기에 메서드들은 각 요소에 대해 일괄적으로 적용되며, 내부적으로는 각 요소를 반복적으로 처리하여 결과를 생성합니다.
 	// 명령형이 아닌 선언형으로 Collection의 내용을 조회하고 수정하게 해주는 클래스가 Stream이다.
 	// ★ 내부 반복자를 사용하므로 병렬 처리가 쉽다 (!= 외부 반복자 : 코드로 직접 컬렉션의 요소를 반복해서 가져오는 방식)
 	/* ★ 내부 반복자를 사용하므로 요소의 수만큼 하나씩 참조해서 람다식을 실행한다.
@@ -21,11 +24,15 @@ public class Ex04Stream {
 	 *  ★★ 최종연산자 메소드를 호출한 Stream의 인스턴스는 재사용이 불가하다.(★ 하나의 Stream인스턴스를 가지고 최종연산자 두번 호출 불가 ★)
 	 *  ★★ 즉, Steam은 일회성 객체이며, 재사용을 하고싶다면 동일한 식으로 재생성해야한다 (단, 최종연산자 호출 전 중간연산자는 반복호출 가능)
 	 */
+	// 중간 연산자는 다른 스트림을 반환하며, 최종 연산자는 스트림의 ★요소를 소비★하여 최종 결과를 생성
+	
+	/// 왜 일반적인 메서드와 달리 스트림의 메서드는 반복적으로 실행되는가
 	
 	public static void main(String[] args) {
 		System.out.println("< of >");
 		Stream<String> stream = Stream.of("hi", "hello", "안녕하세요");
 		// ★ Stream의 of 메소드는 아규먼트의 내용들이 저장된 Stream 인스턴스를 return한다.
+		// ★★ Stream.of() 메서드는 배열이 아니라 스트림(시퀀스)을 생성한다.
 		stream.forEach(str -> System.out.print(str + ", "));
 		// ★ Steam의 forEach 메소드는 호출자의 요소를 하나씩 파라미터에 저장한다 (요소의 수만큼 반복)
 		// 또한, forEach 메소드는 Consumer 타입과 유사하게, 파라미터를 받지만 return하지 않는다.
@@ -139,7 +146,7 @@ public class Ex04Stream {
 				.stream()
 				.filter(eb -> eb.getTitle().startsWith("자바"))
 				.findAny(); // stream타입을 Optional 타입으로 return한다. (null 여부 체크를 위해 Optional 타입으로 변경)
-		/// findAny와 findFirst의 차이는 병렬스트림에서 배운 후 차이점 적기
+		/// Optional의 findAny와 findFirst의 차이는 병렬스트림에서 배운 후 차이점 적기
 		System.out.println(findAnyEB.get());
 		System.out.println();
 		
@@ -194,8 +201,8 @@ public class Ex04Stream {
 			.stream()
 			.filter(b -> b.getCategory().equals(EBook.Category.LANG))
 			.distinct()
-			// distinct 메소드는 stream의 요소를 중복 처리하는 메소드이다
-			// 이 때 equals와 Hashcode 메소드를 오버라이딩 하지 않는다면 주소를 가지고 중복처리한다.
+			// distinct()는 중복을 제거해 새로운 stream으로 반환해 주는 메서드이다
+			// 이 때 equals와 hashcode 메소드를 오버라이딩 하지 않는다면 주소를 가지고 중복처리한다.
 			.forEach(System.out::println);
 		System.out.println();
 		
@@ -209,10 +216,11 @@ public class Ex04Stream {
 			// map 메소드는 Map과는 다름
 			// map 메소드는 아규먼트의 값들로 이루어진 Stream이 return된다.
 			// 즉, ebooks에는 EBook타입의 인스턴스들이 저장되어있었으나, map으로 인해 filter로 걸러진 요소들의 제목들이 저장되었다
+			/// eume의 equals 메소드가 호출된거가 아래의 equals가 호출된건가? 아래의 equals가 호출되었다면 아규먼트인 EBook.Category.LANG가 EBook으로 형변환이 불가능하지 않나?
 			.forEach(System.out::println);
 		System.out.println();
 
-		// 17:00분 파이프라인은 요소를 순서대로 도나?
+		
 		System.out.println("< peek >");
 		ebooks
 			.stream()
@@ -222,16 +230,33 @@ public class Ex04Stream {
 			.peek(s -> System.out.println("peek2 -> " + s))
 			// peek은 중간연산자이며, 요소를 확인할 수 있다.
 			.forEach(System.out::println);
+		// filter를 순회하며 걸러진 요소를 한번에 retrun받는게 아닌 하나 걸러낸 후 아래 파이프라인의 메소드를 실행하고 다시 ebooks.stream().filter이 실행되는건가
+		   // ㄴ> yes. 첫 번째 요소가 filter를 통과하면, 그 요소는 바로 다음 파이프라인 단계인 peek, map, 그리고 두 번째 peek을 차례대로 거치게 됩니다. 이후 해당 요소에 대한 처리가 종료되면, 다음 요소가 filter를 시작으로 같은 과정을 반복합니다.
 		System.out.println();
 		
 		
 		
 		System.out.println("< flatMap >");
-		Stream<String> stream2 = Stream.of("A:90", "B:80", "C:100");
+		Stream<String> stream2 = Stream.of("A:90", "B:80", "C:100"); 
+		// 해당 문자열들은 배열로서 stream2에 저장되는 것이 아닌 하나의 시퀀스(흐름)로 stream2에 저장된다.
 		stream2
-			.flatMap(s -> Arrays.asList(s.split(":")).stream())
+			.flatMap(s -> Arrays.asList(s.split(":")).stream())	
+			.flatMap(s -> Arrays.stream(s.split(":"))) // ★ 바로 위 코드와 동일하게 Arrays.stream도 가능(★ Arrays.stream과 Arrays.List 차이 구분하기)
+			// ★ Arrays.stream() 메서드는 배열을 스트림으로 변환하는 데 사용됩니다. 
 			.forEach(System.out::println);
+		// flatMap도 Map과 유사하게 Stream을 다른 Stream으로 변환하는 메서드이다
+		/* ★ flatMap메소드는 Stream타입의 호출자를 List타입(혹은 Set타입)으로 바꾼 후 (이미 List타입이라면 바꿀필요x) 각각의 요소들을
+		 * ★ 하나의 요소로 합친 다음 그 하나의 요소를 가지고 있는 Stream으로 다시 return한다.★ (Set으로는 바꾸지 않는편)(Map타입은 직접적으론 불가, Set타입으로 우회)
+		 */
+		// flatMap 메소드는 아규먼트의 각각의 요소들을 하나의 요소로 합친 Stream을 return하고, map메소드는 각각의 요소로 가진 Stream으로 return한다. (차이점)
+		// flatMap은 2차원을 1차원으로 변경한 후 Stream으로 return한다.
+		// slpit메소드는 아규먼트의 문자열을 기준으로 문자열을 나눈후 String타입의 배열로 return한다.
+		// split으로 자른 문자열 배열을 바로 stream타입으로 변경할 수 없기에 Arrays.asList메소드로 List로 바꾼 후 Stream으로 바꾸는 모습
+		 
 		System.out.println();
+		
+		
+		
 	}
 
 }

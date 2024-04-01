@@ -23,7 +23,6 @@ public class Ex02Lambda {
 		// 람다식 사용
 		/// u 변수는 where의 User user에 대응하는 변수??
 		/// search 호출 시 두번째 파라미터 타입은 Criteria인데 자동으로 Criteria()의 인스턴스 역할을 하는건가 (Criteria의 추상메소드를 람다식으로 표현하고 있으니?)
-		/// new Criteria 대신 람다식을 아규먼트로 입력?
 		UserService.printUsers(condUser);
 		System.out.println("ss");
 		

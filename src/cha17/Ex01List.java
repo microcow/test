@@ -121,6 +121,7 @@ public class Ex01List {
 		integers9.removeAll(integers10); // removeAll 메소드는 호출자의 내용에서 아규먼트(Collection타입)의 내용을 삭제해여 호출자에 저장한다 (즉, 중복되는 내용만 삭제),(아규먼트로 사용된 Collection타입 인스턴스의 내용은 비교에만 쓰일뿐 삭제되지 않음.)
 		List<Book> integers11 = new ArrayList<>(Arrays.asList(dooly));
 		
+
 		// List<Book> books2 = Arrays.asList(arrBook); //(이렇게 생성할 경우 List 배열의 길이는 던진 배열인스턴스의 길이로 고정되며 늘릴 수 없음)
 		/* ★★ new ArrayList<>() 생성자로 리스트를 만드는 것과는 달리 Arrays.asList()메서드를 통해 리스트를 만들 경우 해당 리스트들은 길이가 고정된다 (배열길이 가변x)
 		 	      따라서, 위 코드가 아닌 아래 코드와 같이 생성해야한다.
