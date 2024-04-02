@@ -100,11 +100,27 @@ public class teststeam {
                                                  return set.stream();
                                              }) // {} 필수
                                              .collect(Collectors.toSet());
-
-        // 결과 출력
         System.out.println("Original Set: " + originalSet);
         System.out.println("Doubled Set: " + doubledSet);
         
+        
+        System.out.println("-------------");
+    	// flatMap의 List사용
+	    List<Integer> originalList1 = new ArrayList<>();
+	    originalList1.add(1);
+	    originalList1.add(2);
+	    originalList1.add(3);
+
+        // 각 요소를 2배로 만든 새로운 List 생성
+        List<Integer> doubledSet1 = originalList1.stream()
+                                             .flatMap(element -> {
+                                                 Set<Integer> set = new HashSet<>();
+                                                 set.add(element * 2);
+                                                 return set.stream();
+                                             }) // {} 필수
+                                             .collect(Collectors.toList());
+        System.out.println("Original List: " + originalList1);
+        System.out.println("Doubled List: " + doubledSet1);
         
         
         System.out.println("< flatMap >");
