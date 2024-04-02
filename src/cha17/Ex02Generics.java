@@ -30,6 +30,35 @@ public class Ex02Generics {
 		System.out.println();
 		
 		System.out.println(cart2.get(1));
+		
+		
+	////////
+		
+		Cart2<Book2> cart11 = new Cart2<Book2>();		
+		
+		cart11.add(b1);
+		cart11.add(b2);
+		cart11.add(b3);
+		
+		System.out.println(cart11.toString());
+		System.out.println(cart11.get(0).toString());
+		
+		
+		List<Book2> cart12 = new ArrayList<Book2>();		
+		
+		cart12.add(b1);
+		cart12.add(b2);
+		cart12.add(b3);
+		
+		System.out.println(cart12.toString());
+		System.out.println(cart12.get(0).toString());
+		
+		// cart12.toString()이 인스턴스 주소가 출력되지 않는 이유
+		// ArrayList에서 .toString()을 오버라이딩 하고 있으며 호출한 인스턴스의 요소(Book2타입)들의 toString이 출력되도록 변환 후 return하나봄
+		/* 즉, cart11.toString()는 Cart2에서 toString을 오버라이딩 하고 있지 않기에 인스턴스 주소가 출력되고,
+		 * cart12.toString()에서는 ArrayList가 위와같이 오버라이딩 하고 있기에 Book2클래스가 오버라이딩 한 toString이 출력되나봄
+		 */
+		// List<Book2> cart12가 new ArrayList<Book2>();로 업캐스팅 되었기에 List의 메서드만 사용 가능하지만 자식클래스에 오버라이딩 된 메소드가 있다면 오버라이딩 된 메소드를 사용
 	}
 
 }
@@ -101,5 +130,10 @@ class Cart2<T> {
 		for (T item : items) {		// 바이트 코드 변환 시 보일러 플레이트 최소화
 			System.out.println(item);
 		}
+		
 	}
+	/* @Override
+	public String toString() {
+		return "sdfsdfsdf";
+	}*/
 }

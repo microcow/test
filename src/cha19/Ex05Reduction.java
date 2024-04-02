@@ -86,7 +86,7 @@ public class Ex05Reduction {
 				.stream()
 				.filter(b -> b.getCategory().equals(EBook.Category.LANG))
 				.mapToInt(EBook::getPrice)
-				.reduce(Integer::min)
+				.reduce(Integer::min) // = (a,b) -> Integer.min(a,b)
 				.getAsInt();
 		System.out.println(minPrice);
 		System.out.println();

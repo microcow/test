@@ -12,15 +12,16 @@ public class Ex03Downcasting {
 		book.setTitle("자바 기본문법");
 		System.out.println(book.getTitle());
 		
-		book = ebook; // 해당 방법으로도 업캐스팅 가능
+		book = ebook; // 해당 방법으로도 업캐스팅 가능 (ebook이 null(메모리 생성x) 이므로 해당 방법 시 런타임 오류 발생 메모리 부여 시 정상 동작) // ebook = new EBook3();
 		book = new EBook3(); // 업캐스팅
 		book.setTitle("자바 알고리즘");
 		System.out.println(book.getTitle());
 		
+	
 		
 		//book.setFontColor("블랙"); → book은 EBook3의 인스턴스 변수를 담고있지만 Book3소속이기에 자식클래스의 메소드를 사용할 수 없다.	
-		// ebook = book;
-		ebook = (EBook3)book;// 다운캐스팅을 하기 위해선 업캐스팅이 선행되어야 하며, 업캐스팅 된 클래스를 다운캐스팅해야한다.
+		// ebook = book; ★ 자식클래스는 부모클래스를 받을 수 없다
+		ebook = (EBook3)book;// 다운캐스팅을 하기 위해선 ★업캐스팅이 선행★되어야 하며, 업캐스팅 된 클래스를 다운캐스팅해야한다.
 		// ★ 부모타입의 인스턴스를 자식 타입으로 다운캐스팅 한 후 자식클래스의 인스턴스로 넘겨줄 경우 그걸 받은 자식클래스 인스턴스가 자식클래스에 있는 메소드 및 인스턴스 변수 사용 가능 ★
 		// ★ 다운캐스팅 하는 법 : 자식클래스인스턴스 = (자식클래스)부모클래스인스턴스;
 		// ★ 다운캐스팅 추가 참고(*ch13 Ex02)
@@ -32,8 +33,20 @@ public class Ex03Downcasting {
 		ebook.setFontColor("블랙");
 		System.out.println(ebook.getFontColor());
 		
+		
 		// abook = new Book3(); → abook은 이미 Book3를 상속받고 있기 때문에 오류
 		
+		
+		// book.getFontColor();
+		EBook3 test = new EBook3();
+		test.setFontColor("test");
+		System.out.println(test.getFontColor()); // EBook3의 클래스인 getFontColor 호출 시 test 출력
+		test = (EBook3)book; // 다운캐스팅
+		System.out.println(test.getFontColor());
+		
+		Book3 book123 = new Book3();
+		book123 = (EBook3)book;
+		//book123.setFontColor("블랙");
 		
 		//문제 (3)
 		book = new AudioBook3();

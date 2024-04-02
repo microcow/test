@@ -143,7 +143,7 @@ public class Ex01List {
 		 */
 		
 		System.out.println("123122131231");
-		System.out.println(books2.toString()); // ★★ 오버라이딩 되지 않은 to.String()은 "요소"를 출력한다
+		System.out.println(books2.toString()); // ★★ 오버라이딩 되지 않은 to.String()은 "요소"를 출력한다 (자세한 설명은 cha17 Ex02 참고)
 		
 		books2.addAll(books);
 		// addAll메소드는 호출자(List타입)에 아규먼트(List타입)를 통으로 더해준다(더해진 data는 가장 뒷부분에 저장). (addAll메소드는 ArrayList에 다른 ArrayList의 데이터를 통째로 붙이기 위한 메서드이다.)

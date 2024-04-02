@@ -161,6 +161,7 @@ public class Ex04Streamtest {
 			priceSet.addAll(priceSet2);
 			System.out.println(priceSet);
 	
+			// 문제는 Ex04에서 풀었습니다
 	}
 
 }
