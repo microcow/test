@@ -57,8 +57,6 @@ public class Ex03MethodReferences {
 		// 위의 i -> new int[i]; 코드와 동일하다
 		// 참조 대상은 생성자를 호출할 클래스(혹은 기본형)
 		// 마찬가지로 i가 생략되었다
-		/// 그냥 메소드일땐 :: 앞부분엔 메소드의 return타입이 오고 스태틱 메소드일땐 :: 앞에 클래스명이 오는건가
-		/// :: 앞에는 리턴타입, 뒤에는 호출 메소드. 새로 생성할 경우 new?
 		System.out.println(Arrays.toString(f4.apply(5)));
 		System.out.println();
 		

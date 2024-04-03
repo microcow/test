@@ -129,6 +129,8 @@ class Book4 implements Comparable<Book4> {
 	public String toString() {
 		return "(" + no + ", " + title + ")";
 	}
+	
+	// Comparator.comparingInt 메서드는 아규먼트를 기준으로 정렬하는 메서드이다. (여기엔 없는 내용)
 }
 /* 문제는 Ex13에서 풀었습니다
 문제 1.

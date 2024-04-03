@@ -27,8 +27,8 @@ public class Ex04Streamtest {
 		IntStream intStream = new Random()
 				.ints(1, 100)
 				.limit(10);
-			intStream.forEach(System.out::println);
-			System.out.println();
+		intStream.forEach(System.out::println);
+		System.out.println();
 			
 			
 		//문제 3.
@@ -46,15 +46,15 @@ public class Ex04Streamtest {
 		System.out.println();
 		
 			
+		System.out.println("---");
 		// 문제 4.
 		Car2
 		.stream()
-		.filter(b -> b.equals(b))
-		.peek(b -> System.out.println(b+"!!"))
+		//.filter(b -> b.equals(b))
 		.distinct()
 		.forEach(System.out::println);
 		System.out.println();
-		///filter(b -> b.equals(b)) 해당 부분이 있고 없고가 무슨차이길래 distinct에서 중복처리가되지
+		//filter(b -> b.equals(b)) 해당 부분이 있고 없고가 무슨차이길래 distinct에서 중복처리가되지 -> 없어도 중복처리 됨
 		
 		
 		// 문제 5.
@@ -70,13 +70,13 @@ public class Ex04Streamtest {
 		//문제 6.
 		Car2
 		.stream()	
-		.flatMap(s -> Arrays.stream((s.getname().split(""))))
+		.flatMap( s -> Arrays.stream(s.getname().split("")) )
 		// .map(s -> s.getName().split(""))
 		.sorted() // Stream클래스의 sorted메소드는 오름차순으로 정렬해준다
 		.forEach(System.out::println);
 		System.out.println();
 		// .sorted() 메소드를 호출하기 위해선 .flatMap()메소드를 통한 평탄화가 선행되어야 한다
-		
+			
 		
 		//문제 7.
 		Optional<Car> findAny =
@@ -161,7 +161,7 @@ public class Ex04Streamtest {
 			priceSet.addAll(priceSet2);
 			System.out.println(priceSet);
 	
-			// 문제는 Ex04에서 풀었습니다
+			
 	}
 
 }

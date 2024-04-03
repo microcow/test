@@ -97,13 +97,13 @@ public class Ex05Reduction {
 				.stream()
 				// 컬렉션 사용 시 accumulator(누산기) 실행 횟수 만큼 컬렉션을 생성하므로 성능이 좋지 않음.
 				.reduce((a,b) -> a.getPrice() > b.getPrice() ? a : b)
-				// 여기서의 reduce메소드는 IntBinaryOperator타입을 파라미터로 받고있다 retrun타입은 Optional				
+				// ★ reduce 메서드는 스트림의 모든 요소를 하나씩 결합하여 단일 값을 반환하는 메서드입니다. 다양한 집계 연산(예: 합, 평균, 최댓값, 최솟값)을 수행하는 데 유용합니다.
+				// 여기서의 reduce메소드는 IntBinaryOperator타입을 파라미터로 받고있다 return타입은 Optional				
 				// BinaryOperator는 파라미터가 2개고 리턴이 필요할 때 사용 (단, 2개의 파라미터와 리턴타입이 일치해야한다)
 				// a에는 stream에 저장되어있는 첫번째 요소가, b에는 두번째 요소가 오게된다
 				// ★ 모든 요소들을 상대로 람다식이 실행된 후 최종적으로 ★하나의 값★을 return한다.
 				.get(); // 참조형을 위한 Optional일 경우 get() 으로 요소를 받아와야한다
 		
-		/// reduce 메소드가 여러개? sumPriceTax 부분과 해당 부분의 reduce는 다르게 동작?
 		
 		System.out.println(maxEBook);
 		System.out.println();
@@ -141,3 +141,4 @@ public class Ex05Reduction {
 	}
 
 }
+//문제는 Ex04에서 풀었습니다

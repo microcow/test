@@ -54,11 +54,15 @@ public class Ex02Generics {
 		System.out.println(cart12.get(0).toString());
 		
 		// cart12.toString()이 인스턴스 주소가 출력되지 않는 이유
-		// ArrayList에서 .toString()을 오버라이딩 하고 있으며 호출한 인스턴스의 요소(Book2타입)들의 toString이 출력되도록 변환 후 return하나봄
+		// ArrayList에서 .toString()을 오버라이딩 하고 있으며 호출한 인스턴스의 요소(Book2타입)들의 toString이 출력되도록 변환 후 return (HashSet 등 여러 collection에서 이와 같이 오버라이딩 중) 
 		/* 즉, cart11.toString()는 Cart2에서 toString을 오버라이딩 하고 있지 않기에 인스턴스 주소가 출력되고,
 		 * cart12.toString()에서는 ArrayList가 위와같이 오버라이딩 하고 있기에 Book2클래스가 오버라이딩 한 toString이 출력되나봄
-		 */
+		 * 단, 요소(Book2)에서도 toString을 오버라이딩 하고 있지 않다면 인스턴스 주소를 출력한다 */
 		// List<Book2> cart12가 new ArrayList<Book2>();로 업캐스팅 되었기에 List의 메서드만 사용 가능하지만 자식클래스에 오버라이딩 된 메소드가 있다면 오버라이딩 된 메소드를 사용
+		
+		/* ★ 요약 : 원래는 자신이 가지고 있는 요소가 toString을 오버라이딩 했건 말건 cart11과 cart12 모두 자신의 클래스인 Cart2와 ArrayList의 toString을 출력하는게 맞는데
+				  ArrayList의 toString에서는 요소들이 요소타입의 toString을 출력할 수 있도록 유도하기에 주소가 아닌 문자열이 출력되고있음 */
+		
 	}
 
 }

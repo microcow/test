@@ -216,7 +216,7 @@ public class Ex04Stream {
 			// map 메소드는 Map과는 다름
 			// map 메소드는 아규먼트의 값들로 이루어진 Stream이 return된다.
 			// 즉, ebooks에는 EBook타입의 인스턴스들이 저장되어있었으나, map으로 인해 filter로 걸러진 요소들의 제목들이 저장되었다
-			/// eume의 equals 메소드가 호출된거가 아래의 equals가 호출된건가? 아래의 equals가 호출되었다면 아규먼트인 EBook.Category.LANG가 EBook으로 형변환이 불가능하지 않나?
+			// eume의 equals 메소드가 호출된거가 아래의 equals가 호출된건가? 아래의 equals가 호출되었다면 아규먼트인 EBook.Category.LANG가 EBook으로 형변환이 불가능하지 않나? (LANG이 저장된 것이 아닌 카테고리가 LANG인 인스턴스가 저장된 것임)
 			.forEach(System.out::println);
 		System.out.println();
 
@@ -249,13 +249,36 @@ public class Ex04Stream {
 		 * ★ 하나의 요소로 합친 다음 그 하나의 요소를 가지고 있는 Stream으로 다시 return한다.★ (Set으로는 바꾸지 않는편)(Map타입은 직접적으론 불가, Set타입으로 우회)
 		 */
 		// flatMap 메소드는 아규먼트의 각각의 요소들을 하나의 요소로 합친 Stream을 return하고, map메소드는 각각의 요소로 가진 Stream으로 return한다. (차이점)
-		// flatMap은 2차원을 1차원으로 변경한 후 Stream으로 return한다.
+		/* ★ flatMap은 2차원 Stream을 1차원으로 변경한 후 Stream으로 return한다. 여기서 말한 2차원이란 뜻은 Array.asList().stream이나 Array.stream을 통해
+		 *  stream이 배열 stream이(2차원) 되었고, 해당 배열 stream을 flatMap 메서드가 각 배열 stream에 저장된 요소들을 하나의 stream으로 합친다 
+		 */
 		// slpit메소드는 아규먼트의 문자열을 기준으로 문자열을 나눈후 String타입의 배열로 return한다.
 		// split으로 자른 문자열 배열을 바로 stream타입으로 변경할 수 없기에 Arrays.asList메소드로 List로 바꾼 후 Stream으로 바꾸는 모습
+		/* flatMap 코드 상세 해석 : split에 의해 A와 90이라는 2개의 요소를 가진 String 배열 1개 리턴 , B와 80이라는 2개의 요소를 가진 String 배열 1개 리턴 , C와 100이라는 2개의 요소를 가진 String 배열 1개 리턴되었으며
+		 *  // 여기서부터 다시 작성 각각의 리턴된 String 배열 3개가 Arrays.asList에 의해 3개의 리스트로 생성되었으며, .stream 메소드를 통해 3개의 리스트가 3개의 스트림으로 변경되었다
+		 *  그 세개의 스트림의 요소를 flatMap 메서드가 하나의 스트림에 합쳤다 
+		 * 
+		 */
+		
+		
 		 
-		System.out.println();
+		System.out.println("-----");
 		
+		String aaa = "A:90";
+		String bbb = "B:30";
+		Stream<String> stream4 = Stream.of(aaa, bbb);
+		stream4.flatMap(s-> Arrays.asList(s).stream())
+		.forEach(System.out::println);
+		/// 위 코드는 오류가 발생하지 않고
 		
+		String ccc = "A:90";
+		String ddd = "B:30";
+		Stream<String> stream5 = Stream.of(ccc, ddd);
+		stream5.flatMap(s-> Arrays.asList(s).stream());
+		stream5.forEach(System.out::println);
+		/// 아래 코드는 런타임에서 오류가 발생하는 이유
+		
+	
 		
 	}
 
