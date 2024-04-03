@@ -73,6 +73,7 @@ public class Ex04Streamtest {
 		.flatMap( s -> Arrays.stream(s.getname().split("")) )
 		// .map(s -> s.getName().split(""))
 		.sorted() // Stream클래스의 sorted메소드는 오름차순으로 정렬해준다
+		// Car 클래스가 Comparable을 구현하지 않은 경우에도 컴파일러가 오류를 내지 않는 이유는 Java 8에서 도입된 기능 중 하나인 '타입 추론' 때문이다.
 		.forEach(System.out::println);
 		System.out.println();
 		// .sorted() 메소드를 호출하기 위해선 .flatMap()메소드를 통한 평탄화가 선행되어야 한다

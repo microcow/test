@@ -11,8 +11,8 @@ public class Ex14Comparator {
 		System.out.println("< 번호 오름차순 정렬, 제목 오름차순 정렬 >");
 		Collections.sort(books, new AscendingNo());
 		// sort메소드의 아규먼트가 두개 있다면, 첫번째 아규먼트가 두번째 아규먼트에 오버라이딩 되어있는 compare 메소드의 방식으로 정렬된다 (두번째 아규먼트로는 인스턴스가 와야하며, Comparator인터페이스를 구현하고 있어야한다.)
-		/* ★기본 방식으로 정렬을 하고 싶다면, 
-		   '요소 클래스'가 'Comparator'인터페이스를 구현하고 있고 compareTo 메소드를 오버라이딩 한 뒤 sort 호출 시 List를 넘겨주면된다. */	
+		/* ★★기본 방식으로 정렬을 하고 싶다면, 
+		   '요소 클래스'가 'Comparable'인터페이스를 구현하고 있고 compareTo 메소드를 오버라이딩 한 뒤 sort 호출 시 List를 넘겨주면된다. */	
 		/* ★★ 기본 방식이 아닌 사용자가 정렬 방식을 설정하고 싶다면, '두번째 아규먼트의 클래스'가 'Comparator'인터페이스를 구현하고 있고 compare 메소드를 오버라이딩 한 뒤
 		    sort 호출 시 List와 정렬 방식(compare이 오버라이딩 된)클래스의 인스턴스를 넘겨주면된다. (익명클래스를 사용하고 싶다면 Comparator를 두번째 아규먼트로 입력 후 오버라이딩)*/
 		// ★★ sort(아규먼트 하나)와 sort(아규먼트 둘)의 차이점은 sort(아규먼트 하나)는 정해진 기본방식 하나로만 정렬이 가능하고 sort(아규먼트 둘)은 정렬 방식을 매번 새롭게 정할 수 있다  
@@ -45,6 +45,7 @@ public class Ex14Comparator {
 		System.out.println("< Comparator.reverseOrder >");
 		Collections.sort(books, Comparator.reverseOrder());
 		// Comparator.reverseOrder 메소드는 정렬(compareTo)을 반대로 정렬하여 Comparator타입의 인스턴스를 retrun한다
+		// Comparator.naturalOrder 메소드는 오름차순
 		// 첫번째 아규먼트인 Comparable을 구현하고 있는 클래스에 되어있던 정렬(compareTo)을 반대로 정렬해주는 메소드이다
 		/// Comparable을 구현하고 있는 클래스의 인스턴스'만' 첫번째 아규먼트로 사용 가능? (comparator를 구현하고있는 클래스는 사용 불가?)
 	
