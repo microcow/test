@@ -161,7 +161,10 @@ public class Ex04Streamtest {
 			
 			priceSet.addAll(priceSet2);
 			System.out.println(priceSet);
-	
+			
+			// Ex08.Optional
+			
+			
 			
 	}
 

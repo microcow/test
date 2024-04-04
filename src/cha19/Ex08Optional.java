@@ -64,13 +64,14 @@ public class Ex08Optional {
 		
 		System.out.println("< orElse >");
 		EBook eb4 = opt3.orElse(new EBook("옵셔널", 30000, EBook.Category.LANG));
-		//orElse 메서드는 opt3가 null이 아니라면  opt3의 요소를 return하고(아규먼트의 내용은 실행하지 않고), null일 경우 new EBook을 생성 후 저장한다 (위의 if문과 삼항연산자보다 코드가 간결)
+		//orElse 메서드는 opt3가 null이 아니라면 opt3의 요소를 return하고(아규먼트의 내용은 실행하지 않고), null일 경우 new EBook을 생성 후 저장한다 (위의 if문과 삼항연산자보다 코드가 간결)
 		System.out.println(eb4);
 		System.out.println();
 		
 		System.out.println("< orElseGet >");
 		EBook eb5 = opt3.orElseGet(() -> new EBook("옵셔널", 30000, EBook.Category.LANG));
 		// orElseGet 메서드는 호출자가 null일 경우 아규먼트인 람다식을 실행한다 (null이 아닐 경우 opt3의 요소를 return)
+		// opElse와 opElseGet은 호출자가 null일 경우 아규먼트의 내용을 저장하는 메서드
 		System.out.println(eb5);
 		System.out.println();
 		
@@ -80,6 +81,7 @@ public class Ex08Optional {
 			opt3.orElseThrow(() -> new NullPointerException());
 			// orElseThrow 메서드는 호출자가 null일 경우 특정 예외(NullPointerException 뿐만 아니라)를 발생시킬 수 있다. (try 문으로 감싸주어야함)
 			// null이 아닐 경우 해당 try catch 코드 미실행
+			// opElse와 opElseGet은 호출자가 null일 경우 아규먼트의 내용을 저장하는 메서드지만 orElseThrow는 호출자가 null이라면 오류를 발생시키는 메서드
 		} catch (NullPointerException e) {
 			System.out.println("NullPointerException 발생");
 		}
@@ -92,7 +94,7 @@ public class Ex08Optional {
 		// String a = "";와 같은 원리
 		Optional<EBook> opt5 = null;
 		System.out.println(opt4.orElse(new EBook("옵셔널", 30000, EBook.Category.LANG)));
-		// opt4는 '요소'가 비어있지만(null), Optional.empty 메서드로 인스턴스의 메모리는 생성하였기에 메서드 호출이 가능하나, '요소의 내용'이 비어있기에(null) orElse호출 시 아규먼트가 실행된다 
+		// opt4는 '요소'가 비어있지만(null), Optional.empty 메서드로 인스턴스의 메모리는 생성하였기에 메서드 호출이 가능하나, '요소의 내용'이 비어있기에(null) orElse호출 시 아규먼트가 저장된다
 		/* //System.out.println(opt5.orElse(new EBook("옵셔널", 30000, EBook.Category.LANG))); 
 		   opt5는 = null로 표현되어 opt4와 동일하게 내용이 null일 것 같지만 = null;은 메모리 생성을 하지 않으므로 메서드 호출이 불가하다.
 		   이전 예시(opt3)는 Optional 인스턴스의 메모리는 생성되었지만 'null인 요소'를 담고있었기에 메서드 호출은 가능했지만 내용은 null이었던 것 */
@@ -123,7 +125,7 @@ public class Ex08Optional {
 		p.setType2("test");
 		Optional<Panel> panel = Optional.of(p);
 		// Panel 타입의 인스턴스 p를 Optional에 저장하였다
-		/// Optional은 static 메서드이므로 아규먼트로 하나만 던질 수 있기에 하나의 Optional 클래스에 하나의 요소만 저장할 수 있다/
+		// Optional은 static 메서드이므로 아규먼트로 하나만 던질 수 있기에 하나의 Optional 클래스에 하나의 요소만 저장할 수 있다
 			
 		Panel q = new Panel();
 		panel = Optional.of(q);
@@ -152,8 +154,9 @@ public class Ex08Optional {
 		
 		// ★ map메서드는 아규먼트의 결과를 Optional<>로 감싼다음 결과를 return함
 		
-		/* 만약, .map(Monitor::getScreen)이 실행되었다면 getScreen에서 Optional<Screen> BBB을 리턴받으니까 Optinal<Optinal <Screen>> CCC이 되어버림 (map은 Optional<>을 씌우고 return하니까)
+		/* 만약, flatMap이 아닌 .map(Monitor::getScreen)이 실행되었다면 getScreen에서 Optional<Screen> BBB을 리턴받으니까 Optinal<Optinal <Screen>> CCC이 되어버림 (map은 Optional<>을 씌우고 return하니까)
 		 * 근데 이 때 map이 아닌 flatMap 메서드를 사용하게 되면 Optinal<>을 씌우지 않으므로 Optional<Screen> BBB가 그대로 return됨 */
+		// 단, flatMap과 Map 둘 다 return타입은 Optional임! (즉, flatMap과 map으로 내용을 합치거나 정렬한 후 요소를 꺼낼땐 orElse 등과 같은 메서드 사용)
 		
 		
 		System.out.println("< ifPresent >");
@@ -165,6 +168,8 @@ public class Ex08Optional {
 				.map(Panel::getType);
 		optPanelType.ifPresent(System.out::println);
 	}
+	
+	// findFirst() 메서드는 해당 스트림에서 첫 번째 요소를 반환하는 메서드입니다. 이 메서드는 Optional을 반환합니다.
 }
 
 class Monitor {
