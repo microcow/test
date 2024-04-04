@@ -87,7 +87,7 @@ public class Ex01List {
 		
 		
 		
-		Book test = new Book("반갑", "습니다");;
+		Book test = new Book("반갑", "습니다");
 				
 		Book[] arrBook = { // arrBook 인스턴스는 Book클래스의 인스턴스를 배열로 저장할 수 있다.
 				new Book("파이썬 알고리즘", "엘컴퓨터학원"), 
@@ -100,14 +100,14 @@ public class Ex01List {
 		
 		Book dooly = new Book("국어", "영어");
 				
-		// ★★ ArrayList<> 생성 방법 ★★ // ※ Integer는 예시 클래스임
+		// ★★ ArrayList<> 생성 방법 ★★
 		ArrayList<Integer> integers1 = new ArrayList<Integer>(); // 타입 지정 // 코드 해석 : integers1은 Interger타입의 인스턴스를 저장할 수 있는 배열이다. (정확히는 배열과는 다름. 배열 형태로 저장함. integers1[0] 이런식으로 사용 불가)
 		ArrayList<Integer> integers2 = new ArrayList<>(); // 타입 생략 가능 (다이아몬드 연산자)
 		List<Integer> integers3 = new ArrayList<>(10); // 용량(배열) 설정(가변적임) // ※ Collection타입이 ArrayList에서 List로 변경! : List는 ArrayList클래스가 구현하고있는 인터페이스이므로 업캐스팅 가능
 		List<Integer> integers4 = new ArrayList<>(integers1); // 다른 Collection값 저장
 		List<Book> integers5 = new ArrayList<>(Arrays.asList(arrBook)); /* Arrays.asList메소드의 아규먼트로 배열인스턴스가 온다면, 배열인스턴스의 요소들을 [0]부터 차곡차곡 integers5에 저장 (배열이 가변적임) 
 		★ 만약 해당 방법이 아니라면 List<Book> integers5 = new ArrayList<>();로 생성 후 integers5.add(arrBook[0]);과 같이 배열을 하나하나 따로 저장해줘야하는 번거로움이 있음)
-		★★★저장되는 요소는 인스턴스가 될수도 있고 문자열 등이 될수도 있으며★★★, 뭐가됐든 Arrays.asList는 아규먼트에서 요소들을 빼서 저장하는 메소드이다. 
+		★★★저장되는 요소는 인스턴스가 될수도 있고 문자열 등이 될수도 있으며★★★, 뭐가됐든 Arrays.asList는 아규먼트에서 요소들을 빼서 List로 저장하는 메소드이다. 
 		 */
 		List<Book> integers6 = new ArrayList<>(Arrays.asList(test)); // Arrays.asList 메소드에서 꼭 배열타입의 인스턴스만 넘길필요 없음 (단, 선언만 하면 안되고 = null 혹은 = new Book();을 통한 메모리가 있어야함 )
 		List<Book> integers7 = new ArrayList<>(Arrays.asList(test2)); // 값이 없는 배열은 null로 저장된다 //System.out.println(integers67.toString()); → null 확인

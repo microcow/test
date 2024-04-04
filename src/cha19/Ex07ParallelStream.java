@@ -70,6 +70,14 @@ public class Ex07ParallelStream {
 		// parallelStream(병렬스트림)은 sorted 호출 후 forEach로 결과 출력 시 정렬되지 않으며, forEachOrdered 메서드를 통해 출력하여야 정렬된 상태로 출력된다.
 		// ★ forEachOrdered메서드는 순서가 보장되지 않는 병렬스트림에서 순서를 보장하며 출력해주기에 일반스트림에서는 forEach와 forEachOdered 메서드의 차이를 명백히 느끼지 못한다
 		System.out.println();
+		
+		// 문제 1.
+		System.out.println("< parallelStream sorted forEachOrdered >");
+		ebooks
+			.parallelStream()
+			.sorted(Comparator.reverseOrder())
+			.forEachOrdered(System.out::println);
+		System.out.println();
 	}
 
 }
@@ -105,3 +113,9 @@ class EBook2 implements Comparable<EBook2> {
 		return title.compareTo(b.title);
 	}
 }
+/*
+문제 1. 
+모든 책들의 정보를 책가격 기준 내림차순 정렬하여 출력하세요.
+패러렐 스트림을 이용해야 합니다.
+힌트) sorted와 Comparator를 사용하세요.
+*/

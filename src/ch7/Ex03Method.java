@@ -33,7 +33,7 @@ public class Ex03Method {
 		System.out.print(book2.getDollarPrice() + "\n" );
 		float dollar = book2.getDollarPrice();
 		System.out.println(dollar);
-		// return된 값을 따로 저장하여 사용할 수도 있다.
+		// return된 값을 따로 저장하여 사용할 수도 있다.	
 		
 		
 		book2.printInfoEng();
@@ -50,7 +50,7 @@ class Book2 {
 	//  인스턴스 변수들
 	
 	// return타입 메소드name (파라미터) {
-	void printInfo() {
+	public void printInfo() {
 	// 메소드 앞에 적는 것(void)은 return 타입이다
 	// void는 해당 메소드가 return을 하지 않는다는 뜻의 타입이다.
 	// void를 사용하였을 땐, 메소드 내에서 System.out.print과 같이 출력 까지 처리하는 편

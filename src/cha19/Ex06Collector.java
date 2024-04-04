@@ -16,6 +16,8 @@ public class Ex06Collector {
 		ebooks.add(new EBook("파이썬 기본문법", 33000, EBook.Category.LANG));
 		ebooks.add(new EBook("리눅스", 40000, EBook.Category.APP));
 		
+		//★★ collect에서 groupingBy 류의 메서드들은 stream을 Map타입으로 변경하는 메서드이다
+		
 		System.out.println("*** Collector ***");
 		// Collectors는 Collector를 반환하는 메소드들로 이루어진 클래스
 		System.out.println("< toList >");
@@ -47,7 +49,7 @@ public class Ex06Collector {
 			ebooks
 				.stream()
 				.collect(Collectors.groupingBy(k -> k.getCategory())); // = EBook::getCategory
-		// .collect.Collectors.groupingBy() 메서드는 stream을 Map으로 변경해주는 메서드이다.
+		// ★ .collect.Collectors.groupingBy() 메서드는 stream을 Map으로 변경해주는 메서드이다.
 		// ★ collect 메소드를 통해 Map으로 변환할 때는 Collectors.groupingBy 메소드를 통해 아규먼트에 key값을 입력해주여야 한다. 
 		// 중복된 카테고리 값은 각 카테고리에 대해 하나의 키로만 맵에 저장된다. (즉, 인스턴스가 몇개든 카테고리의 종류가 2개라면 key값은 2개고, 리턴되는 Map의 요소는 2개이다)
 		/* 위 경우 getCategory에는 총 APP과 LANG 두 종류가 있으므로 리턴되는 Map의 key는 APP과 LANG 2개가 되고,
@@ -69,7 +71,7 @@ public class Ex06Collector {
 					Collectors.groupingBy( // groupingBy의 아규먼트가 2개			
 							EBook::getCategory, // 카테고리를 key로 설정 // (첫번째 아규먼트)
 							Collectors.maxBy(Comparator.comparingInt(EBook::getPrice)))); // value 설정 // (두번째 아규먼트)
-				/* 두번째 아규먼트인 Collectors.maxBy의 경우, 앞서 지정한 첫번째 아규먼트인 key값 중 Collectors.maxBy의 아규먼트의 값이 가장 큰 값 하나를 해당 key값의 value로 설정한다.
+				/* ★ 두번째 아규먼트인 Collectors.maxBy의 경우, 앞서 지정한 첫번째 아규먼트인 key값 중 Collectors.maxBy의 아규먼트의 값이 가장 큰 값 하나를 해당 key값의 value로 설정한다.
 				   즉, 카테고리는 2종류 뿐이므로 key값은 2개이며, 해당 key값과 동일한 카테고리를 가진 인스턴스들끼리 비교해 getPrice의 값이 가장 높은 하나의 인스턴스가 해당 key의 value값이 된다 */
 				// Comparator.comparingInt 메서드는 아규먼트를 오름차순으로 정렬하는 메서드이다.
 		
@@ -91,7 +93,7 @@ public class Ex06Collector {
 							Collectors.collectingAndThen( // value값 설정 (아규먼트)
 									Collectors.maxBy(Comparator.comparingInt(EBook::getPrice)),// collectingAndThen의 첫번째 아규먼트
 									Optional::get))); // collectingAndThen의 두번째 아규먼트
-		// Collectors.collectingAndThen 메소드는 첫번째 아규먼트의 결과를 가지고 두번째 아규먼트를 실행한다. 
+		// Collectors.collectingAndThen 메소드는 첫번째 아규먼트(maxBy(~~))의 결과를 가지고 두번째 아규먼트(Optional::get)를 실행한다. 
 		// 여기선 원래 maxBy의 value값이 Optional 클래스이지만 그 값을 가지고 두번째 아규먼트인 Optional::get을 실행하여 EBook 타입의으로 가져왔다.
 		// 즉, maxBy의 결과로 Optional클래스를 return받았으며, 그 return 값을 가지고 Optional::get을 실행하여 EBook타입으로 바꾼 후 value로 설정.
 		
