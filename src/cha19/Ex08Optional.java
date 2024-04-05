@@ -58,7 +58,7 @@ public class Ex08Optional {
 		
 		EBook eb3 = opt3.isPresent() ? opt3.get() : new EBook("옵셔널", 30000, EBook.Category.LANG);
 		// 삼항연산자를 통해 null 여부 체크
-		/// isPresent가 거짓일 경우 new EBook(~~);을 opt3에 저장?
+		// isPresent가 거짓일 경우 new EBook(~~);을 opt3에 return
 		System.out.println(eb3);
 		System.out.println();
 		

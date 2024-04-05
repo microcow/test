@@ -21,7 +21,7 @@ public class Ex03Downcasting {
 		
 		//book.setFontColor("블랙"); → book은 EBook3의 인스턴스 변수를 담고있지만 Book3소속이기에 자식클래스의 메소드를 사용할 수 없다.	
 		// ebook = book; ★ 자식클래스는 부모클래스를 받을 수 없다
-		ebook = (EBook3)book;// 다운캐스팅을 하기 위해선 ★업캐스팅이 선행★되어야 하며, 업캐스팅 된 클래스를 다운캐스팅해야한다.
+		ebook = (EBook3)book;// 다운캐스팅을 하기 위해선 업캐스팅이 선행되어야 하며, 업캐스팅 된 클래스를 다운캐스팅해야한다. : x 아님. 업캐스팅하지 않아도 부모클래스가 자식클래스로 다운캐스팅 가능
 		// ★ 부모타입의 인스턴스를 자식 타입으로 다운캐스팅 한 후 자식클래스의 인스턴스로 넘겨줄 경우 그걸 받은 자식클래스 인스턴스가 자식클래스에 있는 메소드 및 인스턴스 변수 사용 가능 ★
 		// ★ 다운캐스팅 하는 법 : 자식클래스인스턴스 = (자식클래스)부모클래스인스턴스;
 		// ★ 다운캐스팅 추가 참고(*ch13 Ex02)
@@ -59,6 +59,13 @@ public class Ex03Downcasting {
 		// abook은 book을 다운캐스팅 받았기에 super.vol 출력 시 아까 저장해두었던 11이 출력됨
 		System.out.printf(abook.getTitle());
 		// 마찬가지로 abook은 book을 다운캐스팅 받았기에 abook의 title출력 시 아까 저장해두었던 "자바 기초"가 출력됨
+		
+		
+		
+		Book3 test123 = new Book3();
+		EBook3 test1234 = new EBook3();
+		test1234 = (EBook3)test123;
+		// ★ 업캐스팅하지 않아도 부모클래스가 자식클래스로 다운캐스팅 가능 ★
 	}
 
 }

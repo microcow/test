@@ -69,7 +69,7 @@ public class Ex10Map {
 			// ★ keySet메소드는 Map을 Set으로 반환해주는 메소드이다. (entrySet()과 달리 keySet은 Key값만 저장되어있는 Set으로 return해준다)
 			String key = it.next();
 			System.out.println("이름: " + key + "\t스킬: " + teamB.get(key));
-			// ★ get(key값) 메소드는 해당 key값에 저장되어있는 value를 가져온다
+			// ★ get(key값) 메소드는 아규먼트에 입력된 값과 key값을 대칭 후 저장되어있는 value를 가져온다 (Collection의 get과 달리 아규먼트의 key값은 문자열, 숫자 상관 없음)
 		}
 		System.out.println();
 		

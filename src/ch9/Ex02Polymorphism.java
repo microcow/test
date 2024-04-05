@@ -21,11 +21,11 @@ public class Ex02Polymorphism {
 		cart.add(abook);
 		
 		cart.printList();
-		// abook이 null로 출력되는 이유는 AudoiBook2클래스에도 title이란 인스턴스 변수가 있기 때문,
-		// 위에서 setTitle을 통해 title값을 "자바 기초"로 설정하였지만 부모클래스는 자식클래스의 인스턴스 변수를 사용할 수 없기에
-		// abook.title에 저장된 것이 아닌 abook의 super.title에 값이 저장됨
-		// 그래서 getTitle로 title값을 return받을 경우 abook의 title값이 null이 return된 것
-		// title값에 "자바 기초"를 return받고싶다면 AudioBook2의 인스턴스 변수인 title의 이름을 변경하거나 제거하거나 super.title을 부여해야함
+		/* abook이 null로 출력되는 이유는 AudioBook2클래스에도 title이란 인스턴스 변수가 있기 때문,
+		위에서 setTitle을 통해 title값을 "자바 기초"로 설정하였지만 본인클래스와 부모클래스에 동일한 이름의 인스턴스 변수가 있기에
+		이 경우 본인클래스가 우선시 되므로 abook.title에 저장된 것이 아닌 abook의 super.title에 값이 저장됨
+		그래서 getTitle로 title값을 return받을 경우 abook의 title값이 null이 return된 것
+		title값에 "자바 기초"를 return받고싶다면 AudioBook2의 인스턴스 변수인 title의 이름을 변경하거나 제거하거나 super.title을 부여해야함 */
 
 	}
 

@@ -10,7 +10,7 @@ public class Ex08Optionaltest {
 		List<Car2> car = new ArrayList<>();
 		car.add(new Car2(1000, "A자동차"));
 		car.add(new Car2(1300, "B자동차"));
-		car.add(new Car2(200, "C자동차"));
+		car.add(new Car2(null, "C자동차"));
 		car.add(new Car2(400, "D자동차"));
 		car.add(new Car2(1000, "E자동차"));
 		
@@ -18,6 +18,7 @@ public class Ex08Optionaltest {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("자동차 명을 입력하세요");		
 		String carname = scan.nextLine();
+		String name = carname;
 		Integer i = Car2.checkPrice(carname, car);
 		carname = Car2.checkname(carname, car);			
 		
@@ -33,31 +34,47 @@ public class Ex08Optionaltest {
 		 List<Car2> car2 = new ArrayList<>();		 
 		 if (!(i == null)) {
 			 car2.add(car.get(i)); // i가 null일 경우 여기서 에러발생
-			 
-			 int price =
+			 Integer price =
 			 Optional
 			 	.ofNullable(car2)
 			 	.flatMap(a -> a.stream().findFirst())
-			 	.map(a -> a.getPrice())
+			 	.map(a -> a.getPrice())		 	
 			 	.orElse(1);
 			 System.out.println(price);
 		 } 
 		 else System.out.println(1);
-		 /// orElse로 인해 1이 출력되게 하고 싶었으나, 그러지 못했음
-		 }
-	
-
-
+		 
+		 
+		 
+		 // 문제 2. 다른방법
+		 List<Car2> car3 = new ArrayList<>();
+		 for (Car2 namea : car) {
+			 if(name.equals(namea.getname())){
+				 car3.add(namea);
+			 	}
+			 else continue;
+			 
+			 Integer price2 =
+					 Optional
+					.ofNullable(car3)
+					.flatMap(a -> a.stream().findFirst())
+					.map(a -> a.getPrice())		 	
+					.orElse(9999);
+				  	System.out.println(price2);
+				  	// 9999 다섯번 출력되는거 한 번만 출력되도록 수정필요
+				  	// else continue 코드 추가하여 한 번만 출력되도록 수정했음 (그럼 else continue가 없을 땐 왜 5번이 add되었는가)
+		 }	 
+	}
 }
 class Car2 {
-	int price;
+	Integer price;
 	String name;
 	
-	Car2(int price, String name){
+	Car2(Integer price, String name){
 		this.price = price;
 		this.name = name;
 	}
-	int getPrice() {
+	Integer getPrice() {
 		return price;
 	}
 	String getname() {
@@ -81,10 +98,10 @@ class Car2 {
 		return null;
 	}
 	public static Integer checkPrice(String car, List<Car2> cars) {
-	for (int i=0; i<cars.size(); i++)
-		 if (car.equals(cars.get(i).getname()))
-			 return i;
-	return null;
+		for (int i=0; i<cars.size(); i++)
+			if (car.equals(cars.get(i).getname()))
+				return i;
+		return null;
 	// null을 return하고 싶을 때는 return타입이 int가 아닌 Integer를 사용
 	}
 	
