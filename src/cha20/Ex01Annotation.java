@@ -148,7 +148,8 @@ class OldCar {
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-@interface RequestMapping {
+
+@interface RequestMapping {	
     String value();
 }
 
@@ -188,6 +189,7 @@ class OldCar {
 @interface Autowired{
 	String vlaue();
 }
+
 /*
  * <메타 어노테이션>
  * @Retention
@@ -209,3 +211,7 @@ class OldCar {
  * @Repeatable
  * @Documented
  */
+/*
+문제 1.
+필드에 @Autowired("원하는 내용") 어노테이션을 적용 할 경우 필드의 값을 value로 초기화하는 코드를 작성하세요. 
+*/
