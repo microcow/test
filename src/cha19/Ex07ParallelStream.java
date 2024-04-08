@@ -19,7 +19,7 @@ public class Ex07ParallelStream {
 		int sum =
 			ebooks
 				.parallelStream()
-				// parallelStream 스트림 메소드 사용 시 병렬스트림(멀티쓰레드)이 return된다
+				// ★ parallelStream 스트림 메소드 사용 시 병렬스트림(멀티쓰레드)이 return된다
 				.filter(b -> b.getPrice() < 50000)
 				.mapToInt(EBook2::getPrice)
 				.sum();
@@ -28,6 +28,7 @@ public class Ex07ParallelStream {
 		
 		System.out.println("< groupingByConcurrent >");
 		ConcurrentMap<EBook2.Category, List<EBook2>> ebMap =
+		// Concurrent가 붙을경우 멀티쓰레드로부터 안전하다는 뜻
 			ebooks
 				.parallelStream()
 				.collect(Collectors.groupingByConcurrent(EBook2::getCategory));
