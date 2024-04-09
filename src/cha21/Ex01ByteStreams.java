@@ -11,7 +11,7 @@ public class Ex01ByteStreams {
 		// 아웃풋스트림 (i'o') (OutpuyStream)
 		// 인풋,아웃풋스트림(io)은 외부로부터 값을 읽어오거나(입력,인풋) 내보내기(출력,아웃풋)위해 사용한다 (람다식의 stream과는 관계x)
 		// 이런 io를 위한 패키지는 java의 io패키지에 있다
-		// putStream이 붙었을 경우 처리할 때 한글자(한 바이트)씩 처리한다 즉, 한글이 깨질 수 있다
+		// putStream이 붙었을 경우 처리할 때 한 글자(한 바이트)씩 처리한다 즉, 한글이 깨질 수 있다
 		// 따라서 ByteStreams는 문자열을 처리할 때는 잘 사용하지 않으며 이미지, 동영상 등 바이트단위의 처리가 필요한 경우 사용한다 (문자열은 캐릭터스트림스를 사용)
 		
 		FileInputStream oldIn = null;
@@ -25,9 +25,8 @@ public class Ex01ByteStreams {
 			// 경로에 있는 txt를 읽어올 수 있는 FileInputStream이 생성된다
 			// ./를 입력하게 되면 현재 디렉토리(test)부터 경로를 입력하면 된다
 			oldOut = new FileOutputStream("./src/cha21/out1-fileoutputstream1.txt");
-			
-			
-			
+			// 생성자의 아규먼트로 파일을 생성할 경로 및 파일명 입력
+									
 			int c;
 			while ((c = oldIn.read()) != -1) {
 				// read 메소드는 oldIn인스턴스에 저장된 경로의 텍스트의 문자를 한글자씩 읽어온 후 유니코드로 반환한다
@@ -74,8 +73,8 @@ public class Ex01ByteStreams {
 		
 		try (
 			BufferedInputStream in = new BufferedInputStream(new FileInputStream("src/cha21/test.txt"));
-				// Buffer인풋스트림의 아규먼트에 파일인풋스트림 입력 시 파일인풋스트림에 Buffer인풋스트림의 기능이 추가된 인스턴스가 생성된다 (아웃풋도 마찬가지)
-				// 둘의 차이는 검색해서 정리할것 (결과는 동일하나 성능면에서 Bufferd가 우세)
+				// BufferedInputStream의 아규먼트에 FileInputStream 입력 시 파일인풋스트림에 Buffer인풋스트림의 기능이 추가된 인스턴스가 생성된다 (아웃풋도 마찬가지)
+				// 결과는 동일하나 성능면에서 Bufferd가 우세 (기존 File인풋,아웃풋은 바이트마다 내용을 보내거나 읽어들이는 반면 Bufferd는 배열에 내용을 저장해두었다가 한번에 내용을 보내거나 읽어들인다)
 			BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream("src/cha21/out1-fileoutputstream1.txt"));
 		) {
 			int c;
@@ -91,13 +90,15 @@ public class Ex01ByteStreams {
 		
 		try (
 			BufferedInputStream in = new BufferedInputStream(new FileInputStream("src/cha21/test.txt"));
-			PrintStream out = new PrintStream(new FileOutputStream("src/cha21/out1-fileoutputstream1.txt"));
-				// PrintStream은 println 이나 printf 등과 같은 메서드들이 있는 클래스이며 출력 시 해당 메서드들의 사용이 필요할 때 사용을 고려한다
+			PrintStream out = new PrintStream(new FileOutputStream("src/cha21/out1-fileoutputstream123.txt"));
+				// PrintStream은 println 이나 printf 등과 같은 메서드들이 있는 클래스이며 출력 시 해당 클래스의 메서드들의 사용이 필요할 때 사용을 고려한다
 				// 이와같이 java에서는 스트림의 생성자에 다른 스트림을 입력하는 방식으로 스트림의 기능을 강화할 수 있도록 한다
 		) {
 			int c;
 			while ((c = in.read()) != -1) {
 				out.println((char)c);
+				 //System.out.println((char)c);
+				// out.println 시 미출력 이유 (System.out.println 시 출력됨) (out.println은 출력이 아닌 output 코드 위의 write메소드와 동일 역할)
 			}
 			System.out.println("< FileOutputStream -> PrintStream >");
 		} catch (IOException e) {
