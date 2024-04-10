@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class Ex02CharacterStreams {
 	public static void main(String[] args) {
 		
+		// 디렉토리 = 폴더 같은 의미 // 출력 = write = 파일생성
 		// 캐릭터스트림은 Reader 혹은 Writer가 붙어있다 (문자열 처리에 유리하다)
 		
 		try (
@@ -56,7 +57,7 @@ public class Ex02CharacterStreams {
 		) {
 			String line;
 			while ((line = in.readLine()) != null) {
-				// readLine 메서드는 줄단위로 읽어오는 메서드이다
+				// readLine 메서드는 줄단위로 읽어오는 메서드이다 (한 줄 읽어오고 재실행(반복) 시 다음줄 읽어옴)
 				// 더이상 읽어올 줄이 없다면 null을 return한다.
 				out.write(line);
 				out.newLine();

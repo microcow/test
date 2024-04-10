@@ -13,6 +13,7 @@ public class Ex01ByteStreams {
 		// 이런 io를 위한 패키지는 java의 io패키지에 있다
 		// putStream이 붙었을 경우 처리할 때 한 글자(한 바이트)씩 처리한다 즉, 한글이 깨질 수 있다
 		// 따라서 ByteStreams는 문자열을 처리할 때는 잘 사용하지 않으며 이미지, 동영상 등 바이트단위의 처리가 필요한 경우 사용한다 (문자열은 캐릭터스트림스를 사용)
+		// 디렉토리 = 폴더 같은 의미 // 출력 = write = 파일생성
 		
 		FileInputStream oldIn = null;
 		// 컴퓨터 내의 파일로 부터 값을 입력해오기 위해선 FileInputStream
@@ -98,7 +99,7 @@ public class Ex01ByteStreams {
 			while ((c = in.read()) != -1) {
 				out.println((char)c);
 				 //System.out.println((char)c);
-				// out.println 시 미출력 이유 (System.out.println 시 출력됨) (out.println은 출력이 아닌 output 코드 위의 write메소드와 동일 역할)
+				// out.println 시 미출력 이유 (System.out.println 시 출력됨) : (out.println은 '문자열 출력'이 아닌 output 코드 위의 write메소드와 동일하게 '파일생성(출력)' 역할)
 			}
 			System.out.println("< FileOutputStream -> PrintStream >");
 		} catch (IOException e) {

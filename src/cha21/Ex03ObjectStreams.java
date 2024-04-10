@@ -16,7 +16,7 @@ import java.util.Collections;
 import java.util.List;
 public class Ex03ObjectStreams {
 	public static void main(String[] args) {
-		
+		// 디렉토리 = 폴더 같은 의미 // // 출력 = write = 파일생성
 		
 		try (
 			DataOutputStream out = new DataOutputStream(new BufferedOutputStream(
@@ -95,7 +95,7 @@ public class Ex03ObjectStreams {
         ) {
         	Cart cart = (Cart)in.readObject(); // 다운캐스팅
         	// readobject 메서드를 통해 writeObject로 출력(write)한 내용을 읽어(read)올 수 있다 (어떤 타입을 읽을지 모르기 때문에 Object클래스로 return한다)
-        	// ★ DataInputStream과 마찬가지로 읽어올때도 출력(작성, write)한 순서 그대로 읽어와야한다.
+        	// ★ DataInputStream과 마찬가지로 읽어올때도 출력(작성, write)한 순서 그대로 읽어와야한다. (cart를 writeObject한 후 BigDecimal~~을 writeObject했으니 읽어올 때도 cart를 먼저 readObject한 후 BigDecimal~~을 readObject)
         	BigDecimal bd = (BigDecimal)in.readObject(); //다운캐스팅
         	System.out.println(cart.getBooks()); // return이 books니까 자동으로 books.toString이 호출되는건가
         	System.out.println(bd.toString());
@@ -114,8 +114,11 @@ public class Ex03ObjectStreams {
 }
 
 class Book implements Serializable {
-	// ★ Object(In/Out)putStream을 사용할 클래스는 Serializable인터페이스를 구현하고 있어야한다. //5:28
+	// ★ Object(In/Out)putStream을 사용할 클래스는 Serializable인터페이스를 구현하고 있어야한다.
+	// Serializable 인터페이스는 객체(인스턴스)를 일렬로 된 문자열로 바꿀 수 있게 해준다
 	private static final long serialVersionUID = 1L;
+	// Serializable 인터페이스를 구현 중인 클래스는 private static final long serialVersionUID 변수를 반드시 가져야한다. (클래스의 충돌을 미연에 방지하기 위한 변수)(미구현 시 에러)
+	// 다른 네트워크와 serialVersionUID의 값이 일치할 때만 데이터를 주고받을 수 있다
 	private String title;
 	private String title2;
 	private int price;

@@ -47,5 +47,3 @@ public class Ex01ByteStreamstest {
 임의의 내용이 입력된 hello.txt파일을 생성하세요.
 hello.txt파일의 내용을 복사하는 코드를 작성하세요.
 */
-//https://blog.naver.com/lcomputerstudy/222064709304
-//eclipse javadoc 한글
