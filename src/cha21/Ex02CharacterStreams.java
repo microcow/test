@@ -54,6 +54,7 @@ public class Ex02CharacterStreams {
 			BufferedReader in = new BufferedReader(new FileReader("src/cha21/test2.txt"));
 			BufferedWriter out = new BufferedWriter(new FileWriter("src/cha21/outtest2.txt"));
 				// Buffer의 아규먼트에 File의 Reader,Writer 스트림 입력 시 Buffer기능이 추가된 인스턴스가 생성된다 (아웃풋도 마찬가지)
+// 자바에서 BufferedReader는 입력 스트림으로부터 데이터를 읽을 때 데이터를 버퍼에 임시로 저장합니다. 이는 한 번에 많은 양의 데이터를 읽거나 쓸 때 효율성을 높입니다.
 		) {
 			String line;
 			while ((line = in.readLine()) != null) {
