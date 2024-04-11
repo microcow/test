@@ -146,6 +146,7 @@ public class Ex04Files {
 		try {
 			Files.createFile(p5);
 			// createFile 메서드는 아규먼트의 경로에 빈 파일을 생성한다 (파일 이름은 test!)
+			// 동일한 파일명이 이미 존재할 경우 에러발생
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
