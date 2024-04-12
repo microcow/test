@@ -19,6 +19,8 @@ public class Ex13Comparabletest {
 	Collections.sort(student);
 	System.out.println(student);
 	
+	
+	
 	// Ex14 문제1.
 	Collections.sort(student, new Comparator<Student2>() {
 		@Override

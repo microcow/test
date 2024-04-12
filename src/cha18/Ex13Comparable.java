@@ -44,6 +44,7 @@ class Book3 implements Comparable<Book3> {
 	@Override
 	public int compareTo(Book3 book) {
 		int result = Integer.valueOf(no).compareTo(book.getNo()) * -1; 
+		// Comparable을 구현하고 있는 클래스는 compareTo를 반드시 오버라이딩 하여야한다.
 		// Integer클래스의 compareTo를 호출하고있음 (숫자 비교)(Integer 클래스는 이미 conpareTo를 오버라이딩 하고 있음)
 		// 그냥 int result = no - book.getNo로 작성해도 되지만 해당 방법으로도 비교 가능
 		// *-1을 하면, 결과값이 반대가 되므로 내림차순으로 정렬된다. (*-1 말고 compareTo의 호출자와 아규먼트를 바꾸어도 내림차순으로 정렬 가능)
@@ -52,13 +53,14 @@ class Book3 implements Comparable<Book3> {
 			result = title.compareTo(book.title); // String클래스의 compareTo를 호출하고있음 (문자열 비교)(Integer 클래스는 이미 conpareTo를 오버라이딩 하고 있음)(0일 경우 no의 값이 동일하기에 문자열을 비교하고 있음)
 		return result;
 		// 호출자가 더 크면 양수를, 아규먼트가 더 크면 음수, 같으면 0을 return한다.		
-		// ★ 오버라이딩 시 byte, char, double, short, long, int, float같은 PrimitiveType의 배열에는 적용이 불가능하니 Integer같은 Wrapper "Class"를 이용해야 한다
+		// ★ 오버라이딩 시 byte, char, double, short, long, int, float같은 PrimitiveType(기본형)의 배열에는 적용이 불가능하니 Integer같은 Wrapper "Class"를 이용해야 한다
 		
 		// Integer클래스와 String클래스의 compareTo는 오름차순으로 정렬하지 않고 값을 비교만하여 결과를 return하지 않나? : yes 해당 compareTo도 동일하게 결과값(int)을 return함
 		/// book에는 Book3타입 인스턴스가 3개가 있는데 반복문도 아닌데 no에는 무슨 값이 오고 book은 어떤 인스턴스인지?
 			/// sort호출 시 요소 하나씩 compareTo를 호출하고 그 옆에 인덱스가 아규먼트로 오는건가
 		/// return되는 result값이 양수일 경우 서로 위치를 바꾸는건가 (오름차순으로 정렬되기 때문)
 		/// sort 호출 -> 오버라이딩한 compareTo로 각 요소들 비교 후 return → return된 값이 양수일 경우 비교한 대상과 위치(인덱스) 변경? 
+		// ★ Collections.sort() 메서드는 요소들을 정렬하기 위해 compareTo 메서드를 호출합니다. 이때, 정렬 알고리즘은 요소들을 비교하기 위해 compareTo 메서드를 사용하며, 각 요소를 호출자로써 비교 메서드를 호출합니다.
 	}
 	@Override
 	public String toString() {
