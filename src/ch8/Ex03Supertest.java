@@ -21,7 +21,7 @@ class son extends Mom1 {
 	son(){
 	super ("제목", "이름");
 	}
-	
+	//d
 }
 /*
 문제 1.
