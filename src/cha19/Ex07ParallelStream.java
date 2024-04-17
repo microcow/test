@@ -7,6 +7,7 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 public class Ex07ParallelStream {
 	// 병렬스트림은 좋은 성능의 컴퓨터에서 빠른 작업속도를 나타낸다
+	// 일반 stream과 parallelStream을 육안으로 구분하긴 어렵다
 	public static void main(String[] args) {
 		List<EBook2> ebooks = new ArrayList<>();
 		ebooks.add(new EBook2("자바 기본문법", 50000, EBook2.Category.LANG));

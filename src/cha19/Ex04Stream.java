@@ -213,7 +213,7 @@ public class Ex04Stream {
 			.stream()
 			.filter(b -> b.getCategory().equals(EBook.Category.LANG))
 			.map(EBook::getTitle)		// b -> b.getTitle()
-			// map 메소드는 Map과는 다름
+			// ★ map 메소드는 Collection Map과는 다름
 			// map 메소드는 아규먼트의 값들로 이루어진 Stream이 return된다. (map메서드는 아규먼트의 결과를 Stream으로 감싼다음 return함)
 			// 즉, ebooks에는 EBook타입의 인스턴스들이 저장되어있었으나, map으로 인해 filter로 걸러진 요소들의 제목들이 저장되었다
 			// eume의 equals 메소드가 호출된거가 아래의 equals가 호출된건가? 아래의 equals가 호출되었다면 아규먼트인 EBook.Category.LANG가 EBook으로 형변환이 불가능하지 않나? (LANG이 저장된 것이 아닌 카테고리가 LANG인 인스턴스가 저장된 것임)
@@ -245,7 +245,7 @@ public class Ex04Stream {
 			// ★ Arrays.stream() 메서드는 배열을 스트림으로 변환하는 데 사용됩니다. 
 			.forEach(System.out::println);
 		// flatMap도 Map과 유사하게 Stream을 다른 Stream으로 변환하는 메서드이다
-		// ★★ flatMap은 map메서드는 실행 시 결과값에 Stream<>을 씌워서 return하지만 flatMap은 Stream<>을 씌우지 않고 오히려 결과 값의 여러개의 Stream<>을 하나로 합쳐서 return한다.
+		// ★★★ map메서드는 실행 시 결과값에 Stream<>을 씌워서 return하지만 flatMap은 Stream<>을 씌우지 않고 오히려 결과 값의 여러개의 Stream<>을 하나로 합쳐서 return한다.
 		/* ★ flatMap메소드는 Stream타입의 호출자를 List타입(혹은 Set타입)으로 바꾼 후 (이미 List타입이라면 바꿀필요x) 각각의 요소들을
 		 * ★ 하나의 요소로 합친 다음 그 하나의 요소를 가지고 있는 Stream으로 다시 return한다.★ (Set으로는 바꾸지 않는편)(Map타입은 직접적으론 불가, Set타입으로 우회)
 		 */

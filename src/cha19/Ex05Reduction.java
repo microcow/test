@@ -59,7 +59,7 @@ public class Ex05Reduction {
 			ebooks
 				.stream()
 				.filter(b -> b.getCategory().equals(EBook.Category.LANG))
-				.mapToInt(EBook::getPrice)
+				.mapToInt(EBook::getPrice) //b -> b.getPrice()
 				.max()
 				// 최대값을 OptionalInt타입으로 return한다.
 				.getAsInt();
