@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
 public class testtesttest {
@@ -22,7 +23,11 @@ public class testtesttest {
 			{
 				return Math.abs(n.thick) - Math.abs(thick); // Math.abs는 아규먼트를 절대값으로 return
 			}
-		
+			
+			String [] alphabet = { "A", "B", "C" ,"A"};
+			
+			
+	        	// 결과 : {A=2, B=1, C=1
 		}
 		
 		/* 5
@@ -72,6 +77,8 @@ public class testtesttest {
 			
 			System.out.println(a+" "+b);
 		}
+		
+		
 
 }
 /* 어떤 구조이기에 readLine을 호출하기전까지 입력하지 못하는거지?
