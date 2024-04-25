@@ -15,7 +15,7 @@ public class Ex06While {
 		while (i < tvCount) {
 			System.out.println("TV 1대를 생산하였습니다.");
 			i++;
-			//while 문이 참일경우, 반복하게된다
+			//★★ while 문이 참일경우, 반복하게된다 (즉, wile문이 거짓일 경우 반복문 종료)
 			//i가 증가하지 않는다면 tvCount보다 항상 작기때문에 출력을 무한히 반복하게된다(무한루프)
 		}
 	}

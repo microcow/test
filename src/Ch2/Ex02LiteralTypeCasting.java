@@ -19,5 +19,6 @@ public class Ex02LiteralTypeCasting {
 		System.out.println(""+20);
 		System.out.println(20+20+"");
 		System.out.println(""+20+20);
+	
 	}
 }
