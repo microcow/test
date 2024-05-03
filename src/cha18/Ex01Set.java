@@ -8,7 +8,7 @@ import java.util.Set;
 public class Ex01Set {
 	
 	/* HashSet 특징 
-	 * ▶ 장점 : 저장되는 데이터는 자동으로 중복처리가 된다 (List와 차이점)
+	 * ▶ 장점 : 저장되는 데이터는 자동으로 중복처리가 된다 (List와 차이점)d
 	 * ▶ 단점 : HashSet에 저장되는 데이터는 연속적이지 않다. 즉, 정렬이 되지 않음(List와 차이점)
 	 * ▶ set도 List와 같이 배열을 이용한다 (배열이 가변적)
 	 * ▶ HashSet은 메소드를 활용해 return된 인스턴스(객체)의 Hash코드를 사용해 배열인덱스를 만든 후 배열(버킷)에 데이터를 저장한다 
