@@ -2,7 +2,7 @@ package ch9;
 
 public class Ex05AbstractClass {
 	public static void main(String[] args) {
-		//Book5 b1 = new Book5();
+		//Book5 b1 = new Book5(); // 추상클래스는 인스턴스를 생성할 수 없다.
 		PaperBook pb = new PaperBook();
 		pb.setTitle("자바 기본문법");
 		pb.setAuthor("엘컴퓨터학원");
