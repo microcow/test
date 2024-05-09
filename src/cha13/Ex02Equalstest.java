@@ -49,7 +49,7 @@ class Book03{
 	public String toString() {
 		return "Book3 [title=" + title + ", author=" + name + ", edition=" + edition + "]";
 	}
-}
+} //
 /*
 문제 1.
 원하는 클래스를 만드세요.
