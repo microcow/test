@@ -5,32 +5,13 @@ import java.util.Map;
 
 public class testtest4 {
 	public static void main(String[] args) {
-		int[] array = {1, 1, 2, 2, 3, 3, 3};
-		Solution1111 T = new Solution1111();
-		System.out.println(T.solution(array));
-		
-		
-		
-				
+		StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("문자열 ").append("연결");
+//        String str = stringBuilder;   // String에 StringBuilder를 그대로 넣을 순 없다. toString()을 붙여야 한다
+        String str = stringBuilder.toString();
+        // 두 println()은 같은 값을 출력한다
+        System.out.println(stringBuilder);
+        System.out.println(str);
+        
 	}
-}
-class Solution1111 {
-    public int solution(int[] array) {
-        int maxCount = 0;
-        int answer = 0;
-        Map<Integer, Integer> map = new HashMap<>();
-        for(int number : array){
-            int count = map.getOrDefault(number, 0) + 1;
-            if(count > maxCount){
- 	              maxCount = count;
- 	              answer = number;           
-            }
-            else if(count == maxCount){
-            	answer = -1;
-            }         
-            map.put(number, count);
-            System.out.println(map);
-        }
-        return answer;
-    }
 }

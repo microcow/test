@@ -1,1 +1,8 @@
-안녕하세요 엘컴퓨터 학원입니다, 자바, java
+.append("SELECT 		@ROWNUM := @ROWNUM - 1 AS ROWNUM,ta.*\n")
+					.append("FROM 			user as ta,(SELECT @rownum := (SELECT	COUNT(*)-?+1 FROM user as ta)) as tb\n")
+					.append("LIMIT			?, 3\n")
+					.toString();
+
+rownum이 어디에 쓰이는지 (없으면 제대로 출력안되는 이유)
+list.jsp에서 ${item.u_idx}대신 ${item.u_rownum} 입력 시 오류
+list.jsp에서 62번째 줄에 <!-- <td> ${item.u_rownum}</td>	 --> 입력 시 오류발생	(주석처리했는데 오류발생하는 이유)
