@@ -117,7 +117,8 @@ interface OrderItem {
 	// 인터페이스는 추상메소드만 가질 수 있다. (일반 메소드는 가질 수 없다(추상클래스와 차이점2))(다만, 클래스(static)메소드와 디폴트(default)메소드는 가질 수 있다.)
 	// 인터페이스를 implements하는 클래스는 인터페이스의 추상메소드를 반드시 모두 오버라이딩 해야한다.
 	public abstract String getOrderName();
-	public abstract int getOrderPrice(); 
+	public int getOrderPrice(); 
+	// abstract(추상메소드 선언) 생략 가능
 }
 
 class Book6 implements OrderItem {

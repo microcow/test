@@ -3,17 +3,25 @@ package Ch1;
 public class tttest extends testtest4 {
 	public static void main(String[] args) {
 		
-		testtest4 test = new tttest();
+		parent A = new parent();
+		A.call();
 		
-		String a = "%" + "dd" + "%";
-		System.out.println(a.toString());
-		String b = "a";
-		System.out.println(b.toString());
+		son B = new son();
+		B.call();
 		
-		a = "\"" + "%" + "dd" + "%" + "\"";
-		b = "a";
-		System.out.println(a.toString());
-		System.out.println(b.toString());
+		B = (son)A;
 	}
 	
+}
+class parent{
+	public void call() {
+		System.out.println("dd");
+	}
+}
+
+class son extends parent{
+	@Override
+	public void call() {
+		System.err.println("zz");
+	}
 }
