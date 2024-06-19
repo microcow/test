@@ -1,27 +1,24 @@
 package Ch1;
 
-public class tttest extends testtest4 {
-	public static void main(String[] args) {
-		
-		parent A = new parent();
-		A.call();
-		
-		son B = new son();
-		B.call();
-		
-		B = (son)A;
+	// 인터페이스
+interface userService {
+	 void createUser();
 	}
-	
-}
-class parent{
-	public void call() {
-		System.out.println("dd");
-	}
+
+	//인터페이스 구현 클래스
+class userService2 implements userService {
+	 @Override
+	 public void createUser() {
+	     System.out.println("User created in userService2");
+	 }
 }
 
-class son extends parent{
-	@Override
-	public void call() {
-		System.err.println("zz");
-	}
+	//사용 예시
+class Main {
+	 public static void main(String[] args) {
+	     userService service = new userService2();
+	     service.createUser();  // 이 호출은 userService2 클래스의 createUser 메소드를 실행함
+	 }
 }
+
+

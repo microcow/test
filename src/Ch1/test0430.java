@@ -6,6 +6,12 @@ public class test0430 {
 		 double b = Math.floor(A);
 		 System.out.println(b);
 		 System.out.println(Math.abs(A*-1));
+		 
+		
 	}
+
+
+
+//인터페이스 정의
 
 }
