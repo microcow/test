@@ -23,6 +23,11 @@ public class Ex02Lambda {
 		// 람다식 사용
 		/// u 변수는 where의 User user에 대응하는 변수??
 		/// search 호출 시 두번째 파라미터 타입은 Criteria인데 자동으로 Criteria()의 인스턴스 역할을 하는건가 (Criteria의 추상메소드를 람다식으로 표현하고 있으니?)
+			/* ㄴ 두번째 파라미터로 람다식을 보내고있음 람다식은 객체 생성을 생략함 
+			 * 즉, 두번째 타입인 Criteria 객체를 파라미터로 전달해야 정상이지만, 람다식을 보내고있으니 new Criteria가 생각된것임
+			 * 그리고 보낸 람다식은 Criteria의 추상메서드가 호출될 때 대신 실행됨
+			 * (u는 Criteria의 추상메서드를 호출할 때 파라미터를 보내야하는데 그 파라미터를 u가 받게되고 람다식 실행)
+			 */
 		UserService.printUsers(condUser);
 		System.out.println("ss");
 		
